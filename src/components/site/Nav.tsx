@@ -38,7 +38,7 @@ export function Nav() {
           >
             <Menu className="h-5 w-5" />
           </button>
-          <nav className="hidden lg:flex items-center gap-7 text-[10px] uppercase tracking-[0.28em] text-foreground/70">
+          <nav className="hidden lg:flex items-center gap-8 text-[10px] uppercase tracking-[0.28em] text-foreground/70 whitespace-nowrap">
             {links.map((l) => (
               <Link
                 key={l.to}
