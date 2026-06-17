@@ -25,8 +25,8 @@ export function Nav() {
     <header
       className={`fixed top-0 inset-x-0 z-50 transition-all duration-500 ${
         scrolled
-          ? "backdrop-blur-xl bg-background/80 border-b border-border"
-          : "bg-transparent"
+          ? "backdrop-blur-xl bg-background/85 border-b border-border"
+          : "bg-background/60 backdrop-blur-md"
       }`}
     >
       <div className="mx-auto max-w-[1600px] px-6 lg:px-12 h-16 lg:h-20 grid grid-cols-[auto_1fr_auto] items-center gap-6">
