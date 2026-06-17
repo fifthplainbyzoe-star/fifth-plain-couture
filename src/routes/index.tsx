@@ -76,7 +76,7 @@ function Home() {
         </div>
       </section>
 
-      <Marquee items={["Free worldwide shipping over $500", "Crafted in Italy", "The Medallion Drop III — Live", "Members receive early access", "Couture-grade materials"]} />
+      <Marquee items={["Free worldwide shipping over R1000", "Crafted in SOUTh africa", "The Medallion Drop III — Live", "Members receive early access", "Couture-grade materials"]} />
 
       {/* FEATURED COLLECTIONS */}
       <section className="mx-auto max-w-[1600px] px-6 lg:px-12 py-28 lg:py-40">
@@ -84,12 +84,12 @@ function Home() {
           <Reveal>
             <div className="text-[10px] uppercase tracking-[0.4em] text-gold">Chapter I</div>
             <h2 className="mt-4 font-editorial text-4xl md:text-6xl lg:text-7xl text-ivory leading-[1.05]">
-              Three worlds.<br />One maison.
+              {"\n"}
             </h2>
           </Reveal>
           <Reveal delay={150}>
             <p className="max-w-sm text-sm text-muted-foreground leading-relaxed">
-              Each universe within Fifth Plain is composed with intention — distinct, yet bound by the same standard of craft.
+              Each universe within Fifth Plain is composed with intention, distinct, yet bound by the same standard of craft.
             </p>
           </Reveal>
         </div>
@@ -98,7 +98,7 @@ function Home() {
           {[
             { title: "The Medallion", caption: "Rare. Collectible.", img: medallionImg, to: "/medallion" as const },
             { title: "Essentials",    caption: "Elevated foundations.", img: essentialsImg, to: "/shop" as const },
-            { title: "Fragrance Lab", caption: "Olfactory artistry.", img: fragranceImg, to: "/fragrance" as const },
+            { title: "The Fragrance Lab", caption: "\u00a0ARTISTRY.", img: fragranceImg, to: "/fragrance" as const },
           ].map((c, i) => (
             <Reveal key={c.title} delay={i * 120}>
               <Link to={c.to} className="group block relative overflow-hidden bg-surface aspect-[3/4]">
@@ -126,9 +126,7 @@ function Home() {
           </Reveal>
           <Reveal delay={150} className="lg:col-span-8 lg:pl-12 lg:border-l lg:border-border">
             <p className="font-editorial text-2xl md:text-3xl leading-[1.5] text-ivory/90 text-balance">
-              Fifth Plain exists at the intersection of restraint and ambition — a house devoted to
-              objects of quiet consequence. We design for the moment before the moment;
-              the weight of a perfectly cut sleeve, the slow opening of a fragrance, the gleam of gold against unmarked black.
+              Fifth Plain exists at the intersection of restraint and ambition, a house devoted to objects of quiet consequence. We design for the moment before the moment; the weight of a perfectly cut sleeve, the slow opening of a fragrance, the gleam of gold against unmarked black.
             </p>
             <div className="mt-12 grid sm:grid-cols-4 gap-8">
               {[
