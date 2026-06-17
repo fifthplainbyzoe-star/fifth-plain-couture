@@ -36,44 +36,45 @@
   --color-input: var(--input);
   --color-ring: var(--ring);
 
-  --font-display: "Cinzel", serif;
-  --font-editorial: "Playfair Display", serif;
-  --font-sans: "Inter", "Montserrat", sans-serif;
+  --font-display: "Cormorant Garamond", serif;
+  --font-editorial: "Cormorant Garamond", serif;
+  --font-sans: "Karla", "Inter", sans-serif;
 }
 
 :root {
-  --radius: 0.25rem;
+  --radius: 0.125rem;
 
-  /* Brand */
-  --background: oklch(0.13 0 0);          /* #0A0A0A matte black */
-  --foreground: oklch(0.96 0.012 85);     /* ivory text */
-  --surface: oklch(0.16 0 0);             /* #1A1A1A charcoal */
-  --surface-elevated: oklch(0.19 0.003 60);
+  /* Warm Sand luxury palette */
+  --background: #faf8f5;          /* warm cream */
+  --foreground: #1a1a1a;          /* ink */
+  --surface: #f0ebe3;             /* sand surface */
+  --surface-elevated: #ebe5db;
 
-  --card: oklch(0.16 0 0);
-  --card-foreground: oklch(0.96 0.012 85);
-  --popover: oklch(0.14 0 0);
-  --popover-foreground: oklch(0.96 0.012 85);
+  --card: #faf8f5;
+  --card-foreground: #1a1a1a;
+  --popover: #faf8f5;
+  --popover-foreground: #1a1a1a;
 
-  --primary: oklch(0.78 0.13 85);         /* #D4AF37 rich gold */
-  --primary-foreground: oklch(0.13 0 0);
-  --secondary: oklch(0.22 0.003 60);
-  --secondary-foreground: oklch(0.96 0.012 85);
-  --muted: oklch(0.22 0.003 60);
-  --muted-foreground: oklch(0.65 0.02 80);
-  --accent: oklch(0.78 0.13 85);
-  --accent-foreground: oklch(0.13 0 0);
+  --primary: #1a1a1a;
+  --primary-foreground: #faf8f5;
+  --secondary: #f0ebe3;
+  --secondary-foreground: #1a1a1a;
+  --muted: #f0ebe3;
+  --muted-foreground: #8b7355;    /* warm neutral */
+  --accent: #8b7355;
+  --accent-foreground: #faf8f5;
 
-  --gold: oklch(0.78 0.13 85);
-  --gold-soft: oklch(0.85 0.09 85);
-  --ivory: oklch(0.96 0.012 85);
-  --beige: oklch(0.83 0.04 80);
+  /* Semantic aliases kept for legacy class names */
+  --gold: #8b7355;                /* deep warm neutral acts as accent */
+  --gold-soft: #c9b99a;           /* sand accent */
+  --ivory: #1a1a1a;               /* primary text on cream */
+  --beige: #c9b99a;
 
   --destructive: oklch(0.55 0.2 25);
-  --destructive-foreground: oklch(0.96 0.012 85);
-  --border: oklch(1 0 0 / 8%);
-  --input: oklch(1 0 0 / 12%);
-  --ring: oklch(0.78 0.13 85 / 60%);
+  --destructive-foreground: #faf8f5;
+  --border: rgb(201 185 154 / 0.35);
+  --input: rgb(201 185 154 / 0.45);
+  --ring: rgb(139 115 85 / 0.5);
 }
 
 @layer base {
@@ -83,26 +84,37 @@
   html {
     scroll-behavior: smooth;
     -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
   }
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
     font-family: var(--font-sans);
-    font-feature-settings: "ss01", "cv11";
+    font-weight: 300;
+    letter-spacing: 0.005em;
+  }
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    font-weight: 300;
+    letter-spacing: -0.01em;
   }
   ::selection {
-    background: var(--gold);
-    color: var(--background);
+    background: var(--gold-soft);
+    color: var(--foreground);
   }
 }
 
 @utility font-display {
   font-family: var(--font-display);
-  letter-spacing: 0.08em;
+  font-weight: 300;
+  letter-spacing: 0.02em;
 }
 @utility font-editorial {
   font-family: var(--font-editorial);
-  letter-spacing: -0.01em;
+  font-style: italic;
+  font-weight: 300;
+  letter-spacing: -0.015em;
 }
 @utility text-balance {
   text-wrap: balance;
@@ -112,7 +124,7 @@
   background: linear-gradient(
     90deg,
     transparent,
-    var(--gold) 30%,
+    var(--gold-soft) 30%,
     var(--gold) 70%,
     transparent
   );
@@ -122,9 +134,9 @@
   background: linear-gradient(
     100deg,
     var(--gold) 0%,
-    #f1d780 45%,
+    #b8a378 45%,
     var(--gold) 55%,
-    #b8902b 100%
+    #6b5740 100%
   );
   -webkit-background-clip: text;
   background-clip: text;
@@ -135,7 +147,7 @@
   background: linear-gradient(
     100deg,
     var(--gold) 0%,
-    #fff4c2 45%,
+    #d9c9a8 45%,
     var(--gold) 55%,
     var(--gold) 100%
   );
@@ -143,7 +155,7 @@
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-  animation: shimmer 6s linear infinite;
+  animation: shimmer 8s linear infinite;
 }
 
 @keyframes shimmer {
@@ -164,7 +176,7 @@
   to   { transform: scale(1); }
 }
 @utility slow-zoom {
-  animation: slow-zoom 8s ease-out both;
+  animation: slow-zoom 12s ease-out both;
 }
 
 @keyframes marquee {
@@ -172,5 +184,15 @@
   to   { transform: translateX(-50%); }
 }
 @utility marquee {
-  animation: marquee 40s linear infinite;
+  animation: marquee 50s linear infinite;
+}
+
+@utility hairline {
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--gold-soft) 50%,
+    transparent
+  );
+  height: 1px;
 }
