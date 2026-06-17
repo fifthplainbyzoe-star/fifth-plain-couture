@@ -9,7 +9,6 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as ShopRouteImport } from './routes/shop'
 import { Route as MedallionRouteImport } from './routes/medallion'
 import { Route as JournalRouteImport } from './routes/journal'
 import { Route as FragranceRouteImport } from './routes/fragrance'
@@ -18,13 +17,9 @@ import { Route as CartRouteImport } from './routes/cart'
 import { Route as AccountRouteImport } from './routes/account'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ShopIndexRouteImport } from './routes/shop.index'
 import { Route as ShopIdRouteImport } from './routes/shop.$id'
 
-const ShopRoute = ShopRouteImport.update({
-  id: '/shop',
-  path: '/shop',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const MedallionRoute = MedallionRouteImport.update({
   id: '/medallion',
   path: '/medallion',
@@ -65,10 +60,15 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ShopIndexRoute = ShopIndexRouteImport.update({
+  id: '/shop/',
+  path: '/shop/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ShopIdRoute = ShopIdRouteImport.update({
-  id: '/$id',
-  path: '/$id',
-  getParentRoute: () => ShopRoute,
+  id: '/shop/$id',
+  path: '/shop/$id',
+  getParentRoute: () => rootRouteImport,
 } as any)
 
 export interface FileRoutesByFullPath {
@@ -80,8 +80,8 @@ export interface FileRoutesByFullPath {
   '/fragrance': typeof FragranceRoute
   '/journal': typeof JournalRoute
   '/medallion': typeof MedallionRoute
-  '/shop': typeof ShopRouteWithChildren
   '/shop/$id': typeof ShopIdRoute
+  '/shop/': typeof ShopIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -92,8 +92,8 @@ export interface FileRoutesByTo {
   '/fragrance': typeof FragranceRoute
   '/journal': typeof JournalRoute
   '/medallion': typeof MedallionRoute
-  '/shop': typeof ShopRouteWithChildren
   '/shop/$id': typeof ShopIdRoute
+  '/shop': typeof ShopIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -105,8 +105,8 @@ export interface FileRoutesById {
   '/fragrance': typeof FragranceRoute
   '/journal': typeof JournalRoute
   '/medallion': typeof MedallionRoute
-  '/shop': typeof ShopRouteWithChildren
   '/shop/$id': typeof ShopIdRoute
+  '/shop/': typeof ShopIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -119,8 +119,8 @@ export interface FileRouteTypes {
     | '/fragrance'
     | '/journal'
     | '/medallion'
-    | '/shop'
     | '/shop/$id'
+    | '/shop/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -131,8 +131,8 @@ export interface FileRouteTypes {
     | '/fragrance'
     | '/journal'
     | '/medallion'
-    | '/shop'
     | '/shop/$id'
+    | '/shop'
   id:
     | '__root__'
     | '/'
@@ -143,8 +143,8 @@ export interface FileRouteTypes {
     | '/fragrance'
     | '/journal'
     | '/medallion'
-    | '/shop'
     | '/shop/$id'
+    | '/shop/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -156,18 +156,12 @@ export interface RootRouteChildren {
   FragranceRoute: typeof FragranceRoute
   JournalRoute: typeof JournalRoute
   MedallionRoute: typeof MedallionRoute
-  ShopRoute: typeof ShopRouteWithChildren
+  ShopIdRoute: typeof ShopIdRoute
+  ShopIndexRoute: typeof ShopIndexRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/shop': {
-      id: '/shop'
-      path: '/shop'
-      fullPath: '/shop'
-      preLoaderRoute: typeof ShopRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/medallion': {
       id: '/medallion'
       path: '/medallion'
@@ -224,25 +218,22 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/shop/': {
+      id: '/shop/'
+      path: '/shop'
+      fullPath: '/shop/'
+      preLoaderRoute: typeof ShopIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/shop/$id': {
       id: '/shop/$id'
-      path: '/$id'
+      path: '/shop/$id'
       fullPath: '/shop/$id'
       preLoaderRoute: typeof ShopIdRouteImport
-      parentRoute: typeof ShopRoute
+      parentRoute: typeof rootRouteImport
     }
   }
 }
-
-interface ShopRouteChildren {
-  ShopIdRoute: typeof ShopIdRoute
-}
-
-const ShopRouteChildren: ShopRouteChildren = {
-  ShopIdRoute: ShopIdRoute,
-}
-
-const ShopRouteWithChildren = ShopRoute._addFileChildren(ShopRouteChildren)
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
@@ -253,7 +244,8 @@ const rootRouteChildren: RootRouteChildren = {
   FragranceRoute: FragranceRoute,
   JournalRoute: JournalRoute,
   MedallionRoute: MedallionRoute,
-  ShopRoute: ShopRouteWithChildren,
+  ShopIdRoute: ShopIdRoute,
+  ShopIndexRoute: ShopIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
