@@ -76,7 +76,7 @@ function Home() {
         </div>
       </section>
 
-      <Marquee items={["Free worldwide shipping over R1000", "Crafted in SOUTh africa", "The Medallion Drop III — Live", "Members receive early access", "Couture-grade materials"]} />
+      <Marquee items={["Free worldwide shipping over R1000", "Crafted in SOUTh africa", "The Medallion Drop — Live", "Members receive early access", "Couture-grade materials"]} />
 
       {/* FEATURED COLLECTIONS */}
       <section className="mx-auto max-w-[1600px] px-6 lg:px-12 py-28 lg:py-40">
@@ -238,9 +238,9 @@ function Home() {
       <section className="bg-surface border-y border-border">
         <div className="mx-auto max-w-3xl px-6 py-28 text-center">
           <Reveal>
-            <div className="text-[10px] uppercase tracking-[0.4em] text-gold">The Circle</div>
+            <div className="text-[10px] uppercase tracking-[0.4em] text-gold">THE PLOT</div>
             <h2 className="mt-6 font-display text-4xl md:text-5xl text-ivory leading-tight">An invitation, not a list.</h2>
-            <p className="mt-6 text-muted-foreground">Private previews, members-only fragrance editions, and the occasional letter from the atelier.</p>
+            <p className="mt-6 text-muted-foreground">Private previews, members, only fragrance editions, and the occasional letter from the atelier.</p>
             <form className="mt-10 mx-auto max-w-md flex border-b border-border focus-within:border-gold transition-colors">
               <input type="email" placeholder="Your email address" className="flex-1 bg-transparent py-4 text-sm outline-none placeholder:text-muted-foreground" />
               <button className="text-[11px] uppercase tracking-[0.28em] text-gold px-2">Request →</button>

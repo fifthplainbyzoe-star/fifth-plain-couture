@@ -37,8 +37,8 @@ export function Footer() {
         <div>
           <div className="font-display text-xl tracking-[0.32em] text-ivory">FIFTH PLAIN</div>
           <p className="mt-6 text-sm text-muted-foreground max-w-sm leading-relaxed">
-            A maison of timeless design, elevated essentials, and premium craftsmanship.
-            Headquartered in Paris &middot; Atelier in Florence.
+            A ship of timeless design, elevated essentials, and premium craftsmanship.
+            Headquartered in Johannesburg, South Africa.
           </p>
           <div className="mt-8 flex gap-4 text-[11px] uppercase tracking-[0.22em] text-muted-foreground">
             <a href="#" className="hover:text-gold">Instagram</a>
@@ -65,7 +65,7 @@ export function Footer() {
         </div>
 
         <div>
-          <h4 className="text-[11px] uppercase tracking-[0.22em] text-gold">The Circle</h4>
+          <h4 className="text-[11px] uppercase tracking-[0.22em] text-gold">THE PLOT</h4>
           <p className="mt-6 text-sm text-muted-foreground">
             Receive first access to drops, private events, and members-only fragrance editions.
           </p>
@@ -81,7 +81,7 @@ export function Footer() {
       </div>
       <div className="border-t border-border">
         <div className="mx-auto max-w-[1600px] px-6 lg:px-12 py-6 flex flex-col md:flex-row items-center justify-between gap-3 text-[11px] uppercase tracking-[0.22em] text-muted-foreground">
-          <span>© {new Date().getFullYear()} Fifth Plain Maison. All rights reserved.</span>
+          <span>© {new Date().getFullYear()} FIFTH PLAIN. ALL RIGHTS RESERVED.</span>
           <div className="flex gap-6">
             <a href="#" className="hover:text-gold">Privacy</a>
             <a href="#" className="hover:text-gold">Terms</a>
