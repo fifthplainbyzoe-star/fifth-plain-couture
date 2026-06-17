@@ -41,7 +41,7 @@ function Home() {
         <div className="relative z-10 mx-auto max-w-[1600px] px-6 lg:px-12 pt-40 lg:pt-56 pb-24 min-h-[100svh] flex flex-col justify-end">
           <div className="max-w-3xl reveal">
             <div className="flex items-center gap-4 text-[10px] uppercase tracking-[0.4em] text-gold">
-              <span className="h-px w-10 bg-gold" /> &nbsp;ESTABLISHED 2026
+              <span className="h-px w-10 bg-gold" /> ESTABLISHED 2026
             </div>
             <h1 className="mt-8 font-display text-5xl md:text-7xl lg:text-[8rem] leading-[0.95] text-ivory">
               The art
