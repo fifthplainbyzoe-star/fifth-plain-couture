@@ -41,16 +41,15 @@ function Home() {
         <div className="relative z-10 mx-auto max-w-[1600px] px-6 lg:px-12 pt-40 lg:pt-56 pb-24 min-h-[100svh] flex flex-col justify-end">
           <div className="max-w-3xl reveal">
             <div className="flex items-center gap-4 text-[10px] uppercase tracking-[0.4em] text-gold">
-              <span className="h-px w-10 bg-gold" /> Maison Established 2024
+              <span className="h-px w-10 bg-gold" /> &nbsp;ESTABLISHED 2026
             </div>
             <h1 className="mt-8 font-display text-5xl md:text-7xl lg:text-[8rem] leading-[0.95] text-ivory">
-              Luxury
+              The art
               <br />
-              <span className="shimmer font-editorial italic">Beyond</span> Limits
+              of&nbsp;<span className="shimmer font-editorial italic">PRESENCE</span>
             </h1>
             <p className="mt-8 max-w-xl text-base md:text-lg text-ivory/80 leading-relaxed font-editorial">
-              Where timeless design, elevated essentials, and premium craftsmanship meet —
-              a maison built for those who carry distinction.
+              {"\n"}
             </p>
             <div className="mt-10 flex flex-wrap gap-4">
               <Link
