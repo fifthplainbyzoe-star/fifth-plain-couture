@@ -7,7 +7,7 @@ import essentials from "@/assets/essentials.jpg";
 import type { Product } from "@/components/site/ProductCard";
 
 export const products: Product[] = [
-  { id: "obsidian-tee",       name: "Obsidian Heavyweight Tee", category: "T-Shirts",   price: 180, image: tee,        badge: "New" },
+  { id: "obsidian-tee",       name: "Premium Heavyweight Tee", category: "T-Shirts",   price: 180, image: tee,        badge: "New" },
   { id: "noir-hoodie",        name: "Heavy-Weight Atelier Hoodie", category: "Hoodies",    price: 550, image: hoodie },
   { id: "ivory-tracksuit",    name: "The Atelier Tracksuit",   category: "Tracksuits", price: 690, image: tracksuit,  badge: "Limited" },
   { id: "medallion-pendant",  name: "Medallion Gold Pendant",   category: "The Medallion", price: 2400, image: medallion, badge: "Medallion" },
