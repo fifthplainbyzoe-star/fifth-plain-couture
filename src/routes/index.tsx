@@ -35,8 +35,8 @@ function Home() {
           width={1536}
           height={1920}
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-background/40 via-background/20 to-background" />
-        <div className="absolute inset-0 bg-gradient-to-r from-background/70 via-transparent to-background/40" />
+        <div className="absolute inset-0 bg-gradient-to-b from-background/30 via-background/10 to-background" />
+        <div className="absolute inset-0 bg-gradient-to-r from-background/60 via-transparent to-transparent" />
 
         <div className="relative z-10 mx-auto max-w-[1600px] px-6 lg:px-12 pt-40 lg:pt-56 pb-24 min-h-[100svh] flex flex-col justify-end">
           <div className="max-w-3xl reveal">

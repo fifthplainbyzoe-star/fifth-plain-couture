@@ -25,49 +25,50 @@ export function Nav() {
     <header
       className={`fixed top-0 inset-x-0 z-50 transition-all duration-500 ${
         scrolled
-          ? "backdrop-blur-xl bg-background/80 border-b border-border"
-          : "bg-transparent"
+          ? "backdrop-blur-xl bg-background/85 border-b border-border"
+          : "bg-background/60 backdrop-blur-md"
       }`}
     >
-      <div className="mx-auto max-w-[1600px] px-6 lg:px-12 h-16 lg:h-20 grid grid-cols-[auto_1fr_auto] items-center gap-6">
-        <button
-          aria-label="Menu"
-          onClick={() => setOpen(true)}
-          className="lg:hidden text-ivory"
-        >
-          <Menu className="h-5 w-5" />
-        </button>
+      <div className="mx-auto max-w-[1600px] px-6 lg:px-12 h-16 lg:h-20 grid grid-cols-[1fr_auto_1fr] items-center gap-6">
+        <div className="flex items-center gap-8 min-w-0">
+          <button
+            aria-label="Menu"
+            onClick={() => setOpen(true)}
+            className="lg:hidden text-foreground"
+          >
+            <Menu className="h-5 w-5" />
+          </button>
+          <nav className="hidden lg:flex items-center gap-8 text-[10px] uppercase tracking-[0.28em] text-foreground/70 whitespace-nowrap">
+            {links.map((l) => (
+              <Link
+                key={l.to}
+                to={l.to}
+                className="hover:text-foreground transition-colors duration-300"
+                activeProps={{ className: "text-foreground" }}
+              >
+                {l.label}
+              </Link>
+            ))}
+          </nav>
+        </div>
 
         <Link
           to="/"
-          className="font-display text-base lg:text-lg tracking-[0.32em] text-ivory lg:col-start-2 lg:justify-self-center"
+          className="font-display text-lg lg:text-xl tracking-[0.32em] text-foreground justify-self-center"
         >
           FIFTH&nbsp;PLAIN
         </Link>
 
-        <nav className="hidden lg:flex absolute left-12 top-1/2 -translate-y-1/2 items-center gap-8 text-[11px] uppercase tracking-[0.22em] text-ivory/80">
-          {links.map((l) => (
-            <Link
-              key={l.to}
-              to={l.to}
-              className="hover:text-gold transition-colors duration-300"
-              activeProps={{ className: "text-gold" }}
-            >
-              {l.label}
-            </Link>
-          ))}
-        </nav>
-
-        <div className="flex items-center gap-5 text-ivory justify-self-end">
-          <button aria-label="Search" className="hover:text-gold transition-colors">
+        <div className="flex items-center gap-5 text-foreground justify-self-end">
+          <button aria-label="Search" className="hover:text-accent transition-colors">
             <Search className="h-4 w-4" />
           </button>
-          <Link to="/account" aria-label="Account" className="hover:text-gold transition-colors hidden sm:inline">
+          <Link to="/account" aria-label="Account" className="hover:text-accent transition-colors hidden sm:inline">
             <User className="h-4 w-4" />
           </Link>
-          <Link to="/cart" aria-label="Cart" className="relative hover:text-gold transition-colors">
+          <Link to="/cart" aria-label="Cart" className="relative hover:text-accent transition-colors">
             <ShoppingBag className="h-4 w-4" />
-            <span className="absolute -top-1.5 -right-2 text-[9px] font-medium text-gold">2</span>
+            <span className="absolute -top-1.5 -right-2 text-[9px] font-medium text-accent">2</span>
           </Link>
         </div>
       </div>
