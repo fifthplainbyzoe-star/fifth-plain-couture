@@ -142,7 +142,7 @@ function Medallion() {
       <section className="bg-background border-t border-gold/30">
         <div className="mx-auto max-w-2xl px-6 py-32 text-center">
           <Reveal>
-            <div className="text-[10px] uppercase tracking-[0.4em] text-gold">The Medallion Circle</div>
+            <div className="text-[10px] uppercase tracking-[0.4em] text-gold">THE PLOT</div>
             <h2 className="mt-6 font-display text-4xl md:text-5xl text-ivory">By invitation only.</h2>
             <p className="mt-6 text-muted-foreground">Apply for early access to Medallion drops, private viewings, and member fragrances.</p>
             <Link to="/circle" className="mt-10 inline-flex items-center gap-3 border border-gold px-10 py-4 text-[11px] uppercase tracking-[0.3em] text-gold hover:bg-gold hover:text-background transition-colors">

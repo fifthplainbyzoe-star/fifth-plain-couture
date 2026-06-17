@@ -6,7 +6,7 @@ const links = [
   { to: "/shop", label: "Shop" },
   { to: "/medallion", label: "The Medallion" },
   { to: "/fragrance", label: "Fragrance Lab" },
-  { to: "/circle", label: "The Circle" },
+  { to: "/circle", label: "THE PLOT" },
   { to: "/journal", label: "Journal" },
 ];
 
