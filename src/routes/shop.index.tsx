@@ -6,7 +6,7 @@ import { Reveal } from "@/components/site/Reveal";
 
 const categories = ["All", "The Medallion", "T-Shirts", "Hoodies", "Tracksuits", "Fragrance", "Essentials"];
 
-export const Route = createFileRoute("/shop")({
+export const Route = createFileRoute("/shop/")({
   head: () => ({
     meta: [
       { title: "Shop — Fifth Plain" },
