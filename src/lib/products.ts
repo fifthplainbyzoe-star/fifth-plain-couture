@@ -8,7 +8,7 @@ import type { Product } from "@/components/site/ProductCard";
 
 export const products: Product[] = [
   { id: "obsidian-tee",       name: "Obsidian Heavyweight Tee", category: "T-Shirts",   price: 180, image: tee,        badge: "New" },
-  { id: "noir-hoodie",        name: "Noir Atelier Hoodie",      category: "Hoodies",    price: 420, image: hoodie },
+  { id: "noir-hoodie",        name: "Noir Atelier Hoodie",      category: "Hoodies",    price: 550, image: hoodie },
   { id: "ivory-tracksuit",    name: "Ivory Velour Tracksuit",   category: "Tracksuits", price: 690, image: tracksuit,  badge: "Limited" },
   { id: "medallion-pendant",  name: "Medallion Gold Pendant",   category: "The Medallion", price: 2400, image: medallion, badge: "Medallion" },
   { id: "no-v-fragrance",     name: "No. V — Eau de Parfum",    category: "Fragrance",  price: 240, image: fragrance },
