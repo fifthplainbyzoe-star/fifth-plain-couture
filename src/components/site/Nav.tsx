@@ -81,7 +81,7 @@ export function Nav() {
                 {l.label}
               </Link>
             ))}
-            <Link to="/account" onClick={() => setOpen(false)} className="hover:text-gold">Account</Link>
+            
           </nav>
         </div>
       )}
