@@ -68,20 +68,24 @@ export function Nav() {
         </div>
       </div>
 
-      {/* Mobile drawer */}
+      {/* Mobile dropdown panel */}
       {open && (
-        <div className="fixed inset-0 z-50 bg-background lg:hidden reveal">
-          <div className="h-16 px-6 flex items-center justify-between border-b border-border">
-            <span className="font-display tracking-[0.32em] text-ivory">FIFTH&nbsp;PLAIN</span>
-            <button onClick={() => setOpen(false)} aria-label="Close"><X className="h-5 w-5" /></button>
-          </div>
-          <nav className="p-8 flex flex-col gap-6 font-editorial text-3xl">
+        <div
+          className="absolute top-full left-0 right-0 z-40 bg-background border-b border-border shadow-lg lg:hidden reveal overflow-y-auto max-h-[calc(100vh-4rem)]"
+          role="menu"
+          aria-label="Mobile navigation"
+        >
+          <nav className="px-6 py-8 flex flex-col gap-5">
             {links.map((l) => (
-              <Link key={l.to} to={l.to} onClick={() => setOpen(false)} className="hover:text-gold">
+              <Link
+                key={l.to}
+                to={l.to}
+                onClick={() => setOpen(false)}
+                className="font-display text-xl leading-relaxed tracking-wide text-foreground hover:text-accent transition-colors"
+              >
                 {l.label}
               </Link>
             ))}
-            
           </nav>
         </div>
       )}
