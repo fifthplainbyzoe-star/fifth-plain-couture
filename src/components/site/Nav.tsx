@@ -1,13 +1,11 @@
 import { Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-import { ShoppingBag, Search, User, Menu, X } from "lucide-react";
+import { ShoppingBag, Search, Menu, X } from "lucide-react";
 
 const links = [
   { to: "/shop", label: "Shop" },
   { to: "/medallion", label: "The Medallion" },
   { to: "/fragrance", label: "Fragrance Lab" },
-  { to: "/circle", label: "THE PLOT" },
-  { to: "/journal", label: "Journal" },
 ];
 
 export function Nav() {

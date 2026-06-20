@@ -10,11 +10,8 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as MedallionRouteImport } from './routes/medallion'
-import { Route as JournalRouteImport } from './routes/journal'
 import { Route as FragranceRouteImport } from './routes/fragrance'
-import { Route as CircleRouteImport } from './routes/circle'
 import { Route as CartRouteImport } from './routes/cart'
-import { Route as AccountRouteImport } from './routes/account'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ShopIndexRouteImport } from './routes/shop.index'
@@ -25,29 +22,14 @@ const MedallionRoute = MedallionRouteImport.update({
   path: '/medallion',
   getParentRoute: () => rootRouteImport,
 } as any)
-const JournalRoute = JournalRouteImport.update({
-  id: '/journal',
-  path: '/journal',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const FragranceRoute = FragranceRouteImport.update({
   id: '/fragrance',
   path: '/fragrance',
   getParentRoute: () => rootRouteImport,
 } as any)
-const CircleRoute = CircleRouteImport.update({
-  id: '/circle',
-  path: '/circle',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const CartRoute = CartRouteImport.update({
   id: '/cart',
   path: '/cart',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const AccountRoute = AccountRouteImport.update({
-  id: '/account',
-  path: '/account',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AboutRoute = AboutRouteImport.update({
@@ -74,11 +56,8 @@ const ShopIdRoute = ShopIdRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
-  '/account': typeof AccountRoute
   '/cart': typeof CartRoute
-  '/circle': typeof CircleRoute
   '/fragrance': typeof FragranceRoute
-  '/journal': typeof JournalRoute
   '/medallion': typeof MedallionRoute
   '/shop/$id': typeof ShopIdRoute
   '/shop/': typeof ShopIndexRoute
@@ -86,11 +65,8 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
-  '/account': typeof AccountRoute
   '/cart': typeof CartRoute
-  '/circle': typeof CircleRoute
   '/fragrance': typeof FragranceRoute
-  '/journal': typeof JournalRoute
   '/medallion': typeof MedallionRoute
   '/shop/$id': typeof ShopIdRoute
   '/shop': typeof ShopIndexRoute
@@ -99,11 +75,8 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
-  '/account': typeof AccountRoute
   '/cart': typeof CartRoute
-  '/circle': typeof CircleRoute
   '/fragrance': typeof FragranceRoute
-  '/journal': typeof JournalRoute
   '/medallion': typeof MedallionRoute
   '/shop/$id': typeof ShopIdRoute
   '/shop/': typeof ShopIndexRoute
@@ -113,11 +86,8 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/about'
-    | '/account'
     | '/cart'
-    | '/circle'
     | '/fragrance'
-    | '/journal'
     | '/medallion'
     | '/shop/$id'
     | '/shop/'
@@ -125,11 +95,8 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/about'
-    | '/account'
     | '/cart'
-    | '/circle'
     | '/fragrance'
-    | '/journal'
     | '/medallion'
     | '/shop/$id'
     | '/shop'
@@ -137,11 +104,8 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/about'
-    | '/account'
     | '/cart'
-    | '/circle'
     | '/fragrance'
-    | '/journal'
     | '/medallion'
     | '/shop/$id'
     | '/shop/'
@@ -150,11 +114,8 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
-  AccountRoute: typeof AccountRoute
   CartRoute: typeof CartRoute
-  CircleRoute: typeof CircleRoute
   FragranceRoute: typeof FragranceRoute
-  JournalRoute: typeof JournalRoute
   MedallionRoute: typeof MedallionRoute
   ShopIdRoute: typeof ShopIdRoute
   ShopIndexRoute: typeof ShopIndexRoute
@@ -169,13 +130,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof MedallionRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/journal': {
-      id: '/journal'
-      path: '/journal'
-      fullPath: '/journal'
-      preLoaderRoute: typeof JournalRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/fragrance': {
       id: '/fragrance'
       path: '/fragrance'
@@ -183,25 +137,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof FragranceRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/circle': {
-      id: '/circle'
-      path: '/circle'
-      fullPath: '/circle'
-      preLoaderRoute: typeof CircleRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/cart': {
       id: '/cart'
       path: '/cart'
       fullPath: '/cart'
       preLoaderRoute: typeof CartRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/account': {
-      id: '/account'
-      path: '/account'
-      fullPath: '/account'
-      preLoaderRoute: typeof AccountRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/about': {
@@ -238,11 +178,8 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
-  AccountRoute: AccountRoute,
   CartRoute: CartRoute,
-  CircleRoute: CircleRoute,
   FragranceRoute: FragranceRoute,
-  JournalRoute: JournalRoute,
   MedallionRoute: MedallionRoute,
   ShopIdRoute: ShopIdRoute,
   ShopIndexRoute: ShopIndexRoute,
