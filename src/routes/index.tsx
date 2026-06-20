@@ -76,7 +76,7 @@ function Home() {
         </div>
       </section>
 
-      <Marquee items={["Free worldwide shipping over R1500", "Crafted in SOUTh africa", "The Medallion Drop — Live", "Members receive early access", "Couture-grade materials"]} />
+      <Marquee items={["Free worldwide shipping over R1500", "Crafted in South africa", "The Medallion Drop — Live", "Members receive early access", "Couture-grade materials"]} />
 
       {/* FEATURED COLLECTIONS */}
       <section className="mx-auto max-w-[1600px] px-6 lg:px-12 py-28 lg:py-40">
@@ -202,10 +202,10 @@ function Home() {
         <div className="relative h-full mx-auto max-w-[1600px] px-6 lg:px-12 flex items-center">
           <Reveal>
             <div className="max-w-xl">
-              <div className="text-[10px] uppercase tracking-[0.4em] text-gold">Lookbook — Vol. III</div>
-              <h2 className="mt-6 font-editorial text-4xl md:text-6xl text-ivory leading-tight">Marble & Shadow</h2>
-              <p className="mt-6 text-base text-ivory/80 max-w-md leading-relaxed">A cinematic edit of our autumn chapter, photographed at the Palazzo dei Marmi.</p>
-              <Link to="/medallion" className="mt-8 inline-flex items-center gap-3 text-ivory text-[11px] uppercase tracking-[0.3em] border-b border-gold pb-2 hover:text-gold">View Lookbook →</Link>
+              <div className="text-[10px] uppercase tracking-[0.4em] text-gold">{"\n"}</div>
+              <h2 className="mt-6 font-editorial text-4xl md:text-6xl text-ivory leading-tight">{"\n"}</h2>
+              <p className="mt-6 text-base text-ivory/80 max-w-md leading-relaxed">{"\n"}</p>
+              <Link to="/medallion" className="mt-8 inline-flex items-center gap-3 text-ivory text-[11px] uppercase tracking-[0.3em] border-b border-gold pb-2 hover:text-gold"></Link>
             </div>
           </Reveal>
         </div>
@@ -214,13 +214,13 @@ function Home() {
       {/* TESTIMONIALS */}
       <section className="mx-auto max-w-[1400px] px-6 lg:px-12 py-32">
         <Reveal>
-          <div className="text-center text-[10px] uppercase tracking-[0.4em] text-gold">From The Press</div>
+          <div className="text-center text-[10px] uppercase tracking-[0.4em] text-gold">{"\n"}</div>
         </Reveal>
         <div className="mt-16 grid md:grid-cols-3 gap-10">
           {[
-            { q: "A new vocabulary of restraint, defined in gold and shadow.", a: "VOGUE" },
-            { q: "Fifth Plain understands that luxury is the absence of noise.", a: "HIGHSNOBIETY" },
-            { q: "The Medallion is the most desirable object of the season.", a: "GQ" },
+            { q: "\n", a: "\n" },
+            { q: "\n", a: "\n" },
+            { q: "\n", a: "\n" },
           ].map((t, i) => (
             <Reveal key={t.a} delay={i * 120}>
               <figure className="border-t border-gold/40 pt-8">

@@ -43,7 +43,7 @@ function Account() {
           <h2 className="mt-12 font-editorial text-2xl text-ivory">Recent orders</h2>
           <ul className="mt-6 divide-y divide-border border-y border-border">
             {[
-              ["#FP-2401", "Heavy-Weight Atelier Hoodie", "$420", "Delivered"],
+              ["#FP-2401", "Heavy-Weight Premium Hoodie", "$420", "Delivered"],
               ["#FP-2398", "Medallion Pendant N°017", "$2,400", "In Transit"],
               ["#FP-2390", "Or Ambré 100ml", "$240", "Delivered"],
             ].map(([n, name, price, status]) => (
