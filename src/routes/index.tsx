@@ -211,28 +211,6 @@ function Home() {
         </div>
       </section>
 
-      {/* TESTIMONIALS */}
-      <section className="mx-auto max-w-[1400px] px-6 lg:px-12 py-32">
-        <Reveal>
-          <div className="text-center text-[10px] uppercase tracking-[0.4em] text-gold">{"\n"}</div>
-        </Reveal>
-        <div className="mt-16 grid md:grid-cols-3 gap-10">
-          {[
-            { q: "\n", a: "\n" },
-            { q: "\n", a: "\n" },
-            { q: "\n", a: "\n" },
-          ].map((t, i) => (
-            <Reveal key={t.a} delay={i * 120}>
-              <figure className="border-t border-gold/40 pt-8">
-                <blockquote className="font-editorial italic text-2xl text-ivory leading-[1.45]">
-                  &ldquo;{t.q}&rdquo;
-                </blockquote>
-                <figcaption className="mt-6 text-[10px] uppercase tracking-[0.32em] text-gold">— {t.a}</figcaption>
-              </figure>
-            </Reveal>
-          ))}
-        </div>
-      </section>
 
       {/* NEWSLETTER */}
       <section className="bg-surface border-y border-border">
