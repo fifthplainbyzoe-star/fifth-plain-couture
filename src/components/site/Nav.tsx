@@ -61,9 +61,6 @@ export function Nav() {
           <button aria-label="Search" className="hover:text-accent transition-colors">
             <Search className="h-4 w-4" />
           </button>
-          <Link to="/account" aria-label="Account" className="hover:text-accent transition-colors hidden sm:inline">
-            <User className="h-4 w-4" />
-          </Link>
           <Link to="/cart" aria-label="Cart" className="relative hover:text-accent transition-colors">
             <ShoppingBag className="h-4 w-4" />
             <span className="absolute -top-1.5 -right-2 text-[9px] font-medium text-accent">2</span>
