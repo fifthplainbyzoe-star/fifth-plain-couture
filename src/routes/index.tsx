@@ -1,7 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import heroImg from "@/assets/hero.jpg";
 import medallionImg from "@/assets/medallion.jpg";
-import essentialsImg from "@/assets/essentials.jpg";
 import fragranceImg from "@/assets/fragrance.jpg";
 import lookbookImg from "@/assets/lookbook.jpg";
 import { Reveal } from "@/components/site/Reveal";
@@ -94,10 +93,9 @@ function Home() {
           </Reveal>
         </div>
 
-        <div className="grid gap-6 md:grid-cols-3">
+        <div className="grid gap-6 md:grid-cols-2">
           {[
             { title: "The Medallion", caption: "Rare. Collectible.", img: medallionImg, to: "/medallion" as const },
-            { title: "Essentials",    caption: "Elevated foundations.", img: essentialsImg, to: "/shop" as const },
             { title: "The Fragrance Lab", caption: "\u00a0ARTISTRY.", img: fragranceImg, to: "/fragrance" as const },
           ].map((c, i) => (
             <Reveal key={c.title} delay={i * 120}>

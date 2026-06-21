@@ -23,8 +23,9 @@ export const Route = createFileRoute("/shop/$id")({
 
 function ProductPage() {
   const p = Route.useLoaderData();
-  const [size, setSize] = useState("M");
-  const sizes = ["XS", "S", "M", "L", "XL"];
+  const isFragrance = p.category === "Fragrance";
+  const options = isFragrance ? ["30ml", "50ml"] : ["XS", "S", "M", "L", "XL"];
+  const [selected, setSelected] = useState(isFragrance ? "30ml" : "M");
   const related = products.filter((x) => x.id !== p.id).slice(0, 4);
 
   return (
@@ -53,16 +54,16 @@ function ProductPage() {
 
           <div className="mt-10">
             <div className="flex items-center justify-between text-[11px] uppercase tracking-[0.28em]">
-              <span className="text-ivory">Size</span>
-              <button className="text-gold">Size Guide</button>
+              <span className="text-ivory">{isFragrance ? "Quantity" : "Size"}</span>
+              {!isFragrance && <button className="text-gold">Size Guide</button>}
             </div>
-            <div className="mt-3 grid grid-cols-5 gap-2">
-              {sizes.map((s) => (
+            <div className={`mt-3 grid gap-2 ${isFragrance ? "grid-cols-2" : "grid-cols-5"}`}>
+              {options.map((s) => (
                 <button
                   key={s}
-                  onClick={() => setSize(s)}
+                  onClick={() => setSelected(s)}
                   className={`py-3 border text-sm transition-colors ${
-                    size === s ? "border-gold text-gold" : "border-border text-ivory hover:border-ivory"
+                    selected === s ? "border-gold text-gold" : "border-border text-ivory hover:border-ivory"
                   }`}
                 >
                   {s}
@@ -70,6 +71,7 @@ function ProductPage() {
               ))}
             </div>
           </div>
+
 
           <div className="mt-8 flex flex-col gap-3">
             <button className="bg-ivory text-background py-4 text-[11px] uppercase tracking-[0.3em] hover:bg-gold transition-colors">Add to Atelier</button>

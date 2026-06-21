@@ -4,13 +4,13 @@ import { products } from "@/lib/products";
 import { ProductCard } from "@/components/site/ProductCard";
 import { Reveal } from "@/components/site/Reveal";
 
-const categories = ["All", "T-Shirts", "Hoodies", "Tracksuits", "Fragrance", "Essentials"];
+const categories = ["All", "T-Shirts", "Hoodies", "Tracksuits", "Fragrance"];
 
 export const Route = createFileRoute("/shop/")({
   head: () => ({
     meta: [
       { title: "Shop — Fifth Plain" },
-      { name: "description", content: "The full Fifth Plain collection — essentials, outerwear, fragrance, and The Medallion." },
+      { name: "description", content: "The full Fifth Plain collection — T-Shirts, Hoodies, Tracksuits, and Fragrance." },
       { property: "og:title", content: "Shop — Fifth Plain" },
       { property: "og:description", content: "Browse the full maison collection." },
       { property: "og:url", content: "/shop" },
