@@ -1,7 +1,6 @@
 import tee from "@/assets/product-tee.jpg";
 import hoodie from "@/assets/product-hoodie.jpg";
 import tracksuit from "@/assets/product-tracksuit.jpg";
-import medallion from "@/assets/product-medallion.jpg";
 import fragrance from "@/assets/fragrance.jpg";
 import essentials from "@/assets/essentials.jpg";
 import type { Product } from "@/components/site/ProductCard";
