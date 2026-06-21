@@ -96,7 +96,6 @@ function Home() {
         <div className="grid gap-6 md:grid-cols-3">
           {[
             { title: "The Medallion", caption: "Rare. Collectible.", img: medallionImg, to: "/medallion" as const },
-            { title: "Essentials",    caption: "Elevated foundations.", img: essentialsImg, to: "/shop" as const },
             { title: "The Fragrance Lab", caption: "\u00a0ARTISTRY.", img: fragranceImg, to: "/fragrance" as const },
           ].map((c, i) => (
             <Reveal key={c.title} delay={i * 120}>
