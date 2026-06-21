@@ -93,7 +93,7 @@ function Home() {
           </Reveal>
         </div>
 
-        <div className="grid gap-6 md:grid-cols-3">
+        <div className="grid gap-6 md:grid-cols-2">
           {[
             { title: "The Medallion", caption: "Rare. Collectible.", img: medallionImg, to: "/medallion" as const },
             { title: "The Fragrance Lab", caption: "\u00a0ARTISTRY.", img: fragranceImg, to: "/fragrance" as const },
