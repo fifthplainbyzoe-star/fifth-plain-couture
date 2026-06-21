@@ -1,7 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import heroImg from "@/assets/hero.jpg";
 import medallionImg from "@/assets/medallion.jpg";
-import essentialsImg from "@/assets/essentials.jpg";
 import fragranceImg from "@/assets/fragrance.jpg";
 import lookbookImg from "@/assets/lookbook.jpg";
 import { Reveal } from "@/components/site/Reveal";
