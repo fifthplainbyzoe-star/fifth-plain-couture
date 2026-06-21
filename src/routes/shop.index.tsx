@@ -4,7 +4,7 @@ import { products } from "@/lib/products";
 import { ProductCard } from "@/components/site/ProductCard";
 import { Reveal } from "@/components/site/Reveal";
 
-const categories = ["All", "The Medallion", "T-Shirts", "Hoodies", "Tracksuits", "Fragrance", "Essentials"];
+const categories = ["All", "T-Shirts", "Hoodies", "Tracksuits", "Fragrance", "Essentials"];
 
 export const Route = createFileRoute("/shop/")({
   head: () => ({
