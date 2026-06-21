@@ -10,7 +10,7 @@ export const Route = createFileRoute("/shop/")({
   head: () => ({
     meta: [
       { title: "Shop — Fifth Plain" },
-      { name: "description", content: "The full Fifth Plain collection — essentials, outerwear, fragrance, and The Medallion." },
+      { name: "description", content: "The full Fifth Plain collection — T-Shirts, Hoodies, Tracksuits, and Fragrance." },
       { property: "og:title", content: "Shop — Fifth Plain" },
       { property: "og:description", content: "Browse the full maison collection." },
       { property: "og:url", content: "/shop" },
