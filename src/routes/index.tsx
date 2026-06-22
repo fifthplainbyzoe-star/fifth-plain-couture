@@ -75,7 +75,7 @@ function Home() {
         </div>
       </section>
 
-      <Marquee items={["Free worldwide shipping over R1500", "Crafted in South africa", "The Medallion Drop — Live", "Members receive early access", "Couture-grade materials"]} />
+      <Marquee items={["Free worldwide shipping over R1500", "Crafted in South africa", "\u00a0 \u00a0 \u00a0 The Medallion", "\n", "Premium material Only"]} />
 
       {/* FEATURED COLLECTIONS */}
       <section className="mx-auto max-w-[1600px] px-6 lg:px-12 py-28 lg:py-40">
