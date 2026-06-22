@@ -39,7 +39,9 @@ export function ProductCard({ p }: { p: Product }) {
           <div className="text-[10px] uppercase tracking-[0.28em] text-muted-foreground">{p.category}</div>
           <div className="mt-1 font-editorial text-lg text-ivory truncate">{p.name}</div>
         </div>
-        <div className="text-sm text-ivory shrink-0">R{p.price.toLocaleString()}</div>
+        <div className="text-sm text-ivory shrink-0">
+          {p.category === "Fragrance" ? "From " : ""}R{p.price.toLocaleString()}
+        </div>
       </div>
     </Link>
   );
