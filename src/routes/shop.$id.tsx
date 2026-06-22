@@ -108,8 +108,8 @@ function ProductPage() {
               ["Returns", "30 days, white-glove"],
             ].map(([k, v]) => (
               <div key={k} className="py-4 grid grid-cols-[1fr_2fr] gap-6 text-sm">
-                <dt className="text-[10px] uppercase tracking-[0.28em] text-gold">{k}</dt>
-                <dd className="text-ivory/80">{v}</dd>
+                <dt className="text-[10px] uppercase tracking-[0.28em] text-gold">{isFragrance ? "\n" : k}</dt>
+                <dd className="text-ivory/80">{isFragrance ? "\n" : v}</dd>
               </div>
             ))}
           </dl>
