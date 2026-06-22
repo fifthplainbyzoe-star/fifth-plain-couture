@@ -8,7 +8,7 @@ export const products: Product[] = [
   { id: "obsidian-tee",       name: "Premium Heavyweight Tee", category: "T-Shirts",   price: 1200, image: tee,        badge: "New" },
   { id: "noir-hoodie",        name: "Heavy-Weight Premium Hoodie", category: "Hoodies",    price: 2000, image: hoodie },
   { id: "ivory-tracksuit",    name: "\u00a0Tracksuit Centre",   category: "Tracksuits", price: 1500, image: tracksuit,  badge: "Limited" },
-  { id: "no-v-fragrance",     name: "The Fragrance Lab",    category: "Fragrance",  price: 240, image: fragrance },
+  { id: "no-v-fragrance",     name: "The Fragrance Lab",    category: "Fragrance",  price: 250, image: fragrance },
 ];
 
 export function findProduct(id: string) {
