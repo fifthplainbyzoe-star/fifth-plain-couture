@@ -26,8 +26,10 @@ function ProductPage() {
   const isFragrance = p.category === "Fragrance";
   const sizeOptions = isFragrance ? ["Velvet Fire", "Glass Wealth", "Black Authority"] : ["XS", "S", "M", "L", "XL"];
   const quantityOptions = isFragrance ? ["30ml", "50ml"] : [];
+  const colorOptions = isFragrance ? [] : ["Black", "Mud Brown", "Beige Cream", "Pink", "Silver Grey"];
   const [selectedSize, setSelectedSize] = useState(sizeOptions[0]);
   const [selectedQty, setSelectedQty] = useState(quantityOptions[0] ?? "");
+  const [selectedColor, setSelectedColor] = useState(colorOptions[0] ?? "");
   const related = products.filter((x) => x.id !== p.id).slice(0, 4);
 
   return (
@@ -74,6 +76,25 @@ function ProductPage() {
               ))}
             </div>
           </div>
+
+          {!isFragrance && colorOptions.length > 0 && (
+            <div className="mt-6">
+              <div className="text-[11px] uppercase tracking-[0.28em] text-ivory">Colors</div>
+              <div className="mt-3 grid grid-cols-3 gap-2">
+                {colorOptions.map((c) => (
+                  <button
+                    key={c}
+                    onClick={() => setSelectedColor(c)}
+                    className={`py-3 border text-sm transition-colors ${
+                      selectedColor === c ? "border-gold text-gold" : "border-border text-ivory hover:border-ivory"
+                    }`}
+                  >
+                    {c}
+                  </button>
+                ))}
+              </div>
+            </div>
+          )}
 
           {isFragrance && quantityOptions.length > 0 && (
             <div className="mt-6">
