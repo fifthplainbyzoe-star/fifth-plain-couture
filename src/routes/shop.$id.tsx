@@ -26,8 +26,10 @@ function ProductPage() {
   const isFragrance = p.category === "Fragrance";
   const sizeOptions = isFragrance ? ["Velvet Fire", "Glass Wealth", "Black Authority"] : ["XS", "S", "M", "L", "XL"];
   const quantityOptions = isFragrance ? ["30ml", "50ml"] : [];
+  const colorOptions = isFragrance ? [] : ["Black", "Mud Brown", "Beige Cream", "Pink", "Silver Grey"];
   const [selectedSize, setSelectedSize] = useState(sizeOptions[0]);
   const [selectedQty, setSelectedQty] = useState(quantityOptions[0] ?? "");
+  const [selectedColor, setSelectedColor] = useState(colorOptions[0] ?? "");
   const related = products.filter((x) => x.id !== p.id).slice(0, 4);
 
   return (
