@@ -24,7 +24,7 @@ export const Route = createFileRoute("/shop/$id")({
 function ProductPage() {
   const p = Route.useLoaderData();
   const isFragrance = p.category === "Fragrance";
-  const sizeOptions = isFragrance ? ["Velvet Fire", "Golden Addiction", "Black Authority"] : ["XS", "S", "M", "L", "XL"];
+  const sizeOptions = isFragrance ? ["Velvet Fire", "Glass Wealth", "Black Authority"] : ["XS", "S", "M", "L", "XL"];
   const quantityOptions = isFragrance ? ["30ml", "50ml"] : [];
   const [selectedSize, setSelectedSize] = useState(sizeOptions[0]);
   const [selectedQty, setSelectedQty] = useState(quantityOptions[0] ?? "");
@@ -47,11 +47,12 @@ function ProductPage() {
         <div className="lg:sticky lg:top-28 self-start">
           <div className="text-[10px] uppercase tracking-[0.32em] text-gold">{p.category}</div>
           <h1 className="mt-4 font-editorial text-4xl md:text-5xl text-ivory">{p.name}</h1>
-          <div className="mt-6 font-editorial text-2xl text-ivory">${p.price.toLocaleString()}</div>
+          <div className="mt-6 font-editorial text-2xl text-ivory">{isFragrance ? "From R250" : `$${p.price.toLocaleString()}`}</div>
 
           <p className="mt-8 text-muted-foreground leading-relaxed">
-            A defining piece of the season — composed of heavyweight Italian fabric,
-            hand-finished and quietly hallmarked. Built to outlast a decade of wear.
+            {isFragrance 
+              ? "A signature fragrance captured in a bottle, designed to define who you are in this exact moment and linger in the memory forever."
+              : "A defining piece of the season — composed of heavyweight Italian fabric, hand-finished and quietly hallmarked. Built to outlast a decade of wear."}
           </p>
 
           <div className="mt-10">
@@ -107,8 +108,8 @@ function ProductPage() {
               ["Returns", "30 days, white-glove"],
             ].map(([k, v]) => (
               <div key={k} className="py-4 grid grid-cols-[1fr_2fr] gap-6 text-sm">
-                <dt className="text-[10px] uppercase tracking-[0.28em] text-gold">{k}</dt>
-                <dd className="text-ivory/80">{v}</dd>
+                <dt className="text-[10px] uppercase tracking-[0.28em] text-gold">{isFragrance ? "\n" : k}</dt>
+                <dd className="text-ivory/80">{isFragrance ? "\n" : v}</dd>
               </div>
             ))}
           </dl>
