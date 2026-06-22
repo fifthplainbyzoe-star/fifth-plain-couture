@@ -100,19 +100,6 @@ function ProductPage() {
             <button className="border border-gold text-gold py-4 text-[11px] uppercase tracking-[0.3em] hover:bg-gold hover:text-background transition-colors">Buy Now</button>
           </div>
 
-          <dl className="mt-12 divide-y divide-border border-t border-border">
-            {[
-              ["Composition", "100% Italian heavyweight cotton, 380gsm"],
-              ["Fabrication", "Cut & sewn in Florence"],
-              ["Shipping", "Complimentary above $500"],
-              ["Returns", "30 days, white-glove"],
-            ].map(([k, v]) => (
-              <div key={k} className="py-4 grid grid-cols-[1fr_2fr] gap-6 text-sm">
-                <dt className="text-[10px] uppercase tracking-[0.28em] text-gold">{isFragrance ? "\n" : k}</dt>
-                <dd className="text-ivory/80">{isFragrance ? "\n" : v}</dd>
-              </div>
-            ))}
-          </dl>
         </div>
       </section>
 
