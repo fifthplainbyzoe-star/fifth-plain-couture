@@ -2,12 +2,12 @@ import { Link } from "@tanstack/react-router";
 
 const cols = [
   {
-    title: "Maison",
+    title: "ABOUT\u00a0",
     links: [
       { label: "Our Story", to: "/about" },
-      { label: "Craftsmanship", to: "/about" },
-      { label: "Sustainability", to: "/about" },
-      { label: "Careers", to: "/about" },
+      { label: "", to: "/about" },
+      { label: "", to: "/about" },
+      { label: "", to: "/about" },
     ],
   },
   {
@@ -15,7 +15,7 @@ const cols = [
     links: [
       { label: "The Medallion", to: "/medallion" },
       { label: "Fragrance Lab", to: "/fragrance" },
-      { label: "Gift Card", to: "/shop" },
+      { label: "", to: "/shop" },
     ],
   },
   {
@@ -23,7 +23,7 @@ const cols = [
     links: [
       { label: "Shipping", to: "/about" },
       { label: "Returns", to: "/about" },
-      { label: "Size Guide", to: "/about" },
+      { label: "", to: "/about" },
       { label: "Contact", to: "/about" },
     ],
   },
@@ -41,10 +41,10 @@ export function Footer() {
           </p>
           <div className="mt-8 flex gap-4 text-[11px] uppercase tracking-[0.22em] text-muted-foreground">
             <a href="#" className="hover:text-gold">Instagram</a>
-            <span>·</span>
+            <span>{"\n"}</span>
             <a href="#" className="hover:text-gold">TikTok</a>
-            <span>·</span>
-            <a href="#" className="hover:text-gold">Pinterest</a>
+            <span>{"\n"}</span>
+            <a href="#" className="hover:text-gold">{"\n"}</a>
           </div>
         </div>
 
@@ -66,7 +66,7 @@ export function Footer() {
         <div>
           <h4 className="text-[11px] uppercase tracking-[0.22em] text-gold">THE PLOT</h4>
           <p className="mt-6 text-sm text-muted-foreground">
-            Receive first access to drops, private events, and members-only fragrance editions.
+            Receive notifications about new updates
           </p>
           <form className="mt-6 flex border-b border-border focus-within:border-gold transition-colors">
             <input
@@ -84,7 +84,7 @@ export function Footer() {
           <div className="flex gap-6">
             <a href="#" className="hover:text-gold">Privacy</a>
             <a href="#" className="hover:text-gold">Terms</a>
-            <a href="#" className="hover:text-gold">Cookies</a>
+            <a href="#" className="hover:text-gold">{"\n"}</a>
           </div>
         </div>
       </div>
