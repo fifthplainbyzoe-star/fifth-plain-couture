@@ -47,11 +47,12 @@ function ProductPage() {
         <div className="lg:sticky lg:top-28 self-start">
           <div className="text-[10px] uppercase tracking-[0.32em] text-gold">{p.category}</div>
           <h1 className="mt-4 font-editorial text-4xl md:text-5xl text-ivory">{p.name}</h1>
-          <div className="mt-6 font-editorial text-2xl text-ivory">${p.price.toLocaleString()}</div>
+          <div className="mt-6 font-editorial text-2xl text-ivory">{isFragrance ? "From R250" : `$${p.price.toLocaleString()}`}</div>
 
           <p className="mt-8 text-muted-foreground leading-relaxed">
-            A defining piece of the season — composed of heavyweight Italian fabric,
-            hand-finished and quietly hallmarked. Built to outlast a decade of wear.
+            {isFragrance 
+              ? "A signature fragrance captured in a bottle, designed to define who you are in this exact moment and linger in the memory forever."
+              : "A defining piece of the season — composed of heavyweight Italian fabric, hand-finished and quietly hallmarked. Built to outlast a decade of wear."}
           </p>
 
           <div className="mt-10">
