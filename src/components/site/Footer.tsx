@@ -66,7 +66,7 @@ export function Footer() {
         <div>
           <h4 className="text-[11px] uppercase tracking-[0.22em] text-gold">THE PLOT</h4>
           <p className="mt-6 text-sm text-muted-foreground">
-            Receive first access to drops, private events, and members-only fragrance editions.
+            Receive notifications about new updates
           </p>
           <form className="mt-6 flex border-b border-border focus-within:border-gold transition-colors">
             <input
