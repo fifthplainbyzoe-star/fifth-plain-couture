@@ -41,10 +41,10 @@ export function Footer() {
           </p>
           <div className="mt-8 flex gap-4 text-[11px] uppercase tracking-[0.22em] text-muted-foreground">
             <a href="#" className="hover:text-gold">Instagram</a>
-            <span>·</span>
+            <span>{"\n"}</span>
             <a href="#" className="hover:text-gold">TikTok</a>
-            <span>·</span>
-            <a href="#" className="hover:text-gold">Pinterest</a>
+            <span>{"\n"}</span>
+            <a href="#" className="hover:text-gold">{"\n"}</a>
           </div>
         </div>
 
