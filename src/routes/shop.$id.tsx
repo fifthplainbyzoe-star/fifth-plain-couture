@@ -24,8 +24,8 @@ export const Route = createFileRoute("/shop/$id")({
 function ProductPage() {
   const p = Route.useLoaderData();
   const isFragrance = p.category === "Fragrance";
-  const options = isFragrance ? ["30ml", "50ml"] : ["XS", "S", "M", "L", "XL"];
-  const [selected, setSelected] = useState(isFragrance ? "30ml" : "M");
+  const options = isFragrance ? ["Velvet Fire", "Golden Addiction", "Black Authority"] : ["XS", "S", "M", "L", "XL"];
+  const [selected, setSelected] = useState(options[0]);
   const related = products.filter((x) => x.id !== p.id).slice(0, 4);
 
   return (
@@ -54,10 +54,10 @@ function ProductPage() {
 
           <div className="mt-10">
             <div className="flex items-center justify-between text-[11px] uppercase tracking-[0.28em]">
-              <span className="text-ivory">{isFragrance ? "Quantity" : "Size"}</span>
+              <span className="text-ivory">{isFragrance ? "Scent" : "Size"}</span>
               {!isFragrance && <button className="text-gold">Size Guide</button>}
             </div>
-            <div className={`mt-3 grid gap-2 ${isFragrance ? "grid-cols-2" : "grid-cols-5"}`}>
+            <div className={`mt-3 grid gap-2 ${isFragrance ? "grid-cols-3" : "grid-cols-5"}`}>
               {options.map((s) => (
                 <button
                   key={s}
