@@ -24,7 +24,7 @@ export const Route = createFileRoute("/shop/$id")({
 function ProductPage() {
   const p = Route.useLoaderData();
   const isFragrance = p.category === "Fragrance";
-  const sizeOptions = isFragrance ? ["Velvet Fire", "Golden Addiction", "Black Authority"] : ["XS", "S", "M", "L", "XL"];
+  const sizeOptions = isFragrance ? ["Velvet Fire", "Glass Wealth", "Black Authority"] : ["XS", "S", "M", "L", "XL"];
   const quantityOptions = isFragrance ? ["30ml", "50ml"] : [];
   const [selectedSize, setSelectedSize] = useState(sizeOptions[0]);
   const [selectedQty, setSelectedQty] = useState(quantityOptions[0] ?? "");
