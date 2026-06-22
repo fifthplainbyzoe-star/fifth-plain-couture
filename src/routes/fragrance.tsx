@@ -62,7 +62,7 @@ function Fragrance() {
                   <p className="mt-3 text-sm text-muted-foreground tracking-wide">{s.notes}</p>
                 </div>
                 <div>
-                  <div className="text-[10px] uppercase tracking-[0.28em] text-gold">100ml — $240</div>
+                  <div className="text-[10px] uppercase tracking-[0.28em] text-gold">From 250</div>
                   <div className="mt-4 h-px w-12 bg-gold transition-all duration-700 group-hover:w-full" />
                 </div>
               </div>
