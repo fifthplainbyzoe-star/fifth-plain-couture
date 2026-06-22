@@ -77,6 +77,25 @@ function ProductPage() {
             </div>
           </div>
 
+          {!isFragrance && colorOptions.length > 0 && (
+            <div className="mt-6">
+              <div className="text-[11px] uppercase tracking-[0.28em] text-ivory">Colors</div>
+              <div className="mt-3 grid grid-cols-3 gap-2">
+                {colorOptions.map((c) => (
+                  <button
+                    key={c}
+                    onClick={() => setSelectedColor(c)}
+                    className={`py-3 border text-sm transition-colors ${
+                      selectedColor === c ? "border-gold text-gold" : "border-border text-ivory hover:border-ivory"
+                    }`}
+                  >
+                    {c}
+                  </button>
+                ))}
+              </div>
+            </div>
+          )}
+
           {isFragrance && quantityOptions.length > 0 && (
             <div className="mt-6">
               <div className="text-[11px] uppercase tracking-[0.28em] text-ivory">Quantity</div>
