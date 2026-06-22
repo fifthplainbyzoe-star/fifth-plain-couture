@@ -2,12 +2,12 @@ import { Link } from "@tanstack/react-router";
 
 const cols = [
   {
-    title: "Maison",
+    title: "ABOUT\u00a0",
     links: [
       { label: "Our Story", to: "/about" },
-      { label: "Craftsmanship", to: "/about" },
-      { label: "Sustainability", to: "/about" },
-      { label: "Careers", to: "/about" },
+      { label: "", to: "/about" },
+      { label: "", to: "/about" },
+      { label: "", to: "/about" },
     ],
   },
   {
@@ -15,7 +15,7 @@ const cols = [
     links: [
       { label: "The Medallion", to: "/medallion" },
       { label: "Fragrance Lab", to: "/fragrance" },
-      { label: "Gift Card", to: "/shop" },
+      { label: "", to: "/shop" },
     ],
   },
   {
@@ -23,7 +23,7 @@ const cols = [
     links: [
       { label: "Shipping", to: "/about" },
       { label: "Returns", to: "/about" },
-      { label: "Size Guide", to: "/about" },
+      { label: "", to: "/about" },
       { label: "Contact", to: "/about" },
     ],
   },
