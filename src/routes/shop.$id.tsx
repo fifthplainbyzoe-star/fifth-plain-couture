@@ -24,8 +24,10 @@ export const Route = createFileRoute("/shop/$id")({
 function ProductPage() {
   const p = Route.useLoaderData();
   const isFragrance = p.category === "Fragrance";
-  const options = isFragrance ? ["Velvet Fire", "Golden Addiction", "Black Authority"] : ["XS", "S", "M", "L", "XL"];
-  const [selected, setSelected] = useState(options[0]);
+  const sizeOptions = isFragrance ? ["Velvet Fire", "Golden Addiction", "Black Authority"] : ["XS", "S", "M", "L", "XL"];
+  const quantityOptions = isFragrance ? ["30ml", "50ml"] : [];
+  const [selectedSize, setSelectedSize] = useState(sizeOptions[0]);
+  const [selectedQty, setSelectedQty] = useState(quantityOptions[0] ?? "");
   const related = products.filter((x) => x.id !== p.id).slice(0, 4);
 
   return (
@@ -58,12 +60,12 @@ function ProductPage() {
               {!isFragrance && <button className="text-gold">Size Guide</button>}
             </div>
             <div className={`mt-3 grid gap-2 ${isFragrance ? "grid-cols-3" : "grid-cols-5"}`}>
-              {options.map((s) => (
+              {sizeOptions.map((s) => (
                 <button
                   key={s}
-                  onClick={() => setSelected(s)}
+                  onClick={() => setSelectedSize(s)}
                   className={`py-3 border text-sm transition-colors ${
-                    selected === s ? "border-gold text-gold" : "border-border text-ivory hover:border-ivory"
+                    selectedSize === s ? "border-gold text-gold" : "border-border text-ivory hover:border-ivory"
                   }`}
                 >
                   {s}
@@ -71,6 +73,25 @@ function ProductPage() {
               ))}
             </div>
           </div>
+
+          {isFragrance && quantityOptions.length > 0 && (
+            <div className="mt-6">
+              <div className="text-[11px] uppercase tracking-[0.28em] text-ivory">Quantity</div>
+              <div className="mt-3 grid grid-cols-2 gap-2">
+                {quantityOptions.map((q) => (
+                  <button
+                    key={q}
+                    onClick={() => setSelectedQty(q)}
+                    className={`py-3 border text-sm transition-colors ${
+                      selectedQty === q ? "border-gold text-gold" : "border-border text-ivory hover:border-ivory"
+                    }`}
+                  >
+                    {q}
+                  </button>
+                ))}
+              </div>
+            </div>
+          )}
 
 
           <div className="mt-8 flex flex-col gap-3">
