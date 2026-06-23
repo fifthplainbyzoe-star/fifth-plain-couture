@@ -39,8 +39,9 @@ export function Nav() {
           <nav className="hidden lg:flex items-center gap-8 text-[10px] uppercase tracking-[0.28em] text-foreground/70 whitespace-nowrap">
             {links.map((l) => (
               <Link
-                key={l.to}
+                key={l.label}
                 to={l.to}
+                search={l.search}
                 className="hover:text-foreground transition-colors duration-300"
                 activeProps={{ className: "text-foreground" }}
               >
@@ -78,8 +79,9 @@ export function Nav() {
           <nav className="px-6 py-8 flex flex-col gap-5">
             {links.map((l) => (
               <Link
-                key={l.to}
+                key={l.label}
                 to={l.to}
+                search={l.search}
                 onClick={() => setOpen(false)}
                 className="font-display text-xl leading-relaxed tracking-wide text-foreground hover:text-accent transition-colors"
               >
