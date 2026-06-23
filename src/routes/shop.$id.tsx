@@ -54,7 +54,7 @@ function ProductPage() {
           <p className="mt-8 text-muted-foreground leading-relaxed">
             {isFragrance 
               ? "A signature fragrance captured in a bottle, designed to define who you are in this exact moment and linger in the memory forever."
-              : "Crafted from ultra-heavyweight fabric with a flawless minimalist drape, engineered to hold its structure today and for years to come."}
+              : "Substantial weight, uncompromised structure, and a premium finish designed for the modern uniform."}
           </p>
 
           <div className="mt-10">
