@@ -5,7 +5,7 @@ import { ShoppingBag, Search, Menu } from "lucide-react";
 const links = [
   { to: "/shop", label: "Shop" },
   { to: "/medallion", label: "The Medallion" },
-  { to: "/fragrance", label: "Fragrance Lab" },
+  { to: "/shop", label: "Fragrance Lab", search: { category: "Fragrance" } },
 ];
 
 export function Nav() {
