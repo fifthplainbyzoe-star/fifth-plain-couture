@@ -10,7 +10,6 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as MedallionRouteImport } from './routes/medallion'
-import { Route as FragranceRouteImport } from './routes/fragrance'
 import { Route as CartRouteImport } from './routes/cart'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
@@ -20,11 +19,6 @@ import { Route as ShopIdRouteImport } from './routes/shop.$id'
 const MedallionRoute = MedallionRouteImport.update({
   id: '/medallion',
   path: '/medallion',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const FragranceRoute = FragranceRouteImport.update({
-  id: '/fragrance',
-  path: '/fragrance',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CartRoute = CartRouteImport.update({
@@ -57,7 +51,6 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/cart': typeof CartRoute
-  '/fragrance': typeof FragranceRoute
   '/medallion': typeof MedallionRoute
   '/shop/$id': typeof ShopIdRoute
   '/shop/': typeof ShopIndexRoute
@@ -66,7 +59,6 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/cart': typeof CartRoute
-  '/fragrance': typeof FragranceRoute
   '/medallion': typeof MedallionRoute
   '/shop/$id': typeof ShopIdRoute
   '/shop': typeof ShopIndexRoute
@@ -76,36 +68,20 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/cart': typeof CartRoute
-  '/fragrance': typeof FragranceRoute
   '/medallion': typeof MedallionRoute
   '/shop/$id': typeof ShopIdRoute
   '/shop/': typeof ShopIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths:
-    | '/'
-    | '/about'
-    | '/cart'
-    | '/fragrance'
-    | '/medallion'
-    | '/shop/$id'
-    | '/shop/'
+  fullPaths: '/' | '/about' | '/cart' | '/medallion' | '/shop/$id' | '/shop/'
   fileRoutesByTo: FileRoutesByTo
-  to:
-    | '/'
-    | '/about'
-    | '/cart'
-    | '/fragrance'
-    | '/medallion'
-    | '/shop/$id'
-    | '/shop'
+  to: '/' | '/about' | '/cart' | '/medallion' | '/shop/$id' | '/shop'
   id:
     | '__root__'
     | '/'
     | '/about'
     | '/cart'
-    | '/fragrance'
     | '/medallion'
     | '/shop/$id'
     | '/shop/'
@@ -115,7 +91,6 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
   CartRoute: typeof CartRoute
-  FragranceRoute: typeof FragranceRoute
   MedallionRoute: typeof MedallionRoute
   ShopIdRoute: typeof ShopIdRoute
   ShopIndexRoute: typeof ShopIndexRoute
@@ -128,13 +103,6 @@ declare module '@tanstack/react-router' {
       path: '/medallion'
       fullPath: '/medallion'
       preLoaderRoute: typeof MedallionRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/fragrance': {
-      id: '/fragrance'
-      path: '/fragrance'
-      fullPath: '/fragrance'
-      preLoaderRoute: typeof FragranceRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/cart': {
@@ -179,7 +147,6 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
   CartRoute: CartRoute,
-  FragranceRoute: FragranceRoute,
   MedallionRoute: MedallionRoute,
   ShopIdRoute: ShopIdRoute,
   ShopIndexRoute: ShopIndexRoute,

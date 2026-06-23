@@ -96,10 +96,10 @@ function Home() {
         <div className="grid gap-6 md:grid-cols-2">
           {[
             { title: "The Medallion", caption: "Rare. Collectible.", img: medallionImg, to: "/medallion" as const },
-            { title: "The Fragrance Lab", caption: "\u00a0ARTISTRY.", img: fragranceImg, to: "/fragrance" as const },
+            { title: "The Fragrance Lab", caption: "\u00a0ARTISTRY.", img: fragranceImg, to: "/shop" as const, search: { category: "Fragrance" } as const },
           ].map((c, i) => (
             <Reveal key={c.title} delay={i * 120}>
-              <Link to={c.to} className="group block relative overflow-hidden bg-surface aspect-[3/4]">
+              <Link to={c.to} search={(c as any).search} className="group block relative overflow-hidden bg-surface aspect-[3/4]">
                 <img src={c.img} alt={c.title} loading="lazy" className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1400ms] ease-[cubic-bezier(.2,.7,.2,1)] group-hover:scale-[1.08]" />
                 <div className="absolute inset-0 bg-gradient-to-t from-background via-background/30 to-transparent" />
                 <div className="absolute inset-x-8 bottom-8">

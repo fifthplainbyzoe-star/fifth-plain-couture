@@ -21,7 +21,13 @@ export const Route = createFileRoute("/shop/")({
 });
 
 function Shop() {
-  const [cat, setCat] = useState("All");
+  const urlCat =
+    typeof window !== "undefined"
+      ? new URLSearchParams(window.location.search).get("category") ?? undefined
+      : undefined;
+  const [cat, setCat] = useState(() =>
+    urlCat && categories.includes(urlCat) ? urlCat : "All"
+  );
   const [sort, setSort] = useState("featured");
 
   const list = useMemo(() => {
