@@ -58,9 +58,13 @@ function ProductPage() {
           <div className="mt-6 font-editorial text-2xl text-ivory">{isFragrance ? "From R250" : `R${p.price.toLocaleString()}`}</div>
 
           <p className="mt-8 text-muted-foreground leading-relaxed">
-            {isFragrance 
+            {isFragrance
               ? "A signature fragrance captured in a bottle, designed to define who you are in this exact moment and linger in the memory forever."
-              : "Substantial weight, uncompromised structure, and a premium finish designed for the modern uniform."}
+              : isHoodie
+                ? "Crafted from ultra-heavyweight fabric with a flawless minimalist drape, engineered to hold its structure today and for years to come."
+                : isTee
+                  ? "An armor of pure comfort, sculpted from premium heavyweight cotton to bring bold structure and timeless form to your everyday style."
+                  : "Substantial weight, uncompromised structure, and a premium finish designed for the modern uniform."}
           </p>
 
           <div className="mt-10">
