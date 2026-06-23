@@ -26,13 +26,20 @@ function ProductPage() {
   const isFragrance = p.category === "Fragrance";
   const isHoodie = p.category === "Hoodies";
   const isTee = p.category === "T-Shirts";
-  const sizeOptions = isFragrance ? ["Velvet Fire", "Glass Wealth", "Black Authority"] : ["XS", "S", "M", "L", "XL"];
+  const isTracksuit = p.category === "Tracksuits";
+  const sizeOptions = isFragrance
+    ? ["Velvet Fire", "Glass Wealth", "Black Authority"]
+    : isTracksuit
+      ? ["S", "M", "L", "XL"]
+      : ["XS", "S", "M", "L", "XL"];
   const quantityOptions = isFragrance ? ["30ml", "50ml"] : [];
   const colorOptions = isFragrance
     ? []
     : isHoodie
       ? ["Black", "Dark Brown", "Beige Cream", "Lilac", "Orange"]
-      : ["Black", "Mud Brown", "Cream", "Pink", "Silver Grey"];
+      : isTracksuit
+        ? ["Black", "Brown", "Cream"]
+        : ["Black", "Mud Brown", "Cream", "Pink", "Silver Grey"];
   const [selectedSize, setSelectedSize] = useState(sizeOptions[0]);
   const [selectedQty, setSelectedQty] = useState(quantityOptions[0] ?? "");
   const [selectedColor, setSelectedColor] = useState(colorOptions[0] ?? "");
