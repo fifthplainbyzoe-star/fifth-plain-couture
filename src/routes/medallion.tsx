@@ -120,10 +120,10 @@ function Medallion() {
         </div>
       </section>
 
-      {/* FOUNDER COLLECTION */}
+      {/* SOVEREIGN COLLECTION */}
       <section className="mx-auto max-w-[1600px] px-6 lg:px-12 py-32">
         <Reveal>
-          <div className="text-center text-[10px] uppercase tracking-[0.4em] text-gold">Founder Collection</div>
+          <div className="text-center text-[10px] uppercase tracking-[0.4em] text-gold">The Sovereign Collection</div>
           <h2 className="mt-6 text-center font-display text-4xl md:text-6xl text-ivory">Numbered 001 — 012</h2>
         </Reveal>
         <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-6">
