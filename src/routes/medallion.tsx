@@ -51,27 +51,31 @@ function Medallion() {
         <Reveal>
           <div className="text-[10px] uppercase tracking-[0.4em] text-gold">The Story</div>
           <p className="mt-10 font-editorial text-3xl md:text-5xl text-ivory leading-[1.3] text-balance">
-            A house within a house — created for the few who recognize the difference between
-            <span className="gold-text"> wearing </span> and <span className="gold-text">carrying</span>.
+            A symbol of distinction, crafted for those who move with <span className="gold-text">purpose</span>.
           </p>
         </Reveal>
       </section>
 
       {/* COLLECTIONS */}
       <section className="bg-surface border-y border-border">
-        <div className="mx-auto max-w-[1600px] px-6 lg:px-12 py-28 grid lg:grid-cols-3 gap-8">
+        <div className="mx-auto max-w-[1600px] px-6 lg:px-12 py-28 grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
           {[
-            { n: "I", t: "Founder Collection", c: "12 numbered pieces" },
-            { n: "II", t: "Hexagon Series", c: "Hallmarked outerwear" },
-            { n: "III", t: "Or Noir", c: "24k accents on obsidian" },
+            { n: "I",   t: "The Sovereign", c: "T-Shirts",       to: "/shop/$id", id: "obsidian-tee" },
+            { n: "II",  t: "The Prestige",  c: "Hoodies",        to: "/shop/$id", id: "noir-hoodie" },
+            { n: "III", t: "The Noble",     c: "Tracksuit Pants", to: "/shop/$id", id: "ivory-tracksuit" },
+            { n: "IV",  t: "The Aurelia",   c: "Skirts",         to: "/shop/$id", id: "aurelia-skirt" },
           ].map((c, i) => (
             <Reveal key={c.t} delay={i * 120}>
-              <div className="border border-border p-10 bg-background hover:border-gold transition-colors duration-500 group">
+              <Link
+                to={c.to}
+                params={{ id: c.id }}
+                className="block border border-border p-10 bg-background hover:border-gold transition-colors duration-500 group h-full"
+              >
                 <div className="font-display text-5xl gold-text">{c.n}</div>
                 <h3 className="mt-8 font-editorial text-2xl text-ivory">{c.t}</h3>
                 <p className="mt-2 text-sm text-muted-foreground">{c.c}</p>
                 <div className="mt-8 h-px w-12 bg-gold transition-all duration-500 group-hover:w-full" />
-              </div>
+              </Link>
             </Reveal>
           ))}
         </div>
