@@ -49,99 +49,123 @@ function ProductPage() {
 
   return (
     <>
-      <section className="mx-auto max-w-[1600px] px-6 lg:px-12 pt-12 pb-24 grid lg:grid-cols-[1.2fr_1fr] gap-12 lg:gap-20">
-        <div className="grid grid-cols-2 gap-3">
-          <div className="col-span-2 aspect-[4/5] bg-surface overflow-hidden">
-            <img src={p.image} alt={p.name} className="h-full w-full object-cover slow-zoom" />
+      {isAurelia ? (
+        <section className="relative min-h-[80svh] overflow-hidden flex items-center justify-center">
+          <div className="absolute inset-0 bg-surface">
+            <img src={p.image} alt="" className="h-full w-full object-cover blur-xl opacity-40 scale-110" />
           </div>
-          {[0, 1, 2, 3].map((i) => (
-            <div key={i} className="aspect-square bg-surface overflow-hidden">
-              <img src={p.image} alt="" loading="lazy" className="h-full w-full object-cover opacity-90 hover:opacity-100 transition" />
+          <div className="absolute inset-0 bg-background/60" />
+          <div className="relative z-10 text-center px-6">
+            <div className="text-[10px] uppercase tracking-[0.4em] text-gold">{p.category}</div>
+            <h1 className="mt-6 font-editorial text-5xl md:text-7xl text-ivory">{p.name}</h1>
+            <p className="mt-8 font-display text-3xl md:text-5xl gold-text">Coming Soon</p>
+            <p className="mt-3 text-muted-foreground text-sm tracking-widest">( TBA )</p>
+            <button
+              onClick={() => setNotifyMsg("We will let you know when The Aurelia is available.")}
+              className="mt-10 bg-gold text-background px-10 py-4 text-[11px] uppercase tracking-[0.3em] hover:bg-ivory transition-colors"
+            >
+              Notify Me
+            </button>
+            {notifyMsg && (
+              <p className="mt-6 text-sm text-gold">{notifyMsg}</p>
+            )}
+          </div>
+        </section>
+      ) : (
+        <section className="mx-auto max-w-[1600px] px-6 lg:px-12 pt-12 pb-24 grid lg:grid-cols-[1.2fr_1fr] gap-12 lg:gap-20">
+          <div className="grid grid-cols-2 gap-3">
+            <div className="col-span-2 aspect-[4/5] bg-surface overflow-hidden">
+              <img src={p.image} alt={p.name} className="h-full w-full object-cover slow-zoom" />
             </div>
-          ))}
-        </div>
-
-        <div className="lg:sticky lg:top-28 self-start">
-          <div className="text-[10px] uppercase tracking-[0.32em] text-gold">{p.category}</div>
-          <h1 className="mt-4 font-editorial text-4xl md:text-5xl text-ivory">{p.name}</h1>
-          <div className="mt-6 font-editorial text-2xl text-ivory">{isFragrance ? "From R250" : `R${p.price.toLocaleString()}`}</div>
-
-          <p className="mt-8 text-muted-foreground leading-relaxed">
-            {isFragrance
-              ? "A signature fragrance captured in a bottle, designed to define who you are in this exact moment and linger in the memory forever."
-              : isHoodie
-                ? "Crafted from ultra-heavyweight fabric with a flawless minimalist drape, engineered to hold its structure today and for years to come."
-                : isTee
-                  ? "An armor of pure comfort, sculpted from premium heavyweight cotton to bring bold structure and timeless form to your everyday style."
-                  : "Substantial weight, uncompromised structure, and a premium finish designed for the modern uniform."}
-          </p>
-
-          <div className="mt-10">
-            <div className="flex items-center justify-between text-[11px] uppercase tracking-[0.28em]">
-              <span className="text-ivory">{isFragrance ? "Scent" : "Size"}</span>
-              {!isFragrance && <button className="text-gold">Size Guide</button>}
-            </div>
-            <div className={`mt-3 grid gap-2 ${isFragrance ? "grid-cols-3" : "grid-cols-5"}`}>
-              {sizeOptions.map((s) => (
-                <button
-                  key={s}
-                  onClick={() => setSelectedSize(s)}
-                  className={`py-3 border text-sm transition-colors ${
-                    selectedSize === s ? "border-gold text-gold" : "border-border text-ivory hover:border-ivory"
-                  }`}
-                >
-                  {s}
-                </button>
-              ))}
-            </div>
+            {[0, 1, 2, 3].map((i) => (
+              <div key={i} className="aspect-square bg-surface overflow-hidden">
+                <img src={p.image} alt="" loading="lazy" className="h-full w-full object-cover opacity-90 hover:opacity-100 transition" />
+              </div>
+            ))}
           </div>
 
-          {!isFragrance && colorOptions.length > 0 && (
-            <div className="mt-6">
-              <div className="text-[11px] uppercase tracking-[0.28em] text-ivory">Colors</div>
-              <div className="mt-3 grid grid-cols-3 gap-2">
-                {colorOptions.map((c) => (
+          <div className="lg:sticky lg:top-28 self-start">
+            <div className="text-[10px] uppercase tracking-[0.32em] text-gold">{p.category}</div>
+            <h1 className="mt-4 font-editorial text-4xl md:text-5xl text-ivory">{p.name}</h1>
+            <div className="mt-6 font-editorial text-2xl text-ivory">{isFragrance ? "From R250" : `R${p.price.toLocaleString()}`}</div>
+
+            <p className="mt-8 text-muted-foreground leading-relaxed">
+              {isFragrance
+                ? "A signature fragrance captured in a bottle, designed to define who you are in this exact moment and linger in the memory forever."
+                : isHoodie
+                  ? "Crafted from ultra-heavyweight fabric with a flawless minimalist drape, engineered to hold its structure today and for years to come."
+                  : isTee
+                    ? "An armor of pure comfort, sculpted from premium heavyweight cotton to bring bold structure and timeless form to your everyday style."
+                    : "Substantial weight, uncompromised structure, and a premium finish designed for the modern uniform."}
+            </p>
+
+            <div className="mt-10">
+              <div className="flex items-center justify-between text-[11px] uppercase tracking-[0.28em]">
+                <span className="text-ivory">{isFragrance ? "Scent" : "Size"}</span>
+                {!isFragrance && <button className="text-gold">Size Guide</button>}
+              </div>
+              <div className={`mt-3 grid gap-2 ${isFragrance ? "grid-cols-3" : "grid-cols-5"}`}>
+                {sizeOptions.map((s) => (
                   <button
-                    key={c}
-                    onClick={() => setSelectedColor(c)}
+                    key={s}
+                    onClick={() => setSelectedSize(s)}
                     className={`py-3 border text-sm transition-colors ${
-                      selectedColor === c ? "border-gold text-gold" : "border-border text-ivory hover:border-ivory"
+                      selectedSize === s ? "border-gold text-gold" : "border-border text-ivory hover:border-ivory"
                     }`}
                   >
-                    {c}
+                    {s}
                   </button>
                 ))}
               </div>
             </div>
-          )}
 
-          {isFragrance && quantityOptions.length > 0 && (
-            <div className="mt-6">
-              <div className="text-[11px] uppercase tracking-[0.28em] text-ivory">Quantity</div>
-              <div className="mt-3 grid grid-cols-2 gap-2">
-                {quantityOptions.map((q) => (
-                  <button
-                    key={q}
-                    onClick={() => setSelectedQty(q)}
-                    className={`py-3 border text-sm transition-colors ${
-                      selectedQty === q ? "border-gold text-gold" : "border-border text-ivory hover:border-ivory"
-                    }`}
-                  >
-                    {q}
-                  </button>
-                ))}
+            {!isFragrance && colorOptions.length > 0 && (
+              <div className="mt-6">
+                <div className="text-[11px] uppercase tracking-[0.28em] text-ivory">Colors</div>
+                <div className="mt-3 grid grid-cols-3 gap-2">
+                  {colorOptions.map((c) => (
+                    <button
+                      key={c}
+                      onClick={() => setSelectedColor(c)}
+                      className={`py-3 border text-sm transition-colors ${
+                        selectedColor === c ? "border-gold text-gold" : "border-border text-ivory hover:border-ivory"
+                      }`}
+                    >
+                      {c}
+                    </button>
+                  ))}
+                </div>
               </div>
+            )}
+
+            {isFragrance && quantityOptions.length > 0 && (
+              <div className="mt-6">
+                <div className="text-[11px] uppercase tracking-[0.28em] text-ivory">Quantity</div>
+                <div className="mt-3 grid grid-cols-2 gap-2">
+                  {quantityOptions.map((q) => (
+                    <button
+                      key={q}
+                      onClick={() => setSelectedQty(q)}
+                      className={`py-3 border text-sm transition-colors ${
+                        selectedQty === q ? "border-gold text-gold" : "border-border text-ivory hover:border-ivory"
+                      }`}
+                    >
+                      {q}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            )}
+
+
+            <div className="mt-8 flex flex-col gap-3">
+              <button className="bg-ivory text-background py-4 text-[11px] uppercase tracking-[0.3em] hover:bg-gold transition-colors">Add to Atelier</button>
+              <button className="border border-gold text-gold py-4 text-[11px] uppercase tracking-[0.3em] hover:bg-gold hover:text-background transition-colors">Buy Now</button>
             </div>
-          )}
 
-
-          <div className="mt-8 flex flex-col gap-3">
-            <button className="bg-ivory text-background py-4 text-[11px] uppercase tracking-[0.3em] hover:bg-gold transition-colors">Add to Atelier</button>
-            <button className="border border-gold text-gold py-4 text-[11px] uppercase tracking-[0.3em] hover:bg-gold hover:text-background transition-colors">Buy Now</button>
           </div>
-
-        </div>
-      </section>
+        </section>
+      )}
 
       <section className="border-t border-border">
         <div className="mx-auto max-w-[1600px] px-6 lg:px-12 py-24">
