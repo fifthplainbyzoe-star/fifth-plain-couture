@@ -27,6 +27,7 @@ function ProductPage() {
   const isHoodie = p.category === "Hoodies";
   const isTee = p.category === "T-Shirts";
   const isTracksuit = p.category === "Tracksuits";
+  const isAurelia = p.id === "aurelia-skirt";
   const sizeOptions = isFragrance
     ? ["Velvet Fire", "Glass Wealth", "Black Authority"]
     : isTracksuit
@@ -43,6 +44,7 @@ function ProductPage() {
   const [selectedSize, setSelectedSize] = useState(sizeOptions[0]);
   const [selectedQty, setSelectedQty] = useState(quantityOptions[0] ?? "");
   const [selectedColor, setSelectedColor] = useState(colorOptions[0] ?? "");
+  const [notifyMsg, setNotifyMsg] = useState("");
   const related = products.filter((x) => x.id !== p.id).slice(0, 4);
 
   return (
