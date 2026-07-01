@@ -67,16 +67,20 @@ function Medallion() {
             { n: "IV",  t: "The Aurelia",   c: "Skirts",         to: "/shop/$id", id: "aurelia-skirt" },
           ].map((c, i) => (
             <Reveal key={c.t} delay={i * 120}>
-              <Link
-                to={c.to}
-                params={{ id: c.id }}
-                className="block border border-border p-10 bg-background hover:border-gold transition-colors duration-500 group h-full"
-              >
-                <div className="font-display text-5xl gold-text">{c.n}</div>
-                <h3 className="mt-8 font-editorial text-2xl text-ivory">{c.t}</h3>
-                <p className="mt-2 text-sm text-muted-foreground">{c.c}</p>
-                <div className="mt-8 h-px w-12 bg-gold transition-all duration-500 group-hover:w-full" />
-              </Link>
+              {c.id === "aurelia-skirt" ? (
+                <AureliaTile />
+              ) : (
+                <Link
+                  to={c.to}
+                  params={{ id: c.id }}
+                  className="block border border-border p-10 bg-background hover:border-gold transition-colors duration-500 group h-full"
+                >
+                  <div className="font-display text-5xl gold-text">{c.n}</div>
+                  <h3 className="mt-8 font-editorial text-2xl text-ivory">{c.t}</h3>
+                  <p className="mt-2 text-sm text-muted-foreground">{c.c}</p>
+                  <div className="mt-8 h-px w-12 bg-gold transition-all duration-500 group-hover:w-full" />
+                </Link>
+              )}
             </Reveal>
           ))}
         </div>
