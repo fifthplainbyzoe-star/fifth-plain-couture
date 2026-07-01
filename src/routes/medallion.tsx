@@ -1,4 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { useState } from "react";
 import medallion from "@/assets/medallion.jpg";
 import lookbook from "@/assets/lookbook.jpg";
 import productMedallion from "@/assets/product-medallion.jpg";
