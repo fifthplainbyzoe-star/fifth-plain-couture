@@ -1,9 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
 import medallion from "@/assets/medallion.jpg";
-import lookbook from "@/assets/lookbook.jpg";
-import productMedallion from "@/assets/product-medallion.jpg";
-import hoodie from "@/assets/product-hoodie.jpg";
 import { Reveal } from "@/components/site/Reveal";
 
 export const Route = createFileRoute("/medallion")({
@@ -109,66 +106,6 @@ function Medallion() {
         </div>
       </section>
 
-      {/* FEATURED PIECES */}
-      <section className="mx-auto max-w-[1600px] px-6 lg:px-12 py-32 grid lg:grid-cols-2 gap-12">
-        <Reveal>
-          <div className="relative overflow-hidden bg-surface aspect-[4/5] group">
-            <img src={productMedallion} alt="Medallion pendant" loading="lazy" className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1400ms] group-hover:scale-105" />
-          </div>
-        </Reveal>
-        <Reveal delay={150} className="flex flex-col justify-center">
-          <div className="text-[10px] uppercase tracking-[0.4em] text-gold">Founder Piece N°001</div>
-          <h2 className="mt-6 font-editorial text-4xl md:text-6xl text-ivory leading-tight">The Hexagon Pendant</h2>
-          <p className="mt-6 text-muted-foreground leading-relaxed max-w-md">
-            Cast in solid brass with 24k gold plating, the founding piece of The Medallion universe.
-            Hand-finished in our Florence atelier. Edition of 250, numbered.
-          </p>
-          <div className="mt-10 flex items-baseline gap-6">
-            <span className="font-editorial text-3xl gold-text">$2,400</span>
-            <span className="text-[10px] uppercase tracking-[0.32em] text-muted-foreground">N°001 / 250</span>
-          </div>
-          <div className="mt-8 flex gap-3">
-            <button className="bg-gold text-background px-8 py-4 text-[11px] uppercase tracking-[0.3em] hover:bg-ivory transition-colors">Add To Atelier</button>
-            <button className="border border-border px-8 py-4 text-[11px] uppercase tracking-[0.3em] hover:border-gold">Request Viewing</button>
-          </div>
-        </Reveal>
-      </section>
-
-      {/* LOOKBOOK */}
-      <section className="relative h-[90svh] overflow-hidden">
-        <img src={lookbook} alt="Lookbook" loading="lazy" className="absolute inset-0 h-full w-full object-cover" />
-        <div className="absolute inset-0 bg-background/40" />
-        <div className="relative h-full flex items-end">
-          <div className="mx-auto max-w-[1600px] w-full px-6 lg:px-12 pb-20">
-            <Reveal>
-              <div className="text-[10px] uppercase tracking-[0.4em] text-gold">Lookbook</div>
-              <h2 className="mt-4 font-editorial text-5xl md:text-7xl text-ivory">Or Noir</h2>
-            </Reveal>
-          </div>
-        </div>
-      </section>
-
-      {/* SOVEREIGN COLLECTION */}
-      <section className="mx-auto max-w-[1600px] px-6 lg:px-12 py-32">
-        <Reveal>
-          <div className="text-center text-[10px] uppercase tracking-[0.4em] text-gold">The Sovereign Collection</div>
-          <h2 className="mt-6 text-center font-display text-4xl md:text-6xl text-ivory">Numbered 001 — 012</h2>
-        </Reveal>
-        <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-6">
-          {Array.from({ length: 8 }).map((_, i) => (
-            <Reveal key={i} delay={i * 60}>
-              <div className="relative aspect-[3/4] bg-surface overflow-hidden group">
-                <img src={i % 2 ? hoodie : productMedallion} alt="" loading="lazy" className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1200ms] group-hover:scale-110" />
-                <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent" />
-                <div className="absolute bottom-4 left-4 right-4">
-                  <div className="font-display text-[11px] tracking-[0.32em] gold-text">N°{String(i + 1).padStart(3, "0")}</div>
-                  <div className="mt-1 font-editorial text-ivory">Piece {String.fromCharCode(65 + i)}</div>
-                </div>
-              </div>
-            </Reveal>
-          ))}
-        </div>
-      </section>
     </>
   );
 }
