@@ -194,8 +194,9 @@ function ProductPage() {
               </div>
             ) : (
               <div className="mt-8 flex flex-col gap-3">
-                <button className="bg-ivory text-background py-4 text-[11px] uppercase tracking-[0.3em] hover:bg-gold transition-colors">Add to Atelier</button>
-                <button className="border border-gold text-gold py-4 text-[11px] uppercase tracking-[0.3em] hover:bg-gold hover:text-background transition-colors">Buy Now</button>
+                <button onClick={handleAdd} className="bg-ivory text-background py-4 text-[11px] uppercase tracking-[0.3em] hover:bg-gold transition-colors">Add to Atelier</button>
+                <button onClick={handleBuyNow} className="border border-gold text-gold py-4 text-[11px] uppercase tracking-[0.3em] hover:bg-gold hover:text-background transition-colors">Buy Now</button>
+                {addedMsg && <p className="text-xs text-gold text-center">{addedMsg}</p>}
               </div>
             )}
 
