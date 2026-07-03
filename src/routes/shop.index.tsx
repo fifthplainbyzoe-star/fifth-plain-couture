@@ -44,7 +44,7 @@ function Shop() {
           <div className="text-[10px] uppercase tracking-[0.4em] text-gold">The Collection</div>
           <h1 className="mt-6 font-editorial text-5xl md:text-7xl text-ivory">The Atelier</h1>
           <p className="mt-6 max-w-xl mx-auto text-muted-foreground">
-            A curated edit of the season — each piece composed in our Florence atelier.
+            A curated edit of the season, each piece composed in our Florence atelier.
           </p>
         </div>
       </section>
