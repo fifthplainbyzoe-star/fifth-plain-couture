@@ -52,7 +52,7 @@ function Medallion() {
         <div className="relative z-10 mx-auto max-w-[1600px] px-6 lg:px-12 pt-40 lg:pt-56 pb-24 min-h-[100svh] flex flex-col justify-center items-center text-center">
           <div className="reveal">
             <div className="flex items-center justify-center gap-4 text-[10px] uppercase tracking-[0.4em] text-gold">
-              <span className="h-px w-10 bg-gold" /> Maison Fifth Plain <span className="h-px w-10 bg-gold" />
+              <span className="h-px w-10 bg-gold" /> <span className="h-px w-10 bg-gold" />
             </div>
             <h1 className="mt-10 font-display text-6xl md:text-8xl lg:text-[12rem] leading-[0.85] gold-text">
               MEDALLION
