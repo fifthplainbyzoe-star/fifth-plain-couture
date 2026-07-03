@@ -215,12 +215,11 @@ function Home() {
         <div className="mx-auto max-w-3xl px-6 py-28 text-center">
           <Reveal>
             <div className="text-[10px] uppercase tracking-[0.4em] text-gold">THE PLOT</div>
-            <h2 className="mt-6 font-display text-4xl md:text-5xl text-ivory leading-tight">An invitation, not a list.</h2>
-            <p className="mt-6 text-muted-foreground">Private previews, members, only fragrance editions, and the occasional letter from the atelier.</p>
-            <form className="mt-10 mx-auto max-w-md flex border-b border-border focus-within:border-gold transition-colors">
-              <input type="email" placeholder="Your email address" className="flex-1 bg-transparent py-4 text-sm outline-none placeholder:text-muted-foreground" />
-              <button className="text-[11px] uppercase tracking-[0.28em] text-gold px-2">Request →</button>
-            </form>
+            <h2 className="mt-6 font-display text-4xl md:text-5xl text-ivory leading-tight">Receive Notifications</h2>
+            <p className="mt-6 text-muted-foreground">Stay informed about new drops, restocks, and atelier updates.</p>
+            <button className="mt-10 inline-flex items-center gap-3 border border-gold text-gold px-8 py-4 text-[11px] uppercase tracking-[0.3em] hover:bg-gold hover:text-background transition-colors duration-500">
+              Notify Me →
+            </button>
           </Reveal>
         </div>
       </section>
