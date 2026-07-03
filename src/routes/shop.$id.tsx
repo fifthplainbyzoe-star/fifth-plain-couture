@@ -158,10 +158,24 @@ function ProductPage() {
             )}
 
 
-            <div className="mt-8 flex flex-col gap-3">
-              <button className="bg-ivory text-background py-4 text-[11px] uppercase tracking-[0.3em] hover:bg-gold transition-colors">Add to Atelier</button>
-              <button className="border border-gold text-gold py-4 text-[11px] uppercase tracking-[0.3em] hover:bg-gold hover:text-background transition-colors">Buy Now</button>
-            </div>
+            {selectedSize === "Velvet Fire" || selectedSize === "Glass Wealth" ? (
+              <div className="mt-8 flex flex-col items-center gap-3">
+                <p className="font-display text-2xl md:text-3xl gold-text">Coming Soon</p>
+                <p className="text-muted-foreground text-sm tracking-widest">( TBA )</p>
+                <button
+                  onClick={() => setNotifyMsg(`We will let you know when ${selectedSize} is available.`)}
+                  className="mt-4 bg-gold text-background px-10 py-4 text-[11px] uppercase tracking-[0.3em] hover:bg-ivory transition-colors"
+                >
+                  Notify Me
+                </button>
+                {notifyMsg && <p className="text-sm text-gold">{notifyMsg}</p>}
+              </div>
+            ) : (
+              <div className="mt-8 flex flex-col gap-3">
+                <button className="bg-ivory text-background py-4 text-[11px] uppercase tracking-[0.3em] hover:bg-gold transition-colors">Add to Atelier</button>
+                <button className="border border-gold text-gold py-4 text-[11px] uppercase tracking-[0.3em] hover:bg-gold hover:text-background transition-colors">Buy Now</button>
+              </div>
+            )}
 
           </div>
         </section>
