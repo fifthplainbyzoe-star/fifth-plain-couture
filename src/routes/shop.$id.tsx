@@ -1,8 +1,9 @@
-import { createFileRoute, Link, notFound } from "@tanstack/react-router";
+import { createFileRoute, Link, notFound, useNavigate } from "@tanstack/react-router";
 import { useState } from "react";
 import { findProduct, products } from "@/lib/products";
 import { ProductCard } from "@/components/site/ProductCard";
 import { Reveal } from "@/components/site/Reveal";
+import { useCart } from "@/lib/cart";
 
 export const Route = createFileRoute("/shop/$id")({
   loader: ({ params }) => {
@@ -45,7 +46,28 @@ function ProductPage() {
   const [selectedQty, setSelectedQty] = useState(quantityOptions[0] ?? "");
   const [selectedColor, setSelectedColor] = useState(colorOptions[0] ?? "");
   const [notifyMsg, setNotifyMsg] = useState("");
+  const [addedMsg, setAddedMsg] = useState("");
+  const { add } = useCart();
+  const navigate = useNavigate();
   const related = products.filter((x) => x.id !== p.id).slice(0, 4);
+
+  const handleAdd = () => {
+    add({
+      id: p.id,
+      name: p.name,
+      category: p.category,
+      price: p.price,
+      image: p.image,
+      size: isFragrance ? `${selectedSize} · ${selectedQty}` : selectedSize,
+      color: selectedColor || undefined,
+    });
+    setAddedMsg("Added to your atelier.");
+    setTimeout(() => setAddedMsg(""), 2000);
+  };
+  const handleBuyNow = () => {
+    handleAdd();
+    navigate({ to: "/checkout" });
+  };
 
   return (
     <>
@@ -172,8 +194,9 @@ function ProductPage() {
               </div>
             ) : (
               <div className="mt-8 flex flex-col gap-3">
-                <button className="bg-ivory text-background py-4 text-[11px] uppercase tracking-[0.3em] hover:bg-gold transition-colors">Add to Atelier</button>
-                <button className="border border-gold text-gold py-4 text-[11px] uppercase tracking-[0.3em] hover:bg-gold hover:text-background transition-colors">Buy Now</button>
+                <button onClick={handleAdd} className="bg-ivory text-background py-4 text-[11px] uppercase tracking-[0.3em] hover:bg-gold transition-colors">Add to Atelier</button>
+                <button onClick={handleBuyNow} className="border border-gold text-gold py-4 text-[11px] uppercase tracking-[0.3em] hover:bg-gold hover:text-background transition-colors">Buy Now</button>
+                {addedMsg && <p className="text-xs text-gold text-center">{addedMsg}</p>}
               </div>
             )}
 

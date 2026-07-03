@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { ShoppingBag, Search, Menu } from "lucide-react";
+import { useCart } from "@/lib/cart";
 
 const links = [
   { to: "/shop", label: "Shop" },
@@ -11,6 +12,7 @@ const links = [
 export function Nav() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const { count } = useCart();
 
   useEffect(() => {
     const on = () => setScrolled(window.scrollY > 24);
@@ -64,7 +66,9 @@ export function Nav() {
           </button>
           <Link to="/cart" aria-label="Cart" className="relative hover:text-accent transition-colors">
             <ShoppingBag className="h-4 w-4" />
-            <span className="absolute -top-1.5 -right-2 text-[9px] font-medium text-accent">2</span>
+            {count > 0 && (
+              <span className="absolute -top-1.5 -right-2 text-[9px] font-medium text-accent">{count}</span>
+            )}
           </Link>
         </div>
       </div>
