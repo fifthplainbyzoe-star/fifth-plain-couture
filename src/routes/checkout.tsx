@@ -49,10 +49,10 @@ function Checkout() {
   ];
 
   const selectedShipping = shippingMethods.find((s) => s.id === shippingOption)!;
-  const currentCarrier = selectedShipping.carrier;
-  const isCourierFreeShipping = subtotal >= 200 && currentCarrier === "courier";
-  const shippingCost = isCourierFreeShipping ? 0 : selectedShipping.price;
+  const shippingCost = subtotal >= 200 ? 0 : selectedShipping.price;
+  const isFreeShipping = subtotal >= 200;
   const total = subtotal + shippingCost;
+  const currentCarrier = selectedShipping.carrier;
 
   if (items.length === 0 && !done) {
     return (
@@ -127,23 +127,23 @@ function Checkout() {
         <div className="mt-10">
           <div className="flex items-center justify-between">
             <h2 className="font-display text-sm tracking-[0.28em] text-ivory">SHIPPING METHOD</h2>
+            {isFreeShipping && (
+              <span className="text-[10px] uppercase tracking-[0.24em] text-gold bg-gold/10 px-3 py-1">
+                Free Shipping Applied
+              </span>
+            )}
           </div>
           <p className="mt-2 text-xs text-muted-foreground">
-            Select your preferred delivery option.
+            Select your preferred delivery option. Prices below.
           </p>
 
           <div className="mt-6 space-y-1">
             {/* PAXI Section */}
             <div className="border border-border">
               <div className="px-6 py-4 bg-surface/50 border-b border-border">
-                <div className="flex items-center justify-between gap-3">
-                  <div className="flex items-center gap-3">
-                    <Package className="w-4 h-4 text-gold" />
-                    <span className="text-[11px] uppercase tracking-[0.28em] text-ivory font-medium">PAXI — PEP Counter-to-Counter</span>
-                  </div>
-                  <span className="text-[10px] uppercase tracking-[0.24em] text-muted-foreground">
-                    from R60
-                  </span>
+                <div className="flex items-center gap-3">
+                  <Package className="w-4 h-4 text-gold" />
+                  <span className="text-[11px] uppercase tracking-[0.28em] text-ivory font-medium">PAXI — PEP Counter-to-Counter</span>
                 </div>
               </div>
               <div className="grid sm:grid-cols-2">
@@ -169,7 +169,11 @@ function Checkout() {
                           </div>
                         </div>
                         <div className="text-right shrink-0">
-                          <span className="text-ivory font-editorial text-base">R{opt.price}</span>
+                          {isFreeShipping ? (
+                            <span className="text-gold font-display text-sm tracking-[0.24em]">FREE</span>
+                          ) : (
+                            <span className="text-ivory font-editorial text-base">R{opt.price}</span>
+                          )}
                         </div>
                       </div>
                       <div className={`mt-3 h-px transition-all ${isActive ? "bg-gold w-8" : "bg-transparent w-0"}`} />
@@ -182,16 +186,9 @@ function Checkout() {
             {/* Courier Guy Section */}
             <div className="border border-border">
               <div className="px-6 py-4 bg-surface/50 border-b border-border">
-                <div className="flex items-center justify-between gap-3">
-                  <div className="flex items-center gap-3">
-                    <Truck className="w-4 h-4 text-gold" />
-                    <span className="text-[11px] uppercase tracking-[0.28em] text-ivory font-medium">The Courier Guy — Door-to-Door</span>
-                  </div>
-                  {subtotal >= 200 && (
-                    <span className="text-[10px] uppercase tracking-[0.24em] text-gold bg-gold/10 px-3 py-1">
-                      Free on orders R200+
-                    </span>
-                  )}
+                <div className="flex items-center gap-3">
+                  <Truck className="w-4 h-4 text-gold" />
+                  <span className="text-[11px] uppercase tracking-[0.28em] text-ivory font-medium">The Courier Guy — Door-to-Door</span>
                 </div>
               </div>
               <div className="grid sm:grid-cols-2 divide-y sm:divide-y-0 sm:divide-x divide-border">
@@ -217,9 +214,13 @@ function Checkout() {
                           </div>
                         </div>
                         <div className="text-right shrink-0">
-                          <span className="text-ivory font-editorial text-base">
-                            {opt.id === "courier-express" ? "R200+" : `R${opt.price}`}
-                          </span>
+                          {isFreeShipping ? (
+                            <span className="text-gold font-display text-sm tracking-[0.24em]">FREE</span>
+                          ) : (
+                            <span className="text-ivory font-editorial text-base">
+                              {opt.id === "courier-express" ? "R200+" : `R${opt.price}`}
+                            </span>
+                          )}
                         </div>
                       </div>
                       <div className={`mt-3 h-px transition-all ${isActive ? "bg-gold w-8" : "bg-transparent w-0"}`} />
@@ -458,8 +459,8 @@ function Checkout() {
           </div>
           <div className="flex justify-between">
             <dt className="text-muted-foreground">Shipping</dt>
-            <dd className={isCourierFreeShipping ? "text-gold" : "text-ivory"}>
-              {isCourierFreeShipping ? "FREE" : `R${shippingCost}`}
+            <dd className={isFreeShipping ? "text-gold" : "text-ivory"}>
+              {isFreeShipping ? "FREE" : `R${shippingCost}`}
             </dd>
           </div>
           <div className="flex justify-between">
