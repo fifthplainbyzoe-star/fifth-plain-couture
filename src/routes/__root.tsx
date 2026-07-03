@@ -13,6 +13,7 @@ import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { Nav } from "../components/site/Nav";
 import { Footer } from "../components/site/Footer";
+import { CartProvider } from "../lib/cart";
 
 function NotFoundComponent() {
   return (
@@ -102,11 +103,13 @@ function RootComponent() {
   const { queryClient } = Route.useRouteContext();
   return (
     <QueryClientProvider client={queryClient}>
-      <Nav />
-      <main className="min-h-screen pt-16 lg:pt-20">
-        <Outlet />
-      </main>
-      <Footer />
+      <CartProvider>
+        <Nav />
+        <main className="min-h-screen pt-16 lg:pt-20">
+          <Outlet />
+        </main>
+        <Footer />
+      </CartProvider>
     </QueryClientProvider>
   );
 }
