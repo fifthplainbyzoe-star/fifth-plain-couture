@@ -61,8 +61,8 @@ function Cart() {
         <h2 className="font-display text-lg tracking-[0.28em] text-ivory">SUMMARY</h2>
         <dl className="mt-8 space-y-3 text-sm">
           <div className="flex justify-between"><dt className="text-muted-foreground">Subtotal</dt><dd className="text-ivory">R{subtotal.toLocaleString()}</dd></div>
-          <div className="flex justify-between"><dt className="text-muted-foreground">Shipping</dt><dd className="text-gold">Complimentary</dd></div>
-          <div className="flex justify-between"><dt className="text-muted-foreground">VAT (incl.)</dt><dd className="text-ivory">R{Math.round(subtotal * 0.15).toLocaleString()}</dd></div>
+          <div className="flex justify-between"><dt className="text-muted-foreground">Shipping</dt><dd className="text-gold">Calculated at checkout</dd></div>
+          <div className="flex justify-between"><dt className="text-muted-foreground">Taxes</dt><dd className="text-ivory">R0</dd></div>
         </dl>
         <div className="mt-6 pt-6 border-t border-border flex justify-between items-baseline">
           <span className="text-[10px] uppercase tracking-[0.32em] text-gold">Total</span>

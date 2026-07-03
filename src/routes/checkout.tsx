@@ -1,7 +1,7 @@
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { useState } from "react";
 import { useCart } from "@/lib/cart";
-import { Check, Shield, Smartphone, Building2, CreditCard, Landmark } from "lucide-react";
+import { Check, Shield, Smartphone, Building2, CreditCard, Landmark, MapPin, Truck } from "lucide-react";
 
 export const Route = createFileRoute("/checkout")({
   head: () => ({ meta: [{ title: "Checkout — Fifth Plain" }, { name: "robots", content: "noindex" }] }),
@@ -9,16 +9,22 @@ export const Route = createFileRoute("/checkout")({
 });
 
 type Method = "payshap" | "eft" | "ozow" | "card";
+type ShippingMethod = "paxi" | "courier";
 
 function Checkout() {
   const { items, subtotal, clear } = useCart();
   const navigate = useNavigate();
   const [method, setMethod] = useState<Method>("payshap");
+  const [shippingMethod, setShippingMethod] = useState<ShippingMethod>("paxi");
   const [identifier, setIdentifier] = useState("");
   const [idType, setIdType] = useState<"phone" | "shapid">("phone");
   const [processing, setProcessing] = useState(false);
   const [done, setDone] = useState<string | null>(null);
   const [error, setError] = useState("");
+
+  const shippingCost = subtotal >= 200 ? 0 : shippingMethod === "paxi" ? 60 : 100;
+  const isFreeShipping = subtotal >= 200;
+  const total = subtotal + shippingCost;
 
   if (items.length === 0 && !done) {
     return (
@@ -28,8 +34,6 @@ function Checkout() {
       </section>
     );
   }
-
-  const total = subtotal;
 
   const validatePayShap = () => {
     const v = identifier.trim();
@@ -85,13 +89,73 @@ function Checkout() {
     { id: "card", label: "Card", sub: "Visa · Mastercard (ZAR)", icon: CreditCard },
   ];
 
+  const shippingOptions: { id: ShippingMethod; label: string; sub: string; price: number; icon: typeof MapPin }[] = [
+    { id: "paxi", label: "PAXI Store Collection", sub: "Pick up at your nearest PEP or Tekkie Town", price: 60, icon: MapPin },
+    { id: "courier", label: "The Courier Guy", sub: "Door-to-Door (Varies with location)", price: 100, icon: Truck },
+  ];
+
   return (
     <section className="mx-auto max-w-[1400px] px-6 lg:px-12 py-16 grid lg:grid-cols-[1.4fr_1fr] gap-16">
       <div>
         <div className="text-[10px] uppercase tracking-[0.32em] text-gold">Checkout</div>
         <h1 className="mt-3 font-editorial text-4xl md:text-5xl text-ivory">Complete your order</h1>
 
+        {/* Shipping Options */}
         <div className="mt-10">
+          <h2 className="font-display text-sm tracking-[0.28em] text-ivory">SHIPPING METHOD</h2>
+          <p className="mt-2 text-xs text-muted-foreground">
+            {isFreeShipping
+              ? "Complimentary shipping applied on orders R200+"
+              : "Select your preferred delivery option."}
+          </p>
+
+          <div className="mt-6 grid gap-3">
+            {shippingOptions.map((opt) => {
+              const Icon = opt.icon;
+              const active = shippingMethod === opt.id;
+              const displayPrice = isFreeShipping ? 0 : opt.price;
+              return (
+                <button
+                  key={opt.id}
+                  onClick={() => setShippingMethod(opt.id)}
+                  className={`text-left p-5 border transition-all ${
+                    active ? "border-gold bg-gold/5" : "border-border hover:border-ivory/50"
+                  }`}
+                >
+                  <div className="flex items-start justify-between gap-4">
+                    <div className="flex items-center gap-4">
+                      <div className={`w-10 h-10 flex items-center justify-center border ${active ? "border-gold text-gold" : "border-border text-ivory"}`}>
+                        <Icon className="w-4 h-4" />
+                      </div>
+                      <div className="flex-1">
+                        <div className={`font-editorial text-lg ${active ? "text-gold" : "text-ivory"}`}>{opt.label}</div>
+                        <div className="text-[10px] uppercase tracking-[0.24em] text-muted-foreground mt-0.5">{opt.sub}</div>
+                      </div>
+                    </div>
+                    <div className="text-right shrink-0">
+                      {isFreeShipping ? (
+                        <span className="text-gold font-display text-sm tracking-[0.28em]">FREE</span>
+                      ) : (
+                        <span className="text-ivory font-editorial">R{opt.price}</span>
+                      )}
+                    </div>
+                  </div>
+                </button>
+              );
+            })}
+          </div>
+
+          {isFreeShipping && (
+            <div className="mt-4 px-4 py-3 bg-gold/10 border border-gold/30 text-center">
+              <span className="text-[10px] uppercase tracking-[0.28em] text-gold">
+                Complimentary shipping unlocked
+              </span>
+            </div>
+          )}
+        </div>
+
+        {/* Payment Options */}
+        <div className="mt-12">
           <h2 className="font-display text-sm tracking-[0.28em] text-ivory">SOUTH AFRICAN PAYMENT OPTIONS</h2>
           <p className="mt-2 text-xs text-muted-foreground">Pay in Rand from any local bank. All transactions are secured end-to-end.</p>
 
@@ -215,9 +279,21 @@ function Checkout() {
           ))}
         </ul>
 
-        <dl className="mt-6 pt-6 border-t border-border space-y-2 text-sm">
-          <div className="flex justify-between"><dt className="text-muted-foreground">Subtotal</dt><dd className="text-ivory">R{subtotal.toLocaleString()}</dd></div>
-          <div className="flex justify-between"><dt className="text-muted-foreground">Shipping</dt><dd className="text-gold">Complimentary</dd></div>
+        <dl className="mt-6 pt-6 border-t border-border space-y-3 text-sm">
+          <div className="flex justify-between">
+            <dt className="text-muted-foreground">Subtotal</dt>
+            <dd className="text-ivory">R{subtotal.toLocaleString()}</dd>
+          </div>
+          <div className="flex justify-between">
+            <dt className="text-muted-foreground">Shipping</dt>
+            <dd className={isFreeShipping ? "text-gold" : "text-ivory"}>
+              {isFreeShipping ? "FREE" : `R${shippingCost}`}
+            </dd>
+          </div>
+          <div className="flex justify-between">
+            <dt className="text-muted-foreground">Taxes</dt>
+            <dd className="text-ivory">R0</dd>
+          </div>
         </dl>
         <div className="mt-4 pt-4 border-t border-border flex justify-between items-baseline">
           <span className="text-[10px] uppercase tracking-[0.32em] text-gold">Total (ZAR)</span>
@@ -234,7 +310,7 @@ function Checkout() {
         <Link to="/cart" className="mt-3 block text-center text-[11px] uppercase tracking-[0.28em] text-muted-foreground hover:text-ivory">Back to Atelier</Link>
 
         <p className="mt-6 text-[10px] uppercase tracking-[0.24em] text-muted-foreground text-center">
-          Prices in ZAR · VAT included
+          Prices in ZAR · Taxes included
         </p>
       </aside>
     </section>

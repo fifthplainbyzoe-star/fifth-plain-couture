@@ -2,12 +2,9 @@ import { Link } from "@tanstack/react-router";
 
 const cols = [
   {
-    title: "ABOUT\u00a0",
+    title: "ABOUT",
     links: [
       { label: "Our Story", to: "/about" },
-      { label: "", to: "/about" },
-      { label: "", to: "/about" },
-      { label: "", to: "/about" },
     ],
   },
   {
@@ -15,16 +12,15 @@ const cols = [
     links: [
       { label: "The Medallion", to: "/medallion" },
       { label: "Fragrance Lab", to: "/shop" },
-      { label: "", to: "/shop" },
+      { label: "T-Shirts", to: "/shop" },
     ],
   },
   {
     title: "Client Services",
     links: [
-      { label: "Shipping", to: "/about" },
-      { label: "Returns", to: "/about" },
-      { label: "", to: "/about" },
-      { label: "Contact", to: "/about" },
+      { label: "Shipping", to: "/faq" },
+      { label: "FAQ", to: "/faq" },
+      { label: "Contact", to: "/contact" },
     ],
   },
 ];
@@ -41,10 +37,7 @@ export function Footer() {
           </p>
           <div className="mt-8 flex gap-4 text-[11px] uppercase tracking-[0.22em] text-muted-foreground">
             <a href="#" className="hover:text-gold">Instagram</a>
-            <span>{"\n"}</span>
             <a href="#" className="hover:text-gold">TikTok</a>
-            <span>{"\n"}</span>
-            <a href="#" className="hover:text-gold">{"\n"}</a>
           </div>
         </div>
 
@@ -74,7 +67,7 @@ export function Footer() {
               placeholder="Your email"
               className="flex-1 bg-transparent py-3 text-sm outline-none placeholder:text-muted-foreground"
             />
-            <button className="text-[11px] uppercase tracking-[0.22em] text-gold">Join →</button>
+            <button className="text-[11px] uppercase tracking-[0.22em] text-gold">Join</button>
           </form>
         </div>
       </div>
@@ -84,7 +77,6 @@ export function Footer() {
           <div className="flex gap-6">
             <a href="#" className="hover:text-gold">Privacy</a>
             <a href="#" className="hover:text-gold">Terms</a>
-            <a href="#" className="hover:text-gold">{"\n"}</a>
           </div>
         </div>
       </div>

@@ -10,6 +10,8 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as MedallionRouteImport } from './routes/medallion'
+import { Route as FaqRouteImport } from './routes/faq'
+import { Route as ContactRouteImport } from './routes/contact'
 import { Route as CheckoutRouteImport } from './routes/checkout'
 import { Route as CartRouteImport } from './routes/cart'
 import { Route as AboutRouteImport } from './routes/about'
@@ -20,6 +22,16 @@ import { Route as ShopIdRouteImport } from './routes/shop.$id'
 const MedallionRoute = MedallionRouteImport.update({
   id: '/medallion',
   path: '/medallion',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FaqRoute = FaqRouteImport.update({
+  id: '/faq',
+  path: '/faq',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CheckoutRoute = CheckoutRouteImport.update({
@@ -58,6 +70,8 @@ export interface FileRoutesByFullPath {
   '/about': typeof AboutRoute
   '/cart': typeof CartRoute
   '/checkout': typeof CheckoutRoute
+  '/contact': typeof ContactRoute
+  '/faq': typeof FaqRoute
   '/medallion': typeof MedallionRoute
   '/shop/$id': typeof ShopIdRoute
   '/shop/': typeof ShopIndexRoute
@@ -67,6 +81,8 @@ export interface FileRoutesByTo {
   '/about': typeof AboutRoute
   '/cart': typeof CartRoute
   '/checkout': typeof CheckoutRoute
+  '/contact': typeof ContactRoute
+  '/faq': typeof FaqRoute
   '/medallion': typeof MedallionRoute
   '/shop/$id': typeof ShopIdRoute
   '/shop': typeof ShopIndexRoute
@@ -77,6 +93,8 @@ export interface FileRoutesById {
   '/about': typeof AboutRoute
   '/cart': typeof CartRoute
   '/checkout': typeof CheckoutRoute
+  '/contact': typeof ContactRoute
+  '/faq': typeof FaqRoute
   '/medallion': typeof MedallionRoute
   '/shop/$id': typeof ShopIdRoute
   '/shop/': typeof ShopIndexRoute
@@ -88,6 +106,8 @@ export interface FileRouteTypes {
     | '/about'
     | '/cart'
     | '/checkout'
+    | '/contact'
+    | '/faq'
     | '/medallion'
     | '/shop/$id'
     | '/shop/'
@@ -97,6 +117,8 @@ export interface FileRouteTypes {
     | '/about'
     | '/cart'
     | '/checkout'
+    | '/contact'
+    | '/faq'
     | '/medallion'
     | '/shop/$id'
     | '/shop'
@@ -106,6 +128,8 @@ export interface FileRouteTypes {
     | '/about'
     | '/cart'
     | '/checkout'
+    | '/contact'
+    | '/faq'
     | '/medallion'
     | '/shop/$id'
     | '/shop/'
@@ -116,6 +140,8 @@ export interface RootRouteChildren {
   AboutRoute: typeof AboutRoute
   CartRoute: typeof CartRoute
   CheckoutRoute: typeof CheckoutRoute
+  ContactRoute: typeof ContactRoute
+  FaqRoute: typeof FaqRoute
   MedallionRoute: typeof MedallionRoute
   ShopIdRoute: typeof ShopIdRoute
   ShopIndexRoute: typeof ShopIndexRoute
@@ -128,6 +154,20 @@ declare module '@tanstack/react-router' {
       path: '/medallion'
       fullPath: '/medallion'
       preLoaderRoute: typeof MedallionRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/faq': {
+      id: '/faq'
+      path: '/faq'
+      fullPath: '/faq'
+      preLoaderRoute: typeof FaqRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/checkout': {
@@ -180,6 +220,8 @@ const rootRouteChildren: RootRouteChildren = {
   AboutRoute: AboutRoute,
   CartRoute: CartRoute,
   CheckoutRoute: CheckoutRoute,
+  ContactRoute: ContactRoute,
+  FaqRoute: FaqRoute,
   MedallionRoute: MedallionRoute,
   ShopIdRoute: ShopIdRoute,
   ShopIndexRoute: ShopIndexRoute,
@@ -187,3 +229,13 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}
