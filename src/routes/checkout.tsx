@@ -45,7 +45,7 @@ function Checkout() {
     { id: "paxi-standard", carrier: "paxi", label: "PAXI Standard Bag", sub: "PEP Counter-to-Counter · 7-9 Days · Max 5kg", price: 60, icon: Package },
     { id: "paxi-large", carrier: "paxi", label: "PAXI Large Bag", sub: "PEP Counter-to-Counter · 7-9 Days · Max 10kg", price: 100, icon: Package },
     { id: "courier-standard", carrier: "courier", label: "The Courier Guy Standard", sub: "Door-to-Door · 2-3 Days", price: 120, icon: Truck },
-    { id: "courier-express", carrier: "courier", label: "The Courier Guy Express", sub: "Heavy / Regional Door Delivery · Express", price: 200, icon: Zap },
+    { id: "courier-express", carrier: "courier", label: "The Courier Guy Express", sub: "Heavy / Regional Door Delivery · Price varies with distance", price: 250, icon: Zap },
   ];
 
   const selectedShipping = shippingMethods.find((s) => s.id === shippingOption)!;
