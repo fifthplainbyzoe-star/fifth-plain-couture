@@ -45,13 +45,12 @@ function Checkout() {
     { id: "paxi-standard", carrier: "paxi", label: "PAXI Standard Bag", sub: "PEP Counter-to-Counter · 7-9 Days · Max 5kg", price: 60, icon: Package },
     { id: "paxi-large", carrier: "paxi", label: "PAXI Large Bag", sub: "PEP Counter-to-Counter · 7-9 Days · Max 10kg", price: 100, icon: Package },
     { id: "courier-standard", carrier: "courier", label: "The Courier Guy Standard", sub: "Door-to-Door · 2-3 Days", price: 120, icon: Truck },
-    { id: "courier-express", carrier: "courier", label: "The Courier Guy Express", sub: "Heavy / Regional Door Delivery · Express", price: 200, icon: Zap },
+    { id: "courier-express", carrier: "courier", label: "The Courier Guy Express", sub: "Heavy / Regional Door Delivery · Price varies with distance", price: 250, icon: Zap },
   ];
 
   const selectedShipping = shippingMethods.find((s) => s.id === shippingOption)!;
   const currentCarrier = selectedShipping.carrier;
-  const isCourierFreeShipping = subtotal >= 200 && currentCarrier === "courier";
-  const shippingCost = isCourierFreeShipping ? 0 : selectedShipping.price;
+  const shippingCost = selectedShipping.price;
   const total = subtotal + shippingCost;
 
   if (items.length === 0 && !done) {
@@ -203,11 +202,6 @@ function Checkout() {
                     <Truck className="w-4 h-4 text-gold" />
                     <span className="text-[11px] uppercase tracking-[0.28em] text-ivory font-medium">The Courier Guy — Door-to-Door</span>
                   </div>
-                  {subtotal >= 200 && (
-                    <span className="text-[10px] uppercase tracking-[0.24em] text-gold bg-gold/10 px-3 py-1">
-                      Free on orders R200+
-                    </span>
-                  )}
                 </div>
               </div>
               <div className="grid sm:grid-cols-2 divide-y sm:divide-y-0 sm:divide-x divide-border">
@@ -233,9 +227,7 @@ function Checkout() {
                           </div>
                         </div>
                         <div className="text-right shrink-0">
-                          <span className="text-ivory font-editorial text-base">
-                            {opt.id === "courier-express" ? "R200+" : `R${opt.price}`}
-                          </span>
+                          <span className="text-ivory font-editorial text-base">R{opt.price}</span>
                         </div>
                       </div>
                       <div className={`mt-3 h-px transition-all ${isActive ? "bg-gold w-8" : "bg-transparent w-0"}`} />
@@ -474,9 +466,7 @@ function Checkout() {
           </div>
           <div className="flex justify-between">
             <dt className="text-muted-foreground">Shipping</dt>
-            <dd className={isCourierFreeShipping ? "text-gold" : "text-ivory"}>
-              {isCourierFreeShipping ? "FREE" : `R${shippingCost}`}
-            </dd>
+            <dd className="text-ivory">R{shippingCost.toLocaleString()}</dd>
           </div>
           <div className="flex justify-between">
             <dt className="text-muted-foreground">Taxes</dt>
