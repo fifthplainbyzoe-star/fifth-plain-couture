@@ -98,11 +98,14 @@ function Checkout() {
         <div className="mx-auto w-16 h-16 rounded-full border border-gold flex items-center justify-center">
           <Check className="w-7 h-7 text-gold" />
         </div>
-        <div className="mt-8 text-[10px] uppercase tracking-[0.32em] text-gold">Payment Confirmed</div>
-        <h1 className="mt-3 font-editorial text-4xl text-ivory">Thank you</h1>
-        <p className="mt-6 text-muted-foreground">Your order has been received and is being prepared in our Florence atelier.</p>
+        <div className="mt-8 text-[10px] uppercase tracking-[0.32em] text-gold">Demo Order Simulated</div>
+        <h1 className="mt-3 font-editorial text-4xl text-ivory">Preview only</h1>
+        <p className="mt-6 text-muted-foreground">
+          No payment was processed and no order was placed. This checkout is a design preview —
+          your details were not stored or transmitted. A live payment gateway has not been connected yet.
+        </p>
         <div className="mt-8 inline-block border border-border px-6 py-4 text-left">
-          <div className="text-[10px] uppercase tracking-[0.28em] text-muted-foreground">Reference</div>
+          <div className="text-[10px] uppercase tracking-[0.28em] text-muted-foreground">Demo reference</div>
           <div className="mt-1 font-editorial text-xl text-gold">{done}</div>
         </div>
         <div className="mt-10 flex gap-3 justify-center">
