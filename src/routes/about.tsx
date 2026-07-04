@@ -22,7 +22,7 @@ function About() {
         <div className="absolute inset-0 bg-gradient-to-b from-background/60 to-background" />
         <div className="relative h-full mx-auto max-w-[1600px] px-6 lg:px-12 flex items-end pb-20">
           <Reveal>
-            <div className="text-[10px] uppercase tracking-[0.4em] text-gold">The Maison</div>
+            <div className="text-[10px] uppercase tracking-[0.4em] text-gold">The Story</div>
             <h1 className="mt-6 font-display text-5xl md:text-8xl text-ivory leading-[0.95]">Fifth Plain</h1>
           </Reveal>
         </div>
