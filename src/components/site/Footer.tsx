@@ -1,4 +1,5 @@
 import { Link } from "@tanstack/react-router";
+import { Instagram, Music } from "lucide-react";
 
 const cols = [
   {
@@ -34,9 +35,13 @@ export function Footer() {
             A ship of timeless design, elevated essentials, and premium craftsmanship.
             Headquartered in Johannesburg, South Africa.
           </p>
-          <div className="mt-8 flex gap-4 text-[11px] uppercase tracking-[0.22em] text-muted-foreground">
-            <a href="#" className="hover:text-gold">Instagram</a>
-            <a href="#" className="hover:text-gold">TikTok</a>
+          <div className="mt-8 flex gap-4 text-muted-foreground">
+            <a href="https://www.instagram.com/_fifthplaindigitals_/" target="_blank" rel="noopener noreferrer" className="hover:text-gold transition-colors">
+              <Instagram className="w-5 h-5" />
+            </a>
+            <a href="https://www.tiktok.com/@fifthplainbyzoe?is_from_webapp=1&sender_device=pc" target="_blank" rel="noopener noreferrer" className="hover:text-gold transition-colors">
+              <Music className="w-5 h-5" />
+            </a>
           </div>
         </div>
 
