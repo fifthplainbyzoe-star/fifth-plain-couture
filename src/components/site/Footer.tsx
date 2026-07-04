@@ -53,7 +53,7 @@ export function Footer() {
               <Instagram className="w-5 h-5" />
             </a>
             <a href="https://www.tiktok.com/@fifthplainbyzoe?is_from_webapp=1&sender_device=pc" target="_blank" rel="noopener noreferrer" className="hover:text-gold transition-colors">
-              <Music className="w-5 h-5" />
+              <TikTokIcon className="w-5 h-5" />
             </a>
           </div>
         </div>
