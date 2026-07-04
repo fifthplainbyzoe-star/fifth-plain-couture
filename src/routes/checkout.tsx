@@ -493,12 +493,12 @@ function Checkout() {
           disabled={processing}
           className="mt-6 w-full bg-gold text-background py-4 text-[11px] uppercase tracking-[0.3em] hover:bg-ivory transition-colors disabled:opacity-60 disabled:cursor-wait"
         >
-          {processing ? "Processing…" : method === "payshap" ? `Pay R${total.toLocaleString()} with PayShap` : `Pay R${total.toLocaleString()}`}
+          {processing ? "Simulating…" : `Simulate Checkout (R${total.toLocaleString()})`}
         </button>
         <Link to="/cart" className="mt-3 block text-center text-[11px] uppercase tracking-[0.28em] text-muted-foreground hover:text-ivory">Back to Atelier</Link>
 
-        <p className="mt-6 text-[10px] uppercase tracking-[0.24em] text-muted-foreground text-center">
-          Prices in ZAR · Taxes included
+        <p className="mt-6 text-[10px] uppercase tracking-[0.24em] text-gold/80 text-center">
+          Preview only · No payment processed
         </p>
       </aside>
     </section>
