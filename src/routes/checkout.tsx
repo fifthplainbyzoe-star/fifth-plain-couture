@@ -228,7 +228,7 @@ function Checkout() {
                         </div>
                         <div className="text-right shrink-0">
                           <span className="text-ivory font-editorial text-base">
-                            {opt.id === "courier-express" ? "R200+" : `R${opt.price}`}
+                            <span className="text-ivory font-editorial text-base">R{opt.price}</span>
                           </span>
                         </div>
                       </div>
