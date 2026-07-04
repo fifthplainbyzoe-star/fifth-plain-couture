@@ -466,9 +466,7 @@ function Checkout() {
           </div>
           <div className="flex justify-between">
             <dt className="text-muted-foreground">Shipping</dt>
-            <dd className={isCourierFreeShipping ? "text-gold" : "text-ivory"}>
-              {isCourierFreeShipping ? "FREE" : `R${shippingCost}`}
-            </dd>
+            <dd className="text-ivory">R{shippingCost.toLocaleString()}</dd>
           </div>
           <div className="flex justify-between">
             <dt className="text-muted-foreground">Taxes</dt>
