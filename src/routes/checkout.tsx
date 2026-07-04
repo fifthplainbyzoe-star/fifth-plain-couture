@@ -227,9 +227,7 @@ function Checkout() {
                           </div>
                         </div>
                         <div className="text-right shrink-0">
-                          <span className="text-ivory font-editorial text-base">
-                            <span className="text-ivory font-editorial text-base">R{opt.price}</span>
-                          </span>
+                          <span className="text-ivory font-editorial text-base">R{opt.price}</span>
                         </div>
                       </div>
                       <div className={`mt-3 h-px transition-all ${isActive ? "bg-gold w-8" : "bg-transparent w-0"}`} />
