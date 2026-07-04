@@ -50,7 +50,7 @@ function Contact() {
           <div className="text-[10px] uppercase tracking-[0.32em] text-gold">Client Services</div>
           <h1 className="mt-3 font-editorial text-4xl md:text-5xl text-ivory">Contact the Atelier</h1>
           <p className="mt-6 text-muted-foreground leading-relaxed">
-            Whether you have a question about sizing, need guidance on a custom piece, or simply wish to share your experience with our maison — we are here to listen.
+            Whether you have a question about sizing, need guidance on a custom piece, or simply wish to share your experience with us, we are here to listen.
           </p>
 
           <form onSubmit={handleSubmit} className="mt-10 space-y-6">
@@ -137,8 +137,8 @@ function Contact() {
 
           <div>
             <h3 className="font-display text-sm tracking-[0.28em] text-ivory">EMAIL</h3>
-            <a href="mailto:atelier@fifthplain.com" className="mt-4 block text-sm text-gold hover:text-ivory transition-colors">
-              atelier@fifthplain.com
+            <a href="mailto:fifthplainbyzoe@gmail.com" className="mt-4 block text-sm text-gold hover:text-ivory transition-colors">
+              fifthplainbyzoe@gmail.com
             </a>
           </div>
 
