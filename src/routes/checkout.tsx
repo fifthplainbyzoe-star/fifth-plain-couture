@@ -82,7 +82,10 @@ function Checkout() {
     }
     setProcessing(true);
     setTimeout(() => {
-      const ref = "FP-" + Math.random().toString(36).slice(2, 8).toUpperCase();
+      const rand = typeof crypto !== "undefined" && "randomUUID" in crypto
+        ? crypto.randomUUID().replace(/-/g, "").slice(0, 6).toUpperCase()
+        : Date.now().toString(36).slice(-6).toUpperCase();
+      const ref = "DEMO-" + rand;
       setDone(ref);
       clear();
       setProcessing(false);
@@ -95,11 +98,14 @@ function Checkout() {
         <div className="mx-auto w-16 h-16 rounded-full border border-gold flex items-center justify-center">
           <Check className="w-7 h-7 text-gold" />
         </div>
-        <div className="mt-8 text-[10px] uppercase tracking-[0.32em] text-gold">Payment Confirmed</div>
-        <h1 className="mt-3 font-editorial text-4xl text-ivory">Thank you</h1>
-        <p className="mt-6 text-muted-foreground">Your order has been received and is being prepared in our Florence atelier.</p>
+        <div className="mt-8 text-[10px] uppercase tracking-[0.32em] text-gold">Demo Order Simulated</div>
+        <h1 className="mt-3 font-editorial text-4xl text-ivory">Preview only</h1>
+        <p className="mt-6 text-muted-foreground">
+          No payment was processed and no order was placed. This checkout is a design preview —
+          your details were not stored or transmitted. A live payment gateway has not been connected yet.
+        </p>
         <div className="mt-8 inline-block border border-border px-6 py-4 text-left">
-          <div className="text-[10px] uppercase tracking-[0.28em] text-muted-foreground">Reference</div>
+          <div className="text-[10px] uppercase tracking-[0.28em] text-muted-foreground">Demo reference</div>
           <div className="mt-1 font-editorial text-xl text-gold">{done}</div>
         </div>
         <div className="mt-10 flex gap-3 justify-center">
@@ -122,6 +128,16 @@ function Checkout() {
       <div>
         <div className="text-[10px] uppercase tracking-[0.32em] text-gold">Checkout</div>
         <h1 className="mt-3 font-editorial text-4xl md:text-5xl text-ivory">Complete your order</h1>
+
+        {/* Demo notice — no live payment gateway is connected */}
+        <div className="mt-6 border border-gold/40 bg-gold/5 px-5 py-4">
+          <div className="text-[10px] uppercase tracking-[0.32em] text-gold">Preview Checkout</div>
+          <p className="mt-2 text-xs text-ivory/80 leading-relaxed">
+            This is a design preview. No payment gateway is connected yet — submitting this form
+            will <span className="text-gold">not</span> charge you, place an order, or store the
+            details you enter. Please do not provide real payment information.
+          </p>
+        </div>
 
         {/* Shipping Method Selector */}
         <div className="mt-10">
@@ -477,12 +493,12 @@ function Checkout() {
           disabled={processing}
           className="mt-6 w-full bg-gold text-background py-4 text-[11px] uppercase tracking-[0.3em] hover:bg-ivory transition-colors disabled:opacity-60 disabled:cursor-wait"
         >
-          {processing ? "Processing…" : method === "payshap" ? `Pay R${total.toLocaleString()} with PayShap` : `Pay R${total.toLocaleString()}`}
+          {processing ? "Simulating…" : `Simulate Checkout (R${total.toLocaleString()})`}
         </button>
         <Link to="/cart" className="mt-3 block text-center text-[11px] uppercase tracking-[0.28em] text-muted-foreground hover:text-ivory">Back to Atelier</Link>
 
-        <p className="mt-6 text-[10px] uppercase tracking-[0.24em] text-muted-foreground text-center">
-          Prices in ZAR · Taxes included
+        <p className="mt-6 text-[10px] uppercase tracking-[0.24em] text-gold/80 text-center">
+          Preview only · No payment processed
         </p>
       </aside>
     </section>
