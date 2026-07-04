@@ -50,8 +50,7 @@ function Checkout() {
 
   const selectedShipping = shippingMethods.find((s) => s.id === shippingOption)!;
   const currentCarrier = selectedShipping.carrier;
-  const isCourierFreeShipping = subtotal >= 200 && currentCarrier === "courier";
-  const shippingCost = isCourierFreeShipping ? 0 : selectedShipping.price;
+  const shippingCost = selectedShipping.price;
   const total = subtotal + shippingCost;
 
   if (items.length === 0 && !done) {
