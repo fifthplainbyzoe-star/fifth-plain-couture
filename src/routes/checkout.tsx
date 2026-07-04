@@ -129,6 +129,16 @@ function Checkout() {
         <div className="text-[10px] uppercase tracking-[0.32em] text-gold">Checkout</div>
         <h1 className="mt-3 font-editorial text-4xl md:text-5xl text-ivory">Complete your order</h1>
 
+        {/* Demo notice — no live payment gateway is connected */}
+        <div className="mt-6 border border-gold/40 bg-gold/5 px-5 py-4">
+          <div className="text-[10px] uppercase tracking-[0.32em] text-gold">Preview Checkout</div>
+          <p className="mt-2 text-xs text-ivory/80 leading-relaxed">
+            This is a design preview. No payment gateway is connected yet — submitting this form
+            will <span className="text-gold">not</span> charge you, place an order, or store the
+            details you enter. Please do not provide real payment information.
+          </p>
+        </div>
+
         {/* Shipping Method Selector */}
         <div className="mt-10">
           <div className="flex items-center justify-between">
