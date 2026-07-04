@@ -82,7 +82,10 @@ function Checkout() {
     }
     setProcessing(true);
     setTimeout(() => {
-      const ref = "FP-" + Math.random().toString(36).slice(2, 8).toUpperCase();
+      const rand = typeof crypto !== "undefined" && "randomUUID" in crypto
+        ? crypto.randomUUID().replace(/-/g, "").slice(0, 6).toUpperCase()
+        : Date.now().toString(36).slice(-6).toUpperCase();
+      const ref = "DEMO-" + rand;
       setDone(ref);
       clear();
       setProcessing(false);
