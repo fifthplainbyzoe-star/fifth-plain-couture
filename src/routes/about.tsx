@@ -5,7 +5,7 @@ import look from "@/assets/lookbook.jpg";
 export const Route = createFileRoute("/about")({
   head: () => ({
     meta: [
-      { title: "Maison — Fifth Plain" },
+      { title: "The Story — Fifth Plain" },
       { name: "description", content: "The story, philosophy and craftsmanship of Fifth Plain." },
       { property: "og:url", content: "/about" },
     ],
