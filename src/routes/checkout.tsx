@@ -202,11 +202,6 @@ function Checkout() {
                     <Truck className="w-4 h-4 text-gold" />
                     <span className="text-[11px] uppercase tracking-[0.28em] text-ivory font-medium">The Courier Guy — Door-to-Door</span>
                   </div>
-                  {subtotal >= 200 && (
-                    <span className="text-[10px] uppercase tracking-[0.24em] text-gold bg-gold/10 px-3 py-1">
-                      Free on orders R200+
-                    </span>
-                  )}
                 </div>
               </div>
               <div className="grid sm:grid-cols-2 divide-y sm:divide-y-0 sm:divide-x divide-border">
