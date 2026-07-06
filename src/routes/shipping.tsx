@@ -9,8 +9,12 @@ export const Route = createFileRoute("/shipping")({
       { name: "description", content: "Shipping rates, delivery timelines, order tracking, and returns policy for Fifth Plain." },
       { property: "og:title", content: "Shipping & Returns — Fifth Plain" },
       { property: "og:description", content: "Shipping rates, delivery timelines, order tracking, and returns policy for Fifth Plain." },
+      { property: "og:type", content: "website" },
     ],
-    links: [{ rel: "canonical", href: "/shipping" }],
+    links: [
+      { rel: "canonical", href: "/shipping" },
+      { rel: "og:url", href: "/shipping" },
+    ],
   }),
   component: Shipping,
 });
