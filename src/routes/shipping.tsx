@@ -20,10 +20,10 @@ const sections = [
     icon: Truck,
     title: "Shipping Rates & Timelines",
     items: [
-      { label: "PAXI Store Collection", detail: "R60 — 2–5 business days to your selected PEP or Tekkie Town location." },
-      { label: "Courier Guy Standard", detail: "R120 — Door-to-door delivery, 7–14 business days." },
-      { label: "Courier Guy Express", detail: "R250 — Door-to-door delivery, 2–7 business days." },
-      { label: "Heavy Regional Door Delivery Express", detail: "Price varies depending on distance — the further the destination, the higher the rate." },
+      { label: "PAXI Store Collection", detail: "R60: 5–10 business days to your selected PEP or Tekkie Town location." },
+      { label: "Courier Guy Standard", detail: "R120: 7–14 business days." },
+      { label: "Courier Guy Express", detail: "R250: Door-to-door delivery, 7–14 business days." },
+      { label: "Heavy Regional Door Delivery Express", detail: "Price varies depending on distance, the further the destination, the higher the rate." },
     ],
   },
   {
