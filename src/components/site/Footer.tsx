@@ -31,7 +31,7 @@ const cols = [
   {
     title: "Client Services",
     links: [
-      { label: "Shipping", to: "/faq" },
+      { label: "Shipping", to: "/shipping" },
       { label: "FAQ", to: "/faq" },
       { label: "Contact", to: "/contact" },
     ],
