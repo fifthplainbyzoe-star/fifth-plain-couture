@@ -19,6 +19,9 @@ import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ShopIndexRouteImport } from './routes/shop.index'
 import { Route as ShopIdRouteImport } from './routes/shop.$id'
+import { Route as PayReferenceRouteImport } from './routes/pay.$reference'
+import { Route as OrderConfirmedReferenceRouteImport } from './routes/order-confirmed.$reference'
+import { Route as ApiPublicPayshapWebhookRouteImport } from './routes/api/public/payshap-webhook'
 
 const ShippingRoute = ShippingRouteImport.update({
   id: '/shipping',
@@ -70,6 +73,21 @@ const ShopIdRoute = ShopIdRouteImport.update({
   path: '/shop/$id',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PayReferenceRoute = PayReferenceRouteImport.update({
+  id: '/pay/$reference',
+  path: '/pay/$reference',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OrderConfirmedReferenceRoute = OrderConfirmedReferenceRouteImport.update({
+  id: '/order-confirmed/$reference',
+  path: '/order-confirmed/$reference',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiPublicPayshapWebhookRoute = ApiPublicPayshapWebhookRouteImport.update({
+  id: '/api/public/payshap-webhook',
+  path: '/api/public/payshap-webhook',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -80,8 +98,11 @@ export interface FileRoutesByFullPath {
   '/faq': typeof FaqRoute
   '/medallion': typeof MedallionRoute
   '/shipping': typeof ShippingRoute
+  '/order-confirmed/$reference': typeof OrderConfirmedReferenceRoute
+  '/pay/$reference': typeof PayReferenceRoute
   '/shop/$id': typeof ShopIdRoute
   '/shop/': typeof ShopIndexRoute
+  '/api/public/payshap-webhook': typeof ApiPublicPayshapWebhookRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -92,8 +113,11 @@ export interface FileRoutesByTo {
   '/faq': typeof FaqRoute
   '/medallion': typeof MedallionRoute
   '/shipping': typeof ShippingRoute
+  '/order-confirmed/$reference': typeof OrderConfirmedReferenceRoute
+  '/pay/$reference': typeof PayReferenceRoute
   '/shop/$id': typeof ShopIdRoute
   '/shop': typeof ShopIndexRoute
+  '/api/public/payshap-webhook': typeof ApiPublicPayshapWebhookRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -105,8 +129,11 @@ export interface FileRoutesById {
   '/faq': typeof FaqRoute
   '/medallion': typeof MedallionRoute
   '/shipping': typeof ShippingRoute
+  '/order-confirmed/$reference': typeof OrderConfirmedReferenceRoute
+  '/pay/$reference': typeof PayReferenceRoute
   '/shop/$id': typeof ShopIdRoute
   '/shop/': typeof ShopIndexRoute
+  '/api/public/payshap-webhook': typeof ApiPublicPayshapWebhookRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -119,8 +146,11 @@ export interface FileRouteTypes {
     | '/faq'
     | '/medallion'
     | '/shipping'
+    | '/order-confirmed/$reference'
+    | '/pay/$reference'
     | '/shop/$id'
     | '/shop/'
+    | '/api/public/payshap-webhook'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -131,8 +161,11 @@ export interface FileRouteTypes {
     | '/faq'
     | '/medallion'
     | '/shipping'
+    | '/order-confirmed/$reference'
+    | '/pay/$reference'
     | '/shop/$id'
     | '/shop'
+    | '/api/public/payshap-webhook'
   id:
     | '__root__'
     | '/'
@@ -143,8 +176,11 @@ export interface FileRouteTypes {
     | '/faq'
     | '/medallion'
     | '/shipping'
+    | '/order-confirmed/$reference'
+    | '/pay/$reference'
     | '/shop/$id'
     | '/shop/'
+    | '/api/public/payshap-webhook'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -156,8 +192,11 @@ export interface RootRouteChildren {
   FaqRoute: typeof FaqRoute
   MedallionRoute: typeof MedallionRoute
   ShippingRoute: typeof ShippingRoute
+  OrderConfirmedReferenceRoute: typeof OrderConfirmedReferenceRoute
+  PayReferenceRoute: typeof PayReferenceRoute
   ShopIdRoute: typeof ShopIdRoute
   ShopIndexRoute: typeof ShopIndexRoute
+  ApiPublicPayshapWebhookRoute: typeof ApiPublicPayshapWebhookRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -232,6 +271,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ShopIdRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/pay/$reference': {
+      id: '/pay/$reference'
+      path: '/pay/$reference'
+      fullPath: '/pay/$reference'
+      preLoaderRoute: typeof PayReferenceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/order-confirmed/$reference': {
+      id: '/order-confirmed/$reference'
+      path: '/order-confirmed/$reference'
+      fullPath: '/order-confirmed/$reference'
+      preLoaderRoute: typeof OrderConfirmedReferenceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/public/payshap-webhook': {
+      id: '/api/public/payshap-webhook'
+      path: '/api/public/payshap-webhook'
+      fullPath: '/api/public/payshap-webhook'
+      preLoaderRoute: typeof ApiPublicPayshapWebhookRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -244,8 +304,11 @@ const rootRouteChildren: RootRouteChildren = {
   FaqRoute: FaqRoute,
   MedallionRoute: MedallionRoute,
   ShippingRoute: ShippingRoute,
+  OrderConfirmedReferenceRoute: OrderConfirmedReferenceRoute,
+  PayReferenceRoute: PayReferenceRoute,
   ShopIdRoute: ShopIdRoute,
   ShopIndexRoute: ShopIndexRoute,
+  ApiPublicPayshapWebhookRoute: ApiPublicPayshapWebhookRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
