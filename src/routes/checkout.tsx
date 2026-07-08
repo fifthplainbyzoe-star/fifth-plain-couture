@@ -1,14 +1,14 @@
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { useState } from "react";
 import { useCart } from "@/lib/cart";
-import { Check, Shield, Smartphone, Building2, CreditCard, Landmark, MapPin, Truck, Package, Zap } from "lucide-react";
+import { Check, Shield, Smartphone, MapPin, Truck, Package, Zap, Landmark } from "lucide-react";
 
 export const Route = createFileRoute("/checkout")({
   head: () => ({ meta: [{ title: "Checkout — Fifth Plain" }, { name: "robots", content: "noindex" }] }),
   component: Checkout,
 });
 
-type Method = "payshap" | "eft" | "ozow" | "card";
+type Bank = "tymebank" | "capitec";
 type ShippingCarrier = "paxi" | "courier";
 type ShippingOption = "paxi-standard" | "paxi-large" | "courier-standard" | "courier-express";
 
@@ -24,10 +24,9 @@ interface ShippingMethod {
 function Checkout() {
   const { items, subtotal, clear } = useCart();
   const navigate = useNavigate();
-  const [method, setMethod] = useState<Method>("payshap");
   const [shippingOption, setShippingOption] = useState<ShippingOption>("paxi-standard");
   const [identifier, setIdentifier] = useState("");
-  const [idType, setIdType] = useState<"phone" | "shapid">("phone");
+  const [bank, setBank] = useState<Bank>("tymebank");
   const [processing, setProcessing] = useState(false);
   const [done, setDone] = useState<string | null>(null);
   const [error, setError] = useState("");
@@ -64,21 +63,15 @@ function Checkout() {
 
   const validatePayShap = () => {
     const v = identifier.trim();
-    if (idType === "phone") {
-      const digits = v.replace(/[\s-]/g, "");
-      if (!/^(\+?27|0)[6-8][0-9]{8}$/.test(digits)) return "Enter a valid South African cell number.";
-    } else {
-      if (!/^[a-zA-Z0-9._-]{3,30}$/.test(v)) return "Enter a valid ShapID (3–30 characters).";
-    }
+    const digits = v.replace(/[\s-]/g, "");
+    if (!/^(\+?27|0)[6-8][0-9]{8}$/.test(digits)) return "Enter a valid South African cell number.";
     return "";
   };
 
   const handlePay = () => {
     setError("");
-    if (method === "payshap") {
-      const err = validatePayShap();
-      if (err) { setError(err); return; }
-    }
+    const err = validatePayShap();
+    if (err) { setError(err); return; }
     setProcessing(true);
     setTimeout(() => {
       const rand = typeof crypto !== "undefined" && "randomUUID" in crypto
@@ -115,11 +108,9 @@ function Checkout() {
     );
   }
 
-  const paymentMethods: { id: Method; label: string; sub: string; icon: typeof Smartphone; badge?: string }[] = [
-    { id: "payshap", label: "PayShap", sub: "Instant Bank Pay · SA", icon: Smartphone, badge: "Recommended" },
-    { id: "eft", label: "Instant EFT", sub: "Capitec · FNB · Standard · Nedbank · Absa", icon: Landmark },
-    { id: "ozow", label: "Ozow", sub: "Secure open banking", icon: Building2 },
-    { id: "card", label: "Card", sub: "Visa · Mastercard (ZAR)", icon: CreditCard },
+  const banks: { id: Bank; label: string; sub: string }[] = [
+    { id: "tymebank", label: "TymeBank", sub: "Supplier Account" },
+    { id: "capitec", label: "Capitec", sub: "Supplier Account" },
   ];
 
   return (
@@ -334,113 +325,90 @@ function Checkout() {
           </div>
         </div>
 
-        {/* Payment Options */}
+        {/* Payment — PayShap only */}
         <div className="mt-12">
-          <h2 className="font-display text-sm tracking-[0.28em] text-ivory">SOUTH AFRICAN PAYMENT OPTIONS</h2>
-          <p className="mt-2 text-xs text-muted-foreground">Pay in Rand from any local bank. All transactions are secured end-to-end.</p>
-
-          <div className="mt-6 grid sm:grid-cols-2 gap-3">
-            {paymentMethods.map((m) => {
-              const Icon = m.icon;
-              const active = method === m.id;
-              return (
-                <button
-                  key={m.id}
-                  onClick={() => setMethod(m.id)}
-                  className={`text-left p-5 border transition-all ${
-                    active ? "border-gold bg-gold/5" : "border-border hover:border-ivory/50"
-                  }`}
-                >
-                  <div className="flex items-start justify-between gap-3">
-                    <div className="flex items-center gap-3">
-                      <div className={`w-10 h-10 flex items-center justify-center border ${active ? "border-gold text-gold" : "border-border text-ivory"}`}>
-                        <Icon className="w-4 h-4" />
-                      </div>
-                      <div>
-                        <div className={`font-editorial text-lg ${active ? "text-gold" : "text-ivory"}`}>{m.label}</div>
-                        <div className="text-[10px] uppercase tracking-[0.24em] text-muted-foreground mt-0.5">{m.sub}</div>
-                      </div>
-                    </div>
-                    {m.badge && (
-                      <span className="text-[9px] uppercase tracking-[0.24em] text-gold border border-gold/50 px-2 py-1">{m.badge}</span>
-                    )}
-                  </div>
-                </button>
-              );
-            })}
-          </div>
+          <h2 className="font-display text-sm tracking-[0.28em] text-ivory">PAYMENT METHOD</h2>
+          <p className="mt-2 text-xs text-muted-foreground">Pay in Rand via PayShap directly to the supplier account.</p>
         </div>
 
         {/* PayShap panel */}
-        {method === "payshap" && (
-          <div className="mt-10 border border-gold/40 bg-gradient-to-br from-gold/5 to-transparent p-8">
-            <div className="flex items-center justify-between">
+        <div className="mt-6 border border-gold/40 bg-gradient-to-br from-gold/5 to-transparent p-8">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 flex items-center justify-center border border-gold text-gold">
+                <Smartphone className="w-4 h-4" />
+              </div>
               <div>
                 <div className="text-[10px] uppercase tracking-[0.32em] text-gold">PayShap</div>
-                <div className="mt-2 font-editorial text-2xl text-ivory">Instant Bank Pay</div>
-              </div>
-              <div className="text-right">
-                <div className="text-[10px] uppercase tracking-[0.24em] text-muted-foreground">Powered by</div>
-                <div className="font-display text-sm tracking-[0.28em] text-gold">BANKSERV · SA</div>
+                <div className="mt-1 font-editorial text-2xl text-ivory">Instant Bank Pay</div>
               </div>
             </div>
-
-            <p className="mt-5 text-sm text-muted-foreground leading-relaxed">
-              Pay instantly from any South African bank account using your registered cell number or ShapID.
-              No card details required. Funds clear in seconds.
-            </p>
-
-            <div className="mt-8">
-              <div className="inline-flex border border-border p-1">
-                <button
-                  onClick={() => { setIdType("phone"); setIdentifier(""); setError(""); }}
-                  className={`px-4 py-2 text-[10px] uppercase tracking-[0.28em] transition-colors ${idType === "phone" ? "bg-gold text-background" : "text-ivory hover:text-gold"}`}
-                >
-                  Cell Number
-                </button>
-                <button
-                  onClick={() => { setIdType("shapid"); setIdentifier(""); setError(""); }}
-                  className={`px-4 py-2 text-[10px] uppercase tracking-[0.28em] transition-colors ${idType === "shapid" ? "bg-gold text-background" : "text-ivory hover:text-gold"}`}
-                >
-                  ShapID
-                </button>
-              </div>
-
-              <div className="mt-4">
-                <label className="text-[10px] uppercase tracking-[0.28em] text-ivory">
-                  {idType === "phone" ? "Registered Cell Number" : "Your ShapID"}
-                </label>
-                <div className="mt-2 flex items-center border border-border focus-within:border-gold bg-background">
-                  <span className="px-4 text-muted-foreground text-sm border-r border-border">
-                    {idType === "phone" ? "+27" : "@"}
-                  </span>
-                  <input
-                    inputMode={idType === "phone" ? "tel" : "text"}
-                    value={identifier}
-                    onChange={(e) => setIdentifier(e.target.value)}
-                    placeholder={idType === "phone" ? "82 123 4567" : "yourname"}
-                    className="flex-1 bg-transparent px-4 py-3 text-ivory outline-none text-sm"
-                  />
-                </div>
-                {error && <p className="mt-2 text-xs text-red-400">{error}</p>}
-              </div>
-            </div>
-
-            <div className="mt-6 flex items-center gap-2 text-[10px] uppercase tracking-[0.24em] text-muted-foreground">
-              <Shield className="w-3 h-3 text-gold" />
-              Secured by BankservAfrica · 3D-Secure · POPIA compliant
+            <div className="text-right">
+              <div className="text-[10px] uppercase tracking-[0.24em] text-muted-foreground">Powered by</div>
+              <div className="font-display text-sm tracking-[0.28em] text-gold">BANKSERV · SA</div>
             </div>
           </div>
-        )}
 
-        {method !== "payshap" && (
-          <div className="mt-10 border border-border p-8 text-center">
-            <p className="text-sm text-muted-foreground">
-              You will be redirected to a secure {paymentMethods.find((m) => m.id === method)?.label} portal to complete payment in Rand.
-            </p>
+          <p className="mt-5 text-sm text-muted-foreground leading-relaxed">
+            Pay instantly from any South African bank account using the supplier's registered cell number.
+            No card details required. Funds clear in seconds.
+          </p>
+
+          <div className="mt-8">
+            <label className="text-[10px] uppercase tracking-[0.28em] text-ivory">
+              Registered Cell Number (Supplier Account)
+            </label>
+            <div className="mt-2 flex items-center border border-border focus-within:border-gold bg-background">
+              <span className="px-4 text-muted-foreground text-sm border-r border-border">+27</span>
+              <input
+                inputMode="tel"
+                value={identifier}
+                onChange={(e) => setIdentifier(e.target.value)}
+                placeholder="82 123 4567"
+                className="flex-1 bg-transparent px-4 py-3 text-ivory outline-none text-sm"
+              />
+            </div>
+            {error && <p className="mt-2 text-xs text-red-400">{error}</p>}
           </div>
-        )}
+
+          <div className="mt-6">
+            <label className="text-[10px] uppercase tracking-[0.28em] text-ivory">
+              Bank Account
+            </label>
+            <div className="mt-2 grid sm:grid-cols-2 gap-3">
+              {banks.map((b) => {
+                const active = bank === b.id;
+                return (
+                  <button
+                    key={b.id}
+                    type="button"
+                    onClick={() => setBank(b.id)}
+                    className={`text-left p-4 border transition-all ${
+                      active ? "border-gold bg-gold/5" : "border-border hover:border-ivory/50"
+                    }`}
+                  >
+                    <div className="flex items-center gap-3">
+                      <div className={`w-9 h-9 flex items-center justify-center border ${active ? "border-gold text-gold" : "border-border text-ivory"}`}>
+                        <Landmark className="w-4 h-4" />
+                      </div>
+                      <div>
+                        <div className={`font-editorial text-base ${active ? "text-gold" : "text-ivory"}`}>{b.label}</div>
+                        <div className="text-[10px] uppercase tracking-[0.24em] text-muted-foreground mt-0.5">{b.sub}</div>
+                      </div>
+                    </div>
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+
+          <div className="mt-6 flex items-center gap-2 text-[10px] uppercase tracking-[0.24em] text-muted-foreground">
+            <Shield className="w-3 h-3 text-gold" />
+            Secured by BankservAfrica · 3D-Secure · POPIA compliant
+          </div>
+        </div>
       </div>
+
 
       <aside className="lg:sticky lg:top-28 self-start border border-border p-8 bg-surface">
         <h2 className="font-display text-lg tracking-[0.28em] text-ivory">ORDER</h2>
