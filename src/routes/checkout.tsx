@@ -26,11 +26,11 @@ interface ShippingMethod {
 function Checkout() {
   const { items, subtotal, clear } = useCart();
   const navigate = useNavigate();
+  const initiate = useServerFn(initiatePayShapCheckout);
   const [shippingOption, setShippingOption] = useState<ShippingOption>("paxi-standard");
   const [identifier, setIdentifier] = useState("");
   const [bank, setBank] = useState<Bank>("tymebank");
   const [processing, setProcessing] = useState(false);
-  const [done, setDone] = useState<string | null>(null);
   const [error, setError] = useState("");
 
   const [paxiCode, setPaxiCode] = useState("");
@@ -54,7 +54,7 @@ function Checkout() {
   const shippingCost = selectedShipping.price;
   const total = subtotal + shippingCost;
 
-  if (items.length === 0 && !done) {
+  if (items.length === 0) {
     return (
       <section className="mx-auto max-w-[700px] px-6 py-24 text-center">
         <h1 className="font-editorial text-3xl text-ivory">Nothing to check out</h1>
@@ -70,45 +70,51 @@ function Checkout() {
     return "";
   };
 
-  const handlePay = () => {
+  const handlePay = async () => {
     setError("");
     const err = validatePayShap();
     if (err) { setError(err); return; }
+    if (currentCarrier === "paxi" && !paxiCode.trim()) {
+      setError("Enter your PAXI point code."); return;
+    }
+    if (currentCarrier === "courier" && (!shippingAddress.street || !shippingAddress.city)) {
+      setError("Enter your shipping address."); return;
+    }
     setProcessing(true);
-    setTimeout(() => {
-      const rand = typeof crypto !== "undefined" && "randomUUID" in crypto
-        ? crypto.randomUUID().replace(/-/g, "").slice(0, 6).toUpperCase()
-        : Date.now().toString(36).slice(-6).toUpperCase();
-      const ref = "DEMO-" + rand;
-      setDone(ref);
+    try {
+      const shippingDetails =
+        currentCarrier === "paxi" ? { paxiCode } : shippingAddress;
+      const res = await initiate({
+        data: {
+          items: items.map((i) => ({
+            id: i.id,
+            name: i.name,
+            price: i.price,
+            qty: i.qty,
+            size: i.size,
+            image: i.image,
+          })),
+          subtotal,
+          shippingCost,
+          total,
+          shippingCarrier: currentCarrier,
+          shippingOption,
+          shippingDetails,
+          phone: identifier.trim(),
+          bank,
+        },
+      });
       clear();
+      navigate({
+        to: "/pay/$reference",
+        params: { reference: res.reference },
+        search: { id: res.checkoutId } as never,
+      });
+    } catch (e) {
+      setError(e instanceof Error ? e.message : "Payment could not be started.");
       setProcessing(false);
-    }, 1400);
+    }
   };
-
-  if (done) {
-    return (
-      <section className="mx-auto max-w-[640px] px-6 py-24 text-center">
-        <div className="mx-auto w-16 h-16 rounded-full border border-gold flex items-center justify-center">
-          <Check className="w-7 h-7 text-gold" />
-        </div>
-        <div className="mt-8 text-[10px] uppercase tracking-[0.32em] text-gold">Demo Order Simulated</div>
-        <h1 className="mt-3 font-editorial text-4xl text-ivory">Preview only</h1>
-        <p className="mt-6 text-muted-foreground">
-          No payment was processed and no order was placed. This checkout is a design preview —
-          your details were not stored or transmitted. A live payment gateway has not been connected yet.
-        </p>
-        <div className="mt-8 inline-block border border-border px-6 py-4 text-left">
-          <div className="text-[10px] uppercase tracking-[0.28em] text-muted-foreground">Demo reference</div>
-          <div className="mt-1 font-editorial text-xl text-gold">{done}</div>
-        </div>
-        <div className="mt-10 flex gap-3 justify-center">
-          <Link to="/shop" className="border border-gold text-gold px-8 py-3 text-[11px] uppercase tracking-[0.28em] hover:bg-gold hover:text-background transition-colors">Continue</Link>
-          <button onClick={() => navigate({ to: "/" })} className="border border-border text-ivory px-8 py-3 text-[11px] uppercase tracking-[0.28em] hover:border-ivory">Home</button>
-        </div>
-      </section>
-    );
-  }
 
   const banks: { id: Bank; label: string; sub: string }[] = [
     { id: "tymebank", label: "TymeBank", sub: "Supplier Account" },
