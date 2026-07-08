@@ -63,21 +63,15 @@ function Checkout() {
 
   const validatePayShap = () => {
     const v = identifier.trim();
-    if (idType === "phone") {
-      const digits = v.replace(/[\s-]/g, "");
-      if (!/^(\+?27|0)[6-8][0-9]{8}$/.test(digits)) return "Enter a valid South African cell number.";
-    } else {
-      if (!/^[a-zA-Z0-9._-]{3,30}$/.test(v)) return "Enter a valid ShapID (3–30 characters).";
-    }
+    const digits = v.replace(/[\s-]/g, "");
+    if (!/^(\+?27|0)[6-8][0-9]{8}$/.test(digits)) return "Enter a valid South African cell number.";
     return "";
   };
 
   const handlePay = () => {
     setError("");
-    if (method === "payshap") {
-      const err = validatePayShap();
-      if (err) { setError(err); return; }
-    }
+    const err = validatePayShap();
+    if (err) { setError(err); return; }
     setProcessing(true);
     setTimeout(() => {
       const rand = typeof crypto !== "undefined" && "randomUUID" in crypto
