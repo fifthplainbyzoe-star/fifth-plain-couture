@@ -1,7 +1,9 @@
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { useState } from "react";
 import { useCart } from "@/lib/cart";
-import { Check, Shield, Smartphone, MapPin, Truck, Package, Zap, Landmark } from "lucide-react";
+import { Shield, Smartphone, MapPin, Truck, Package, Zap, Landmark } from "lucide-react";
+import { initiatePayShapCheckout } from "@/lib/payshap.functions";
+import { useServerFn } from "@tanstack/react-start";
 
 export const Route = createFileRoute("/checkout")({
   head: () => ({ meta: [{ title: "Checkout — Fifth Plain" }, { name: "robots", content: "noindex" }] }),
