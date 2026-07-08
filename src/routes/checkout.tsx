@@ -108,11 +108,9 @@ function Checkout() {
     );
   }
 
-  const paymentMethods: { id: Method; label: string; sub: string; icon: typeof Smartphone; badge?: string }[] = [
-    { id: "payshap", label: "PayShap", sub: "Instant Bank Pay · SA", icon: Smartphone, badge: "Recommended" },
-    { id: "eft", label: "Instant EFT", sub: "Capitec · FNB · Standard · Nedbank · Absa", icon: Landmark },
-    { id: "ozow", label: "Ozow", sub: "Secure open banking", icon: Building2 },
-    { id: "card", label: "Card", sub: "Visa · Mastercard (ZAR)", icon: CreditCard },
+  const banks: { id: Bank; label: string; sub: string }[] = [
+    { id: "tymebank", label: "TymeBank", sub: "Supplier Account" },
+    { id: "capitec", label: "Capitec", sub: "Supplier Account" },
   ];
 
   return (
