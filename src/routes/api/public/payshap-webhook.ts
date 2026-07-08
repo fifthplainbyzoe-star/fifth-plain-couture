@@ -42,7 +42,7 @@ export const Route = createFileRoute("/api/public/payshap-webhook")({
         const status = isSuccessCode(code) ? "paid" : "failed";
         const { error } = await supabaseAdmin
           .from("orders")
-          .update({ status, payment_result: payload })
+          .update({ status, payment_result: payload as unknown as never })
           .eq("reference", reference);
         if (error) {
           console.error("[payshap-webhook] db update failed", error);

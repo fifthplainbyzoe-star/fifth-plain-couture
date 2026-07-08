@@ -121,7 +121,7 @@ export const syncOrderStatusFromPeach = createServerFn({ method: "POST" })
 
     await supabaseAdmin
       .from("orders")
-      .update({ status: nextStatus, payment_result: result })
+      .update({ status: nextStatus, payment_result: result as unknown as never })
       .eq("reference", data.reference);
 
     return { status: nextStatus };
