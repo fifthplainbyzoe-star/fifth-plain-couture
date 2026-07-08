@@ -1,14 +1,14 @@
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { useState } from "react";
 import { useCart } from "@/lib/cart";
-import { Check, Shield, Smartphone, Building2, CreditCard, Landmark, MapPin, Truck, Package, Zap } from "lucide-react";
+import { Check, Shield, Smartphone, MapPin, Truck, Package, Zap, Landmark } from "lucide-react";
 
 export const Route = createFileRoute("/checkout")({
   head: () => ({ meta: [{ title: "Checkout — Fifth Plain" }, { name: "robots", content: "noindex" }] }),
   component: Checkout,
 });
 
-type Method = "payshap" | "eft" | "ozow" | "card";
+type Bank = "tymebank" | "capitec";
 type ShippingCarrier = "paxi" | "courier";
 type ShippingOption = "paxi-standard" | "paxi-large" | "courier-standard" | "courier-express";
 
@@ -24,10 +24,9 @@ interface ShippingMethod {
 function Checkout() {
   const { items, subtotal, clear } = useCart();
   const navigate = useNavigate();
-  const [method, setMethod] = useState<Method>("payshap");
   const [shippingOption, setShippingOption] = useState<ShippingOption>("paxi-standard");
   const [identifier, setIdentifier] = useState("");
-  const [idType, setIdType] = useState<"phone" | "shapid">("phone");
+  const [bank, setBank] = useState<Bank>("tymebank");
   const [processing, setProcessing] = useState(false);
   const [done, setDone] = useState<string | null>(null);
   const [error, setError] = useState("");
