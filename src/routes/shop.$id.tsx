@@ -75,7 +75,7 @@ function ProductPage() {
       {isAurelia ? (
         <section className="relative min-h-[80svh] overflow-hidden flex items-center justify-center">
           <div className="absolute inset-0 bg-surface">
-            <img src={p.image} alt="" className="h-full w-full object-cover blur-xl opacity-40 scale-110" />
+            <img src={gallery[0]} alt="" className="h-full w-full object-cover blur-xl opacity-40 scale-110" />
           </div>
           <div className="absolute inset-0 bg-background/60" />
           <div className="relative z-10 text-center px-6">
@@ -97,12 +97,12 @@ function ProductPage() {
       ) : (
         <section className="mx-auto max-w-[1600px] px-6 lg:px-12 pt-12 pb-24 grid lg:grid-cols-[1.2fr_1fr] gap-12 lg:gap-20">
           <div className="grid grid-cols-2 gap-3">
-            <div className="col-span-2 aspect-[4/5] bg-surface overflow-hidden">
-              <img src={p.image} alt={p.name} className="h-full w-full object-cover slow-zoom" />
+          <div className="col-span-2 aspect-[4/5] bg-surface overflow-hidden">
+              <img src={gallery[0]} alt={p.name} className="h-full w-full object-cover slow-zoom" />
             </div>
-            {[0, 1, 2, 3].map((i) => (
+            {gallery.map((img, i) => (
               <div key={i} className="aspect-square bg-surface overflow-hidden">
-                <img src={p.image} alt="" loading="lazy" className="h-full w-full object-cover opacity-90 hover:opacity-100 transition" />
+                <img src={img} alt="" loading="lazy" className="h-full w-full object-cover opacity-90 hover:opacity-100 transition" />
               </div>
             ))}
           </div>
