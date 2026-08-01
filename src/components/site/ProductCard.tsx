@@ -7,6 +7,7 @@ export interface Product {
   category: string;
   price: number;
   image: string;
+  gallery?: string[];
   badge?: string;
 }
 
