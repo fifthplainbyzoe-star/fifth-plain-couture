@@ -3,23 +3,17 @@ import { getRequestHost } from "@tanstack/react-start/server";
 import { z } from "zod";
 
 const CartItemSchema = z.object({
-  id: z.string(),
-  name: z.string(),
-  price: z.number(),
-  qty: z.number(),
-  size: z.string().optional(),
-  image: z.string().optional(),
+  id: z.string().min(1),
+  qty: z.number().int().positive().max(50),
+  size: z.string().max(40).optional(),
+  color: z.string().max(40).optional(),
 });
 
 const InitiateSchema = z.object({
-  items: z.array(CartItemSchema).min(1),
-  subtotal: z.number().nonnegative(),
-  shippingCost: z.number().nonnegative(),
-  total: z.number().positive(),
-  shippingCarrier: z.enum(["paxi", "courier"]),
-  shippingOption: z.string(),
+  items: z.array(CartItemSchema).min(1).max(50),
+  shippingOption: z.enum(["paxi-standard", "paxi-large", "courier-standard", "courier-express"]),
   shippingDetails: z.record(z.string(), z.any()),
-  phone: z.string().min(6),
+  phone: z.string().min(6).max(20),
   bank: z.enum(["tymebank", "capitec"]),
 });
 
@@ -27,7 +21,11 @@ export const initiatePayShapCheckout = createServerFn({ method: "POST" })
   .inputValidator((input) => InitiateSchema.parse(input))
   .handler(async ({ data }) => {
     const { prepareCheckout } = await import("./payshap.server");
+    const { priceCart } = await import("./pricing.server");
     const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
+
+    // Recompute every monetary value from the trusted server-side catalog.
+    const priced = priceCart(data.items, data.shippingOption);
 
     // Origin: prefer explicit env override, otherwise derive from the request.
     const configuredOrigin = process.env.PUBLIC_APP_URL?.replace(/\/$/, "");
@@ -45,12 +43,12 @@ export const initiatePayShapCheckout = createServerFn({ method: "POST" })
     // Persist a pending order.
     const { error: insertErr } = await supabaseAdmin.from("orders").insert({
       reference,
-      cart: data.items,
-      subtotal: data.subtotal,
-      shipping_cost: data.shippingCost,
-      total: data.total,
+      cart: priced.lines,
+      subtotal: priced.subtotal,
+      shipping_cost: priced.shippingCost,
+      total: priced.total,
       currency: "ZAR",
-      shipping_carrier: data.shippingCarrier,
+      shipping_carrier: priced.carrier,
       shipping_option: data.shippingOption,
       shipping_details: data.shippingDetails,
       phone: data.phone,
@@ -61,7 +59,7 @@ export const initiatePayShapCheckout = createServerFn({ method: "POST" })
 
     // Prepare the Peach checkout.
     const checkout = await prepareCheckout({
-      amount: data.total,
+      amount: priced.total,
       currency: "ZAR",
       reference,
       shopperResultUrl: `${origin}/order-confirmed/${reference}`,
