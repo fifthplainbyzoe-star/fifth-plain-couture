@@ -181,7 +181,7 @@ function ProductPage() {
             )}
 
 
-            {selectedSize === "Velvet Fire" || selectedSize === "Glass Wealth" ? (
+            {selectedSize === "Velvet Fire" ? (
               <div className="mt-8 flex flex-col items-center gap-3">
                 <p className="font-display text-2xl md:text-3xl gold-text">Coming Soon</p>
                 <p className="text-muted-foreground text-sm tracking-widest">( TBA )</p>
