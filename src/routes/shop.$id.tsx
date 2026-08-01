@@ -110,11 +110,11 @@ function ProductPage() {
           <div className="lg:sticky lg:top-28 self-start">
             <div className="text-[10px] uppercase tracking-[0.32em] text-gold">{p.category}</div>
             <h1 className="mt-4 font-editorial text-4xl md:text-5xl text-ivory">{p.name}</h1>
-            <div className="mt-6 font-editorial text-2xl text-ivory">{isFragrance ? "From R250" : `R${p.price.toLocaleString()}`}</div>
+            <div className="mt-6 font-editorial text-2xl text-ivory">{isFragrance ? "From R280" : `R${p.price.toLocaleString()}`}</div>
 
             <p className="mt-8 text-muted-foreground leading-relaxed">
               {isFragrance
-                ? "A signature fragrance captured in a bottle, designed to define who you are in this exact moment and linger in the memory forever."
+                ? "The Fragrance Lab fragrances are proudly offered through our official affiliate, FIFTHPLAIN, ensuring an authentic, premium shopping experience."
                 : isHoodie
                   ? "Crafted from ultra-heavyweight fabric with a flawless minimalist drape, engineered to hold its structure today and for years to come."
                   : isTee
