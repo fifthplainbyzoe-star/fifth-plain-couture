@@ -59,7 +59,7 @@ export const initiatePayShapCheckout = createServerFn({ method: "POST" })
 
     // Prepare the Peach checkout.
     const checkout = await prepareCheckout({
-      amount: data.total,
+      amount: priced.total,
       currency: "ZAR",
       reference,
       shopperResultUrl: `${origin}/order-confirmed/${reference}`,
