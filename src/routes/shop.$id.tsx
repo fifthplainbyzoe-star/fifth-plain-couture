@@ -29,7 +29,7 @@ function ProductPage() {
   const isTee = p.category === "T-Shirts";
   const isTracksuit = p.category === "Tracksuits";
   const isAurelia = p.id === "aurelia-skirt";
-  const gallery = p.gallery && p.gallery.length > 0 ? p.gallery : [p.image];
+  const gallery: string[] = p.gallery && p.gallery.length > 0 ? p.gallery : [p.image];
   const sizeOptions = isFragrance
     ? ["Velvet Fire", "Glass Wealth", "Black Authority"]
     : isTracksuit
