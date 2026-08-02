@@ -214,7 +214,7 @@ function Home() {
       <section className="bg-surface border-y border-border">
         <div className="mx-auto max-w-3xl px-6 py-28 text-center">
           <Reveal>
-            <div className="text-[10px] uppercase tracking-[0.4em] text-gold">THE PLOT</div>
+            <div className="text-[10px] uppercase tracking-[0.4em] text-gold">STAY UPDATED</div>
             <h2 className="mt-6 font-display text-4xl md:text-5xl text-ivory leading-tight">Receive Notifications</h2>
             <p className="mt-6 text-muted-foreground">Stay informed about new drops, restocks, and atelier updates.</p>
             <button className="mt-10 inline-flex items-center gap-3 border border-gold text-gold px-8 py-4 text-[11px] uppercase tracking-[0.3em] hover:bg-gold hover:text-background transition-colors duration-500">
