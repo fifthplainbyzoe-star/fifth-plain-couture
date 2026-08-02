@@ -21,6 +21,9 @@ function Contact() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    const subjectLine = `Fifth Plain Enquiry — ${form.subject} — ${form.name}`;
+    const body = `Name: ${form.name}\nEmail: ${form.email}\nSubject: ${form.subject}\n\n${form.message}`;
+    window.location.href = `mailto:fifthplainbyzoe@gmail.com?subject=${encodeURIComponent(subjectLine)}&body=${encodeURIComponent(body)}`;
     setSubmitted(true);
   };
 
