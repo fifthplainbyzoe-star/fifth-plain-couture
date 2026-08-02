@@ -154,7 +154,7 @@ function Contact() {
           </div>
 
           <div className="pt-6 border-t border-border">
-            <h4 className="text-[11px] uppercase tracking-[0.22em] text-gold">THE PLOT</h4>
+            <h4 className="text-[11px] uppercase tracking-[0.22em] text-gold">STAY UPDATED</h4>
             <p className="mt-4 text-sm text-muted-foreground">
               Subscribe to receive notifications about new arrivals, restocks, and exclusive updates from the maison.
             </p>
