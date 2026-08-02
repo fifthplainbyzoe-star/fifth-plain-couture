@@ -49,7 +49,7 @@ export function Footer() {
             Headquartered in Johannesburg, South Africa.
           </p>
           <div className="mt-8 flex gap-4 text-muted-foreground">
-            <a href="https://www.instagram.com/_fifthplaindigitals_/" target="_blank" rel="noopener noreferrer" className="hover:text-gold transition-colors">
+            <a href="https://www.instagram.com/_fifthplainbyzoe_/" target="_blank" rel="noopener noreferrer" aria-label="Fifth Plain on Instagram" className="hover:text-gold transition-colors">
               <Instagram className="w-5 h-5" />
             </a>
             <a href="https://www.tiktok.com/@fifthplainbyzoe?is_from_webapp=1&sender_device=pc" target="_blank" rel="noopener noreferrer" className="hover:text-gold transition-colors">

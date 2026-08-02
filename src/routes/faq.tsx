@@ -33,7 +33,7 @@ const faqs = [
   },
   {
     q: "Are your products sustainable?",
-    a: "We partner with ateliers in Florence, Grasse, and Paris that share our commitment to responsible craftsmanship. Each piece is made to order in limited quantities, reducing excess production. We prioritize quality over quantity — pieces designed to last for years, not seasons.",
+    a: "Yes. Every Fifth Plain piece is produced locally in South Africa in small, limited batches — we only make what is needed, so there is no excess waste. We use premium, heavyweight materials chosen for durability and comfort, and each garment is checked by hand before it reaches you. Quality over quantity: pieces built to last for years, not seasons.",
   },
 ];
 
