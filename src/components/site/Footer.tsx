@@ -41,7 +41,7 @@ const cols = [
 export function Footer() {
   return (
     <footer className="border-t border-border bg-background">
-      <div className="mx-auto max-w-[1600px] px-6 lg:px-12 py-20 grid gap-12 lg:grid-cols-[1.4fr_2fr_1fr]">
+      <div className="mx-auto max-w-[1600px] px-6 lg:px-12 py-20 grid gap-12 lg:grid-cols-[1.4fr_2fr]">
         <div>
           <div className="font-display text-xl tracking-[0.32em] text-ivory">FIFTH PLAIN</div>
           <p className="mt-6 text-sm text-muted-foreground max-w-sm leading-relaxed">
@@ -73,20 +73,6 @@ export function Footer() {
           ))}
         </div>
 
-        <div>
-          <h4 className="text-[11px] uppercase tracking-[0.22em] text-gold">THE PLOT</h4>
-          <p className="mt-6 text-sm text-muted-foreground">
-            Receive notifications about new updates
-          </p>
-          <form className="mt-6 flex border-b border-border focus-within:border-gold transition-colors">
-            <input
-              type="email"
-              placeholder="Your email"
-              className="flex-1 bg-transparent py-3 text-sm outline-none placeholder:text-muted-foreground"
-            />
-            <button className="text-[11px] uppercase tracking-[0.22em] text-gold">Join</button>
-          </form>
-        </div>
       </div>
       <div className="border-t border-border">
         <div className="mx-auto max-w-[1600px] px-6 lg:px-12 py-6 flex flex-col md:flex-row items-center justify-between gap-3 text-[11px] uppercase tracking-[0.22em] text-muted-foreground">
