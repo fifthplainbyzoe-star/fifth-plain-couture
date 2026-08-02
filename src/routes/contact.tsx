@@ -21,6 +21,9 @@ function Contact() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    const subjectLine = `Fifth Plain Enquiry — ${form.subject} — ${form.name}`;
+    const body = `Name: ${form.name}\nEmail: ${form.email}\nSubject: ${form.subject}\n\n${form.message}`;
+    window.location.href = `mailto:fifthplainbyzoe@gmail.com?subject=${encodeURIComponent(subjectLine)}&body=${encodeURIComponent(body)}`;
     setSubmitted(true);
   };
 
@@ -32,7 +35,7 @@ function Contact() {
         </div>
         <div className="mt-8 text-[10px] uppercase tracking-[0.32em] text-gold">Message Received</div>
         <h1 className="mt-3 font-editorial text-4xl text-ivory">Thank you</h1>
-        <p className="mt-6 text-muted-foreground">Our atelier team will respond within 24–48 hours.</p>
+        <p className="mt-6 text-muted-foreground">Your email app has opened with your message ready to send to fifthplainbyzoe@gmail.com. We respond within 24–48 hours.</p>
         <button
           onClick={() => { setSubmitted(false); setForm({ name: "", email: "", subject: "", message: "" }); }}
           className="mt-10 border border-gold text-gold px-8 py-3 text-[11px] uppercase tracking-[0.28em] hover:bg-gold hover:text-background transition-colors"
