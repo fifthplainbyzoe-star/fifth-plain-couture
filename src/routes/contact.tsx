@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Mail, MapPin, Clock } from "lucide-react";
 import runwayImg from "@/assets/contact-runway.jpg";
+import runwayVideo from "@/assets/contact-runway.mp4.asset.json";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
