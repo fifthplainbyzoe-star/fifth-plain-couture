@@ -49,6 +49,7 @@ function Contact() {
       <div className="relative overflow-hidden border border-border bg-surface">
         <div className="relative aspect-[16/10] sm:aspect-[16/9] overflow-hidden">
           <video
+            ref={videoRef}
             src={runwayVideo.url}
             poster={runwayImg}
             autoPlay
