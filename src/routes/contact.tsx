@@ -25,12 +25,16 @@ function Contact() {
       {/* Runway visual */}
       <div className="relative overflow-hidden border border-border bg-surface">
         <div className="relative aspect-[16/10] sm:aspect-[16/9] overflow-hidden">
-          <img
-            src={runwayImg}
-            alt="African model walking the runway in a Fifth Plain heavyweight hoodie as camera flashes fire"
-            width={1600}
-            height={1008}
-            className="slow-zoom h-full w-full object-cover"
+          <video
+            src={runwayVideo.url}
+            poster={runwayImg}
+            autoPlay
+            loop
+            muted
+            playsInline
+            preload="auto"
+            aria-label="African model walking the runway in a Fifth Plain heavyweight hoodie as camera flashes fire"
+            className="h-full w-full object-cover"
           />
           <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-background/70 via-background/10 to-transparent" />
         </div>
