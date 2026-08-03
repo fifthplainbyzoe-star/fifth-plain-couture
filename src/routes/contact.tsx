@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Mail, MapPin, Clock } from "lucide-react";
+import runwayImg from "@/assets/contact-runway.jpg";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
@@ -20,31 +21,17 @@ export const Route = createFileRoute("/contact")({
 function Contact() {
   return (
     <section className="mx-auto max-w-[1200px] px-6 lg:px-12 py-24">
-      {/* Motion visual */}
+      {/* Runway visual */}
       <div className="relative overflow-hidden border border-border bg-surface">
-        <div className="absolute inset-0 opacity-70">
-          <div className="absolute -top-24 -left-24 h-[420px] w-[420px] rounded-full bg-gold-soft/40 blur-3xl animate-[pulse_9s_ease-in-out_infinite]" />
-          <div className="absolute -bottom-32 right-0 h-[380px] w-[380px] rounded-full bg-gold/20 blur-3xl animate-[pulse_12s_ease-in-out_infinite]" />
-        </div>
-
-        <div className="relative px-6 sm:px-12 lg:px-20 py-24 sm:py-32 text-center">
-          <div className="reveal text-[10px] uppercase tracking-[0.32em] text-gold">Client Services</div>
-          <h1 className="reveal mt-4 font-editorial text-4xl sm:text-5xl lg:text-6xl text-ivory text-balance">
-            Contact the Atelier
-          </h1>
-          <div className="mx-auto mt-8 h-px w-40 hairline" />
-          <p className="reveal mx-auto mt-8 max-w-[560px] text-muted-foreground leading-relaxed">
-            Every conversation begins quietly. Write to us for sizing, custom commissions, or client care —
-            we answer each message personally.
-          </p>
-
-          <a
-            href="mailto:fifthplainbyzoe@gmail.com"
-            className="mt-12 inline-flex items-center gap-3 border border-gold text-gold px-10 py-4 text-[11px] uppercase tracking-[0.28em] transition-colors hover:bg-gold hover:text-background"
-          >
-            <Mail className="w-4 h-4" />
-            Write to us
-          </a>
+        <div className="relative aspect-[16/10] sm:aspect-[16/9] overflow-hidden">
+          <img
+            src={runwayImg}
+            alt="African model walking the runway in a Fifth Plain heavyweight hoodie as camera flashes fire"
+            width={1600}
+            height={1008}
+            className="slow-zoom h-full w-full object-cover"
+          />
+          <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-background/70 via-background/10 to-transparent" />
         </div>
 
         <div className="relative overflow-hidden border-t border-border py-4">
@@ -58,6 +45,7 @@ function Contact() {
             ))}
           </div>
         </div>
+
       </div>
 
       {/* Details */}
