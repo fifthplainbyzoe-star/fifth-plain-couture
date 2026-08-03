@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { useEffect, useRef } from "react";
 import { Mail, MapPin, Clock } from "lucide-react";
 import runwayImg from "@/assets/contact-runway.jpg";
 import runwayVideo from "@/assets/contact-runway.mp4.asset.json";
@@ -20,12 +21,35 @@ export const Route = createFileRoute("/contact")({
 });
 
 function Contact() {
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    const el = videoRef.current;
+    if (!el) return;
+    el.muted = true;
+    el.defaultMuted = true;
+    const tryPlay = () => {
+      const p = el.play();
+      if (p) p.catch(() => {});
+    };
+    tryPlay();
+    el.addEventListener("loadeddata", tryPlay);
+    document.addEventListener("visibilitychange", tryPlay);
+    document.addEventListener("touchstart", tryPlay, { once: true, passive: true });
+    return () => {
+      el.removeEventListener("loadeddata", tryPlay);
+      document.removeEventListener("visibilitychange", tryPlay);
+      document.removeEventListener("touchstart", tryPlay);
+    };
+  }, []);
+
   return (
     <section className="mx-auto max-w-[1200px] px-6 lg:px-12 py-24">
       {/* Runway visual */}
       <div className="relative overflow-hidden border border-border bg-surface">
         <div className="relative aspect-[16/10] sm:aspect-[16/9] overflow-hidden">
           <video
+            ref={videoRef}
             src={runwayVideo.url}
             poster={runwayImg}
             autoPlay
