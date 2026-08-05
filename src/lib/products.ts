@@ -15,6 +15,21 @@ import skirt2 from "@/assets/skirt-gallery-2.jpg";
 import skirt3 from "@/assets/skirt-gallery-3.jpg";
 import skirt4 from "@/assets/skirt-gallery-4.jpg";
 import fragrance from "@/assets/fragrance.jpg";
+import modelTee1 from "@/assets/model-tee-1.jpg";
+import modelTee2 from "@/assets/model-tee-2.jpg";
+import modelTee3 from "@/assets/model-tee-3.jpg";
+import modelHoodie1 from "@/assets/model-hoodie-1.jpg";
+import modelHoodie2 from "@/assets/model-hoodie-2.jpg";
+import modelHoodie3 from "@/assets/model-hoodie-3.jpg";
+import modelTracksuit1 from "@/assets/model-tracksuit-1.jpg";
+import modelTracksuit2 from "@/assets/model-tracksuit-2.jpg";
+import modelTracksuit3 from "@/assets/model-tracksuit-3.jpg";
+import modelSkirt1 from "@/assets/model-skirt-1.jpg";
+import modelSkirt2 from "@/assets/model-skirt-2.jpg";
+import modelSkirt3 from "@/assets/model-skirt-3.jpg";
+import modelFragrance1 from "@/assets/model-fragrance-1.jpg";
+import modelFragrance2 from "@/assets/model-fragrance-2.jpg";
+import modelFragrance3 from "@/assets/model-fragrance-3.jpg";
 import type { Product } from "@/components/site/ProductCard";
 
 export const products: Product[] = [
