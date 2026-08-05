@@ -15,6 +15,21 @@ import skirt2 from "@/assets/skirt-gallery-2.jpg";
 import skirt3 from "@/assets/skirt-gallery-3.jpg";
 import skirt4 from "@/assets/skirt-gallery-4.jpg";
 import fragrance from "@/assets/fragrance.jpg";
+import modelTee1 from "@/assets/model-tee-1.jpg";
+import modelTee2 from "@/assets/model-tee-2.jpg";
+import modelTee3 from "@/assets/model-tee-3.jpg";
+import modelHoodie1 from "@/assets/model-hoodie-1.jpg";
+import modelHoodie2 from "@/assets/model-hoodie-2.jpg";
+import modelHoodie3 from "@/assets/model-hoodie-3.jpg";
+import modelTracksuit1 from "@/assets/model-tracksuit-1.jpg";
+import modelTracksuit2 from "@/assets/model-tracksuit-2.jpg";
+import modelTracksuit3 from "@/assets/model-tracksuit-3.jpg";
+import modelSkirt1 from "@/assets/model-skirt-1.jpg";
+import modelSkirt2 from "@/assets/model-skirt-2.jpg";
+import modelSkirt3 from "@/assets/model-skirt-3.jpg";
+import modelFragrance1 from "@/assets/model-fragrance-1.jpg";
+import modelFragrance2 from "@/assets/model-fragrance-2.jpg";
+import modelFragrance3 from "@/assets/model-fragrance-3.jpg";
 import type { Product } from "@/components/site/ProductCard";
 
 export const products: Product[] = [
@@ -24,7 +39,7 @@ export const products: Product[] = [
     category: "T-Shirts",
     price: 250,
     image: tee1,
-    gallery: [tee1, tee2, tee3, tee4],
+    gallery: [tee1, tee2, tee3, tee4, modelTee1, modelTee2, modelTee3],
     badge: "New",
   },
   {
@@ -33,7 +48,7 @@ export const products: Product[] = [
     category: "Hoodies",
     price: 320,
     image: hoodie1,
-    gallery: [hoodie1, hoodie2, hoodie3, hoodie4],
+    gallery: [hoodie1, hoodie2, hoodie3, hoodie4, modelHoodie1, modelHoodie2, modelHoodie3],
   },
   {
     id: "ivory-tracksuit",
@@ -41,7 +56,7 @@ export const products: Product[] = [
     category: "Tracksuits",
     price: 320,
     image: tracksuit1,
-    gallery: [tracksuit1, tracksuit2, tracksuit3, tracksuit4],
+    gallery: [tracksuit1, tracksuit2, tracksuit3, tracksuit4, modelTracksuit1, modelTracksuit2, modelTracksuit3],
     badge: "Limited",
   },
   {
@@ -50,7 +65,7 @@ export const products: Product[] = [
     category: "Skirts",
     price: 520,
     image: skirt1,
-    gallery: [skirt1, skirt2, skirt3, skirt4],
+    gallery: [skirt1, skirt2, skirt3, skirt4, modelSkirt1, modelSkirt2, modelSkirt3],
   },
   {
     id: "no-v-fragrance",
@@ -58,6 +73,7 @@ export const products: Product[] = [
     category: "Fragrance",
     price: 250,
     image: fragrance,
+    gallery: [fragrance, modelFragrance1, modelFragrance2, modelFragrance3],
   },
 ];
 
