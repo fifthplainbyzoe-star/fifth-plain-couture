@@ -196,3 +196,12 @@
   );
   height: 1px;
 }
+
+@keyframes ken-burns {
+  from { transform: scale(1.06); }
+  to   { transform: scale(1); }
+}
+@utility ken-burns {
+  animation: ken-burns 2.6s ease-out both;
+}
+
