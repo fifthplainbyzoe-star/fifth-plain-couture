@@ -122,10 +122,11 @@ export function Preloader() {
     MONTAGE.forEach((_, i) => later(() => setFrame(i), i * FRAME_MS));
     later(() => {
       stopAmbience();
+      // Reveal the homepage underneath first, then cross-fade the overlay out.
+      release();
       setPhase("out");
     }, MONTAGE.length * FRAME_MS);
     later(() => {
-      document.body.style.overflow = "";
       setPhase("done");
       setActive(false);
     }, MONTAGE.length * FRAME_MS + 1100);
@@ -140,6 +141,7 @@ export function Preloader() {
 
   return (
     <div
+      id="fp-preloader"
       aria-hidden={phase === "out"}
       className={`fixed inset-0 z-[100] flex items-center justify-center bg-[#0d0d0c] transition-opacity duration-[1000ms] ease-[cubic-bezier(.2,.7,.2,1)] ${
         phase === "out" ? "opacity-0 pointer-events-none" : "opacity-100"
