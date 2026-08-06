@@ -102,7 +102,12 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
 function RootShell({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
-      <head><HeadContent /></head>
+      <head>
+        <HeadContent />
+        <noscript>
+          <style>{`#fp-chrome{visibility:visible!important}#fp-preloader{display:none!important}body{overflow:auto!important}`}</style>
+        </noscript>
+      </head>
       <body>{children}<Scripts /></body>
     </html>
   );
@@ -114,12 +119,13 @@ function RootComponent() {
     <QueryClientProvider client={queryClient}>
       <CartProvider>
         <Preloader />
-        <Nav />
-
-        <main className="min-h-screen pt-16 lg:pt-20">
-          <Outlet />
-        </main>
-        <Footer />
+        <div id="fp-chrome">
+          <Nav />
+          <main className="min-h-screen pt-16 lg:pt-20">
+            <Outlet />
+          </main>
+          <Footer />
+        </div>
       </CartProvider>
     </QueryClientProvider>
   );
