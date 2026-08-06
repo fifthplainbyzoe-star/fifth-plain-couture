@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react";
 import emblem from "@/assets/preloader-emblem.png";
 import mFabric from "@/assets/montage-fabric.jpg";
 import mEmbroidery from "@/assets/montage-embroidery.jpg";
@@ -7,12 +7,21 @@ import mLifestyle from "@/assets/montage-lifestyle.jpg";
 
 const MONTAGE = [mFabric, mEmbroidery, mFolding, mLifestyle];
 const FRAME_MS = 1100;
-const SESSION_KEY = "fp_preloader_seen";
 
 type Phase = "idle" | "emblem" | "name" | "cta" | "montage" | "out" | "done";
 
+const useIsomorphicLayoutEffect = typeof window !== "undefined" ? useLayoutEffect : useEffect;
+
+function release() {
+  if (typeof document !== "undefined") {
+    document.documentElement.setAttribute("data-preload", "0");
+  }
+}
+
 export function Preloader() {
-  const [active, setActive] = useState(false);
+  // Rendered on the server and during hydration so the homepage can never flash.
+  // The blocking inline script in __root decides whether it stays.
+  const [active, setActive] = useState(true);
   const [phase, setPhase] = useState<Phase>("idle");
   const [frame, setFrame] = useState(0);
   const timers = useRef<ReturnType<typeof setTimeout>[]>([]);
@@ -22,26 +31,16 @@ export function Preloader() {
     timers.current.push(setTimeout(fn, ms));
   };
 
-  // Decide on mount (client only) so SSR markup stays untouched.
-  useEffect(() => {
-    if (typeof window === "undefined") return;
-    let seen = false;
-    try {
-      seen = sessionStorage.getItem(SESSION_KEY) === "1";
-    } catch {
-      seen = false;
+  useIsomorphicLayoutEffect(() => {
+    const flag = document.documentElement.getAttribute("data-preload");
+    if (flag !== "1") {
+      // Already seen this session, or not the homepage — drop before first paint.
+      release();
+      setActive(false);
+      return;
     }
+
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (seen || window.location.pathname !== "/") return;
-    try {
-      sessionStorage.setItem(SESSION_KEY, "1");
-    } catch {
-      /* ignore */
-    }
-
-    setActive(true);
-    document.body.style.overflow = "hidden";
-
     if (reduced) {
       setPhase("cta");
     } else {
@@ -53,7 +52,7 @@ export function Preloader() {
     return () => {
       timers.current.forEach(clearTimeout);
       timers.current = [];
-      document.body.style.overflow = "";
+      release();
     };
   }, []);
 
@@ -123,10 +122,11 @@ export function Preloader() {
     MONTAGE.forEach((_, i) => later(() => setFrame(i), i * FRAME_MS));
     later(() => {
       stopAmbience();
+      // Reveal the homepage underneath first, then cross-fade the overlay out.
+      release();
       setPhase("out");
     }, MONTAGE.length * FRAME_MS);
     later(() => {
-      document.body.style.overflow = "";
       setPhase("done");
       setActive(false);
     }, MONTAGE.length * FRAME_MS + 1100);
@@ -141,8 +141,9 @@ export function Preloader() {
 
   return (
     <div
+      id="fp-preloader"
       aria-hidden={phase === "out"}
-      className={`fixed inset-0 z-[100] flex items-center justify-center bg-[#0d0d0c] transition-opacity duration-[1000ms] ease-[cubic-bezier(.2,.7,.2,1)] ${
+      className={`${phase === "out" ? "is-out " : ""}fixed inset-0 z-[100] flex items-center justify-center bg-[#0d0d0c] transition-opacity duration-[1000ms] ease-[cubic-bezier(.2,.7,.2,1)] ${
         phase === "out" ? "opacity-0 pointer-events-none" : "opacity-100"
       }`}
     >

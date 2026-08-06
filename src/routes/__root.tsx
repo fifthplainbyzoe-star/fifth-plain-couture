@@ -87,6 +87,11 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         href: "https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Karla:wght@200;300;400;500;600&display=swap",
       },
     ],
+    scripts: [
+      {
+        children: `(function(){try{var d=document.documentElement;var seen=sessionStorage.getItem('fp_preloader_seen')==='1';var home=location.pathname==='/';if(seen||!home){d.setAttribute('data-preload','0');}else{d.setAttribute('data-preload','1');sessionStorage.setItem('fp_preloader_seen','1');}}catch(e){document.documentElement.setAttribute('data-preload','0');}})();`,
+      },
+    ],
   }),
   shellComponent: RootShell,
   component: RootComponent,
@@ -96,8 +101,13 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
 
 function RootShell({ children }: { children: ReactNode }) {
   return (
-    <html lang="en">
-      <head><HeadContent /></head>
+    <html lang="en" suppressHydrationWarning>
+      <head>
+        <HeadContent />
+        <noscript>
+          <style>{`#fp-chrome{visibility:visible!important}#fp-preloader{display:none!important}body{overflow:auto!important}`}</style>
+        </noscript>
+      </head>
       <body>{children}<Scripts /></body>
     </html>
   );
@@ -109,12 +119,13 @@ function RootComponent() {
     <QueryClientProvider client={queryClient}>
       <CartProvider>
         <Preloader />
-        <Nav />
-
-        <main className="min-h-screen pt-16 lg:pt-20">
-          <Outlet />
-        </main>
-        <Footer />
+        <div id="fp-chrome">
+          <Nav />
+          <main className="min-h-screen pt-16 lg:pt-20">
+            <Outlet />
+          </main>
+          <Footer />
+        </div>
       </CartProvider>
     </QueryClientProvider>
   );
