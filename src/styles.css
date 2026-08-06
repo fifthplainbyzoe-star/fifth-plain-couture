@@ -216,3 +216,6 @@ html:not([data-preload="0"]) body {
 html[data-preload="0"] #fp-preloader {
   display: none;
 }
+html[data-preload="0"] #fp-preloader.is-out {
+  display: flex;
+}

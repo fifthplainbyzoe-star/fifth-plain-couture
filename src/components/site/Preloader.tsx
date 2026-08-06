@@ -143,7 +143,7 @@ export function Preloader() {
     <div
       id="fp-preloader"
       aria-hidden={phase === "out"}
-      className={`fixed inset-0 z-[100] flex items-center justify-center bg-[#0d0d0c] transition-opacity duration-[1000ms] ease-[cubic-bezier(.2,.7,.2,1)] ${
+      className={`${phase === "out" ? "is-out " : ""}fixed inset-0 z-[100] flex items-center justify-center bg-[#0d0d0c] transition-opacity duration-[1000ms] ease-[cubic-bezier(.2,.7,.2,1)] ${
         phase === "out" ? "opacity-0 pointer-events-none" : "opacity-100"
       }`}
     >
