@@ -205,3 +205,14 @@
   animation: ken-burns 2.6s ease-out both;
 }
 
+
+/* Preloader gating — avoids any homepage flash before the loader finishes */
+html:not([data-preload="0"]) #fp-chrome {
+  visibility: hidden;
+}
+html:not([data-preload="0"]) body {
+  overflow: hidden;
+}
+html[data-preload="0"] #fp-preloader {
+  display: none;
+}
