@@ -48,20 +48,28 @@ function ProductPage() {
   const [selectedSize, setSelectedSize] = useState(sizeOptions[0]);
   const [selectedQty, setSelectedQty] = useState(quantityOptions[0] ?? "");
   const [selectedColor, setSelectedColor] = useState(colorOptions[0] ?? "");
+  const [selectedFinish, setSelectedFinish] = useState(showFinish ? finishOptions[0] : "");
   const [notifyMsg, setNotifyMsg] = useState("");
   const [addedMsg, setAddedMsg] = useState("");
   const { add } = useCart();
   const navigate = useNavigate();
   const related = products.filter((x) => x.id !== p.id).slice(0, 4);
 
+  const sizeSurcharge = !isFragrance && (selectedSize === "XL" || selectedSize === "2XL") ? 90 : 0;
+  const unitPrice = p.price + sizeSurcharge;
+
   const handleAdd = () => {
     add({
       id: p.id,
       name: p.name,
       category: p.category,
-      price: p.price,
+      price: unitPrice,
       image: p.image,
-      size: isFragrance ? `${selectedSize} · ${selectedQty}` : selectedSize,
+      size: isFragrance
+        ? `${selectedSize} · ${selectedQty}`
+        : showFinish && selectedFinish
+          ? `${selectedSize} · ${selectedFinish}`
+          : selectedSize,
       color: selectedColor || undefined,
     });
     setAddedMsg("Added to your atelier.");
