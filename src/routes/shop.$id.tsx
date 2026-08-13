@@ -33,8 +33,10 @@ function ProductPage() {
   const sizeOptions = isFragrance
     ? ["Velvet Fire", "Glass Wealth", "Black Authority"]
     : isTracksuit
-      ? ["S", "M", "L", "XL"]
-      : ["XS", "S", "M", "L", "XL"];
+      ? ["S", "M", "L", "XL", "2XL"]
+      : ["XS", "S", "M", "L", "XL", "2XL"];
+  const showFinish = isTee || isHoodie || isTracksuit;
+  const finishOptions = ["Embroidery", "Print", "Blank Canvas"];
   const quantityOptions = isFragrance ? ["30ml", "50ml"] : [];
   const colorOptions = isFragrance
     ? []
