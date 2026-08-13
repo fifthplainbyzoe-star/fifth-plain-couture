@@ -155,7 +155,29 @@ function ProductPage() {
                   </button>
                 ))}
               </div>
+              {!isFragrance && (
+                <p className="mt-3 text-[10px] uppercase tracking-[0.22em] text-muted-foreground">XL & 2XL + R90</p>
+              )}
             </div>
+
+            {showFinish && (
+              <div className="mt-6">
+                <label htmlFor="finish" className="text-[11px] uppercase tracking-[0.28em] text-ivory">Finish</label>
+                <select
+                  id="finish"
+                  value={selectedFinish}
+                  onChange={(e) => setSelectedFinish(e.target.value)}
+                  className="mt-3 w-full bg-transparent border border-border text-ivory text-sm py-3 px-3 focus:border-gold outline-none"
+                >
+                  {finishOptions.map((f) => (
+                    <option key={f} value={f} className="bg-background text-ivory">{f}</option>
+                  ))}
+                </select>
+                <p className="mt-3 text-xs text-muted-foreground leading-relaxed">
+                  Embroidery and print options — including sizes and designs — will be confirmed during purchase of the items.
+                </p>
+              </div>
+            )}
 
             {!isFragrance && colorOptions.length > 0 && (
               <div className="mt-6">
