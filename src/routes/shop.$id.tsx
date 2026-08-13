@@ -120,7 +120,12 @@ function ProductPage() {
           <div className="lg:sticky lg:top-28 self-start">
             <div className="text-[10px] uppercase tracking-[0.32em] text-gold">{p.category}</div>
             <h1 className="mt-4 font-editorial text-4xl md:text-5xl text-ivory">{p.name}</h1>
-            <div className="mt-6 font-editorial text-2xl text-ivory">{isFragrance ? "From R280" : `R${p.price.toLocaleString()}`}</div>
+            <div className="mt-6 font-editorial text-2xl text-ivory">
+              {isFragrance ? "From R280" : `R${unitPrice.toLocaleString()}`}
+              {sizeSurcharge > 0 && (
+                <span className="ml-3 align-middle text-[10px] uppercase tracking-[0.24em] text-gold">incl. +R90 {selectedSize}</span>
+              )}
+            </div>
 
             <p className="mt-8 text-muted-foreground leading-relaxed">
               {isFragrance
