@@ -142,7 +142,7 @@ function ProductPage() {
                 <span className="text-ivory">{isFragrance ? "Scent" : "Size"}</span>
                 {!isFragrance && <button className="text-gold">Size Guide</button>}
               </div>
-              <div className={`mt-3 grid gap-2 ${isFragrance ? "grid-cols-3" : "grid-cols-5"}`}>
+              <div className={`mt-3 grid gap-2 ${isFragrance ? "grid-cols-3" : "grid-cols-3 sm:grid-cols-6"}`}>
                 {sizeOptions.map((s) => (
                   <button
                     key={s}
