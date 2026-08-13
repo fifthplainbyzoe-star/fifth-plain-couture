@@ -33,8 +33,10 @@ function ProductPage() {
   const sizeOptions = isFragrance
     ? ["Velvet Fire", "Glass Wealth", "Black Authority"]
     : isTracksuit
-      ? ["S", "M", "L", "XL"]
-      : ["XS", "S", "M", "L", "XL"];
+      ? ["S", "M", "L", "XL", "2XL"]
+      : ["XS", "S", "M", "L", "XL", "2XL"];
+  const showFinish = isTee || isHoodie || isTracksuit;
+  const finishOptions = ["Embroidery", "Print", "Blank Canvas"];
   const quantityOptions = isFragrance ? ["30ml", "50ml"] : [];
   const colorOptions = isFragrance
     ? []
@@ -46,20 +48,28 @@ function ProductPage() {
   const [selectedSize, setSelectedSize] = useState(sizeOptions[0]);
   const [selectedQty, setSelectedQty] = useState(quantityOptions[0] ?? "");
   const [selectedColor, setSelectedColor] = useState(colorOptions[0] ?? "");
+  const [selectedFinish, setSelectedFinish] = useState(showFinish ? finishOptions[0] : "");
   const [notifyMsg, setNotifyMsg] = useState("");
   const [addedMsg, setAddedMsg] = useState("");
   const { add } = useCart();
   const navigate = useNavigate();
   const related = products.filter((x) => x.id !== p.id).slice(0, 4);
 
+  const sizeSurcharge = !isFragrance && (selectedSize === "XL" || selectedSize === "2XL") ? 90 : 0;
+  const unitPrice = p.price + sizeSurcharge;
+
   const handleAdd = () => {
     add({
       id: p.id,
       name: p.name,
       category: p.category,
-      price: p.price,
+      price: unitPrice,
       image: p.image,
-      size: isFragrance ? `${selectedSize} · ${selectedQty}` : selectedSize,
+      size: isFragrance
+        ? `${selectedSize} · ${selectedQty}`
+        : showFinish && selectedFinish
+          ? `${selectedSize} · ${selectedFinish}`
+          : selectedSize,
       color: selectedColor || undefined,
     });
     setAddedMsg("Added to your atelier.");
@@ -110,7 +120,12 @@ function ProductPage() {
           <div className="lg:sticky lg:top-28 self-start">
             <div className="text-[10px] uppercase tracking-[0.32em] text-gold">{p.category}</div>
             <h1 className="mt-4 font-editorial text-4xl md:text-5xl text-ivory">{p.name}</h1>
-            <div className="mt-6 font-editorial text-2xl text-ivory">{isFragrance ? "From R280" : `R${p.price.toLocaleString()}`}</div>
+            <div className="mt-6 font-editorial text-2xl text-ivory">
+              {isFragrance ? "From R280" : `R${unitPrice.toLocaleString()}`}
+              {sizeSurcharge > 0 && (
+                <span className="ml-3 align-middle text-[10px] uppercase tracking-[0.24em] text-gold">incl. +R90 {selectedSize}</span>
+              )}
+            </div>
 
             <p className="mt-8 text-muted-foreground leading-relaxed">
               {isFragrance
@@ -127,7 +142,7 @@ function ProductPage() {
                 <span className="text-ivory">{isFragrance ? "Scent" : "Size"}</span>
                 {!isFragrance && <button className="text-gold">Size Guide</button>}
               </div>
-              <div className={`mt-3 grid gap-2 ${isFragrance ? "grid-cols-3" : "grid-cols-5"}`}>
+              <div className={`mt-3 grid gap-2 ${isFragrance ? "grid-cols-3" : "grid-cols-3 sm:grid-cols-6"}`}>
                 {sizeOptions.map((s) => (
                   <button
                     key={s}
@@ -140,7 +155,29 @@ function ProductPage() {
                   </button>
                 ))}
               </div>
+              {!isFragrance && (
+                <p className="mt-3 text-[10px] uppercase tracking-[0.22em] text-muted-foreground">XL & 2XL + R90</p>
+              )}
             </div>
+
+            {showFinish && (
+              <div className="mt-6">
+                <label htmlFor="finish" className="text-[11px] uppercase tracking-[0.28em] text-ivory">Finish</label>
+                <select
+                  id="finish"
+                  value={selectedFinish}
+                  onChange={(e) => setSelectedFinish(e.target.value)}
+                  className="mt-3 w-full bg-transparent border border-border text-ivory text-sm py-3 px-3 focus:border-gold outline-none"
+                >
+                  {finishOptions.map((f) => (
+                    <option key={f} value={f} className="bg-background text-ivory">{f}</option>
+                  ))}
+                </select>
+                <p className="mt-3 text-xs text-muted-foreground leading-relaxed">
+                  Embroidery and print options — including sizes and designs — will be confirmed during purchase of the items.
+                </p>
+              </div>
+            )}
 
             {!isFragrance && colorOptions.length > 0 && (
               <div className="mt-6">
