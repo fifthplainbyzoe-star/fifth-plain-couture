@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Reveal } from "@/components/site/Reveal";
-import selectHero from "@/assets/fifthplain-select-hero.png.asset.json";
+import selectHero from "@/assets/select-hero.png";
 
 export const Route = createFileRoute("/select")({
   head: () => ({
