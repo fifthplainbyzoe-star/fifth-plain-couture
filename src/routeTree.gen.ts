@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as ShippingRouteImport } from './routes/shipping'
+import { Route as SelectRouteImport } from './routes/select'
 import { Route as MedallionRouteImport } from './routes/medallion'
 import { Route as FaqRouteImport } from './routes/faq'
 import { Route as ContactRouteImport } from './routes/contact'
@@ -26,6 +27,11 @@ import { Route as ApiPublicPayshapWebhookRouteImport } from './routes/api/public
 const ShippingRoute = ShippingRouteImport.update({
   id: '/shipping',
   path: '/shipping',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SelectRoute = SelectRouteImport.update({
+  id: '/select',
+  path: '/select',
   getParentRoute: () => rootRouteImport,
 } as any)
 const MedallionRoute = MedallionRouteImport.update({
@@ -97,6 +103,7 @@ export interface FileRoutesByFullPath {
   '/contact': typeof ContactRoute
   '/faq': typeof FaqRoute
   '/medallion': typeof MedallionRoute
+  '/select': typeof SelectRoute
   '/shipping': typeof ShippingRoute
   '/order-confirmed/$reference': typeof OrderConfirmedReferenceRoute
   '/pay/$reference': typeof PayReferenceRoute
@@ -112,6 +119,7 @@ export interface FileRoutesByTo {
   '/contact': typeof ContactRoute
   '/faq': typeof FaqRoute
   '/medallion': typeof MedallionRoute
+  '/select': typeof SelectRoute
   '/shipping': typeof ShippingRoute
   '/order-confirmed/$reference': typeof OrderConfirmedReferenceRoute
   '/pay/$reference': typeof PayReferenceRoute
@@ -128,6 +136,7 @@ export interface FileRoutesById {
   '/contact': typeof ContactRoute
   '/faq': typeof FaqRoute
   '/medallion': typeof MedallionRoute
+  '/select': typeof SelectRoute
   '/shipping': typeof ShippingRoute
   '/order-confirmed/$reference': typeof OrderConfirmedReferenceRoute
   '/pay/$reference': typeof PayReferenceRoute
@@ -145,6 +154,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/faq'
     | '/medallion'
+    | '/select'
     | '/shipping'
     | '/order-confirmed/$reference'
     | '/pay/$reference'
@@ -160,6 +170,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/faq'
     | '/medallion'
+    | '/select'
     | '/shipping'
     | '/order-confirmed/$reference'
     | '/pay/$reference'
@@ -175,6 +186,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/faq'
     | '/medallion'
+    | '/select'
     | '/shipping'
     | '/order-confirmed/$reference'
     | '/pay/$reference'
@@ -191,6 +203,7 @@ export interface RootRouteChildren {
   ContactRoute: typeof ContactRoute
   FaqRoute: typeof FaqRoute
   MedallionRoute: typeof MedallionRoute
+  SelectRoute: typeof SelectRoute
   ShippingRoute: typeof ShippingRoute
   OrderConfirmedReferenceRoute: typeof OrderConfirmedReferenceRoute
   PayReferenceRoute: typeof PayReferenceRoute
@@ -206,6 +219,13 @@ declare module '@tanstack/react-router' {
       path: '/shipping'
       fullPath: '/shipping'
       preLoaderRoute: typeof ShippingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/select': {
+      id: '/select'
+      path: '/select'
+      fullPath: '/select'
+      preLoaderRoute: typeof SelectRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/medallion': {
@@ -303,6 +323,7 @@ const rootRouteChildren: RootRouteChildren = {
   ContactRoute: ContactRoute,
   FaqRoute: FaqRoute,
   MedallionRoute: MedallionRoute,
+  SelectRoute: SelectRoute,
   ShippingRoute: ShippingRoute,
   OrderConfirmedReferenceRoute: OrderConfirmedReferenceRoute,
   PayReferenceRoute: PayReferenceRoute,

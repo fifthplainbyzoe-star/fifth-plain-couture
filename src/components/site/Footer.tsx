@@ -25,6 +25,7 @@ const cols = [
     title: "Shop",
     links: [
       { label: "The Medallion", to: "/medallion" },
+      { label: "FifthPlain Select", to: "/select" },
       { label: "Fragrance Lab", to: "/shop" },
     ],
   },
