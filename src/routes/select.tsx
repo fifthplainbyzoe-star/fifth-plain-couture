@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Reveal } from "@/components/site/Reveal";
-import selectHero from "@/assets/fifthplain-select-hero.png.asset.json";
+import selectHero from "@/assets/select-hero.png";
 
 export const Route = createFileRoute("/select")({
   head: () => ({
@@ -18,7 +18,7 @@ export const Route = createFileRoute("/select")({
           "Curated pieces for effortless, modest summer style. Coming soon to FifthPlain.",
       },
       { property: "og:type", content: "website" },
-      { property: "og:image", content: selectHero.url },
+      { property: "og:image", content: selectHero },
     ],
     links: [{ rel: "canonical", href: "/select" }],
   }),
@@ -31,7 +31,7 @@ function FifthPlainSelect() {
       {/* Hero */}
       <section className="relative h-[85svh] overflow-hidden -mt-16 lg:-mt-20">
         <img
-          src={selectHero.url}
+          src={selectHero}
           alt="Model in a flowing beige modest summer dress holding a straw bag"
           className="absolute inset-0 h-full w-full object-cover slow-zoom"
         />
