@@ -176,7 +176,7 @@ function Checkout() {
               <div className="px-6 py-4 bg-surface/50 border-b border-border">
                 <div className="flex items-center gap-3">
                   <Truck className="w-4 h-4 text-gold" />
-                  <span className="text-[11px] uppercase tracking-[0.28em] text-ivory font-medium">The Courier Guy — Door-to-Door</span>
+                  <span className="text-[11px] uppercase tracking-[0.28em] text-ivory font-medium">THE COURIER GUY — DOOR-TO-DOOR(PRICING MAY DIFFER WITH SIZE OF PACKAGING AND DELIVERY LOCATION.)</span>
                 </div>
               </div>
               <div className="grid sm:grid-cols-2 divide-y sm:divide-y-0 sm:divide-x divide-border">
