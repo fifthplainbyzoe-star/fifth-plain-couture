@@ -9,8 +9,12 @@ export const CATALOG: Record<string, { name: string; price: number }> = {
 };
 
 export const SHIPPING: Record<string, { carrier: "paxi" | "courier"; price: number }> = {
-  "paxi-standard": { carrier: "paxi", price: 60 },
-  "paxi-large": { carrier: "paxi", price: 100 },
+  "paxi-economy-small": { carrier: "paxi", price: 60 },
+  "paxi-speed-standard": { carrier: "paxi", price: 110 },
+  "paxi-store-home-standard": { carrier: "paxi", price: 120 },
+  "paxi-economy-large": { carrier: "paxi", price: 120 },
+  "paxi-speed-large": { carrier: "paxi", price: 140 },
+  "paxi-store-home-large": { carrier: "paxi", price: 150 },
   "courier-standard": { carrier: "courier", price: 120 },
   "courier-express": { carrier: "courier", price: 250 },
 };

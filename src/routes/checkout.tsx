@@ -11,7 +11,15 @@ export const Route = createFileRoute("/checkout")({
 const WHATSAPP_NUMBER = "27634595961";
 
 type ShippingCarrier = "paxi" | "courier";
-type ShippingOption = "paxi-standard" | "paxi-large" | "courier-standard" | "courier-express";
+type ShippingOption =
+  | "paxi-economy-small"
+  | "paxi-speed-standard"
+  | "paxi-store-home-standard"
+  | "paxi-economy-large"
+  | "paxi-speed-large"
+  | "paxi-store-home-large"
+  | "courier-standard"
+  | "courier-express";
 
 interface ShippingMethod {
   id: ShippingOption;
