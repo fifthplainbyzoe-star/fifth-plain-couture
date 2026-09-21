@@ -57,6 +57,7 @@ function Checkout() {
 
   const selectedShipping = shippingMethods.find((s) => s.id === shippingOption)!;
   const currentCarrier = selectedShipping.carrier;
+  const needsPaxiCode = currentCarrier === "paxi" && !selectedShipping.id.includes("store-home");
   const shippingCost = selectedShipping.price;
   const total = subtotal + shippingCost;
 
