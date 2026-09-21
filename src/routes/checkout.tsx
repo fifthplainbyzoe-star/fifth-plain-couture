@@ -73,8 +73,8 @@ function Checkout() {
   const handleWhatsAppCheckout = () => {
     setError("");
     if (!customerName.trim()) { setError("Please enter your name."); return; }
-    if (currentCarrier === "paxi" && !paxiCode.trim()) { setError("Enter your PAXI point code."); return; }
-    if (currentCarrier === "courier" && (!shippingAddress.street || !shippingAddress.city)) {
+    if (needsPaxiCode && !paxiCode.trim()) { setError("Enter your PAXI point code."); return; }
+    if (!needsPaxiCode && (!shippingAddress.street || !shippingAddress.city)) {
       setError("Enter your shipping address."); return;
     }
 
@@ -87,7 +87,7 @@ function Checkout() {
       .join("\n");
 
     const shippingLine =
-      currentCarrier === "paxi"
+      needsPaxiCode
         ? `PAXI Point Code: ${paxiCode.trim()}`
         : `Address: ${[shippingAddress.street, shippingAddress.suburb, shippingAddress.city, shippingAddress.province, shippingAddress.postalCode].filter(Boolean).join(", ")}`;
 
