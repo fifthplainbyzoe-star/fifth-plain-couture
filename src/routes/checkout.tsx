@@ -32,7 +32,7 @@ interface ShippingMethod {
 
 function Checkout() {
   const { items, subtotal } = useCart();
-  const [shippingOption, setShippingOption] = useState<ShippingOption>("paxi-standard");
+  const [shippingOption, setShippingOption] = useState<ShippingOption>("paxi-economy-small");
   const [customerName, setCustomerName] = useState("");
   const [paxiCode, setPaxiCode] = useState("");
   const [shippingAddress, setShippingAddress] = useState({
@@ -45,8 +45,12 @@ function Checkout() {
   const [error, setError] = useState("");
 
   const shippingMethods: ShippingMethod[] = [
-    { id: "paxi-standard", carrier: "paxi", label: "PAXI Standard Bag", sub: "PEP Counter-to-Counter · 7-9 Days · Max 5kg", price: 60, icon: Package },
-    { id: "paxi-large", carrier: "paxi", label: "PAXI Large Bag", sub: "PEP Counter-to-Counter · 7-9 Days · Max 10kg", price: 100, icon: Package },
+    { id: "paxi-economy-small", carrier: "paxi", label: "Economy Small Standard", sub: "PEP Counter-to-Counter · 7-9 Days · Max 5kg", price: 60, icon: Package },
+    { id: "paxi-speed-standard", carrier: "paxi", label: "PAXI Speed Standard", sub: "PEP Counter-to-Counter · 3-5 Days · Max 5kg", price: 110, icon: Package },
+    { id: "paxi-store-home-standard", carrier: "paxi", label: "Store to Home Standard", sub: "PEP Store-to-Door · Max 5kg", price: 120, icon: Package },
+    { id: "paxi-economy-large", carrier: "paxi", label: "Economy Large", sub: "PEP Counter-to-Counter · 7-9 Days · Max 10kg", price: 120, icon: Package },
+    { id: "paxi-speed-large", carrier: "paxi", label: "Speed Large", sub: "PEP Counter-to-Counter · 3-5 Days · Max 10kg", price: 140, icon: Package },
+    { id: "paxi-store-home-large", carrier: "paxi", label: "Store to Home Large", sub: "PEP Store-to-Door · Max 10kg", price: 150, icon: Package },
     { id: "courier-standard", carrier: "courier", label: "The Courier Guy Standard", sub: "Door-to-Door · 2-3 Days", price: 120, icon: Truck },
     { id: "courier-express", carrier: "courier", label: "The Courier Guy Express", sub: "Heavy / Regional Door Delivery · Price varies with distance", price: 250, icon: Zap },
   ];
