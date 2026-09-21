@@ -140,7 +140,7 @@ function Checkout() {
                 <div className="flex items-center justify-between gap-3">
                   <div className="flex items-center gap-3">
                     <Package className="w-4 h-4 text-gold" />
-                    <span className="text-[11px] uppercase tracking-[0.28em] text-ivory font-medium">PAXI — PEP Counter-to-Counter</span>
+                    <span className="text-[11px] uppercase tracking-[0.28em] text-ivory font-medium">PAXI — Counter-to-Counter & Store-to-Home</span>
                   </div>
                   <span className="text-[10px] uppercase tracking-[0.24em] text-muted-foreground">from R60</span>
                 </div>
@@ -152,9 +152,9 @@ function Checkout() {
                     <button
                       key={opt.id}
                       onClick={() => setShippingOption(opt.id)}
-                      className={`text-left px-6 py-5 border transition-all ${
-                        isActive ? "bg-ivory/[0.08] border-l-2 border-l-gold" : "hover:bg-ivory/[0.02]"
-                      } ${isActive ? "sm:border-r border-r-border" : "sm:border-r border-r-border sm:border-l-2 sm:border-l-transparent"}`}
+                      className={`text-left px-6 py-5 border-b border-border sm:[&:nth-child(odd)]:border-r transition-all ${
+                        isActive ? "bg-ivory/[0.08] border-l-2 border-l-gold" : "hover:bg-ivory/[0.02] border-l-2 border-l-transparent"
+                      }`}
                     >
                       <div className="flex items-start justify-between gap-4">
                         <div className="flex-1 min-w-0">
@@ -208,7 +208,7 @@ function Checkout() {
           </div>
 
           <div className="mt-6 border border-border p-6 bg-surface/30">
-            {currentCarrier === "paxi" ? (
+            {needsPaxiCode ? (
               <div>
                 <label className="text-[10px] uppercase tracking-[0.28em] text-ivory">PEP Store / PAXI Point Code</label>
                 <p className="mt-1 text-xs text-muted-foreground mb-4">Enter the code of your nearest PEP Store or PAXI collection point.</p>
