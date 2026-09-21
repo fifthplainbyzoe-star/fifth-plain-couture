@@ -11,7 +11,16 @@ const CartItemSchema = z.object({
 
 const InitiateSchema = z.object({
   items: z.array(CartItemSchema).min(1).max(50),
-  shippingOption: z.enum(["paxi-standard", "paxi-large", "courier-standard", "courier-express"]),
+  shippingOption: z.enum([
+    "paxi-economy-small",
+    "paxi-speed-standard",
+    "paxi-store-home-standard",
+    "paxi-economy-large",
+    "paxi-speed-large",
+    "paxi-store-home-large",
+    "courier-standard",
+    "courier-express",
+  ]),
   shippingDetails: z.record(z.string(), z.any()),
   phone: z.string().min(6).max(20),
   bank: z.enum(["tymebank", "capitec"]),

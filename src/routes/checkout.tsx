@@ -11,7 +11,15 @@ export const Route = createFileRoute("/checkout")({
 const WHATSAPP_NUMBER = "27634595961";
 
 type ShippingCarrier = "paxi" | "courier";
-type ShippingOption = "paxi-standard" | "paxi-large" | "courier-standard" | "courier-express";
+type ShippingOption =
+  | "paxi-economy-small"
+  | "paxi-speed-standard"
+  | "paxi-store-home-standard"
+  | "paxi-economy-large"
+  | "paxi-speed-large"
+  | "paxi-store-home-large"
+  | "courier-standard"
+  | "courier-express";
 
 interface ShippingMethod {
   id: ShippingOption;
@@ -24,7 +32,7 @@ interface ShippingMethod {
 
 function Checkout() {
   const { items, subtotal } = useCart();
-  const [shippingOption, setShippingOption] = useState<ShippingOption>("paxi-standard");
+  const [shippingOption, setShippingOption] = useState<ShippingOption>("paxi-economy-small");
   const [customerName, setCustomerName] = useState("");
   const [paxiCode, setPaxiCode] = useState("");
   const [shippingAddress, setShippingAddress] = useState({
@@ -37,14 +45,19 @@ function Checkout() {
   const [error, setError] = useState("");
 
   const shippingMethods: ShippingMethod[] = [
-    { id: "paxi-standard", carrier: "paxi", label: "PAXI Standard Bag", sub: "PEP Counter-to-Counter · 7-9 Days · Max 5kg", price: 60, icon: Package },
-    { id: "paxi-large", carrier: "paxi", label: "PAXI Large Bag", sub: "PEP Counter-to-Counter · 7-9 Days · Max 10kg", price: 100, icon: Package },
+    { id: "paxi-economy-small", carrier: "paxi", label: "Economy Small Standard", sub: "PEP Counter-to-Counter · 7-9 Days · Max 5kg", price: 60, icon: Package },
+    { id: "paxi-speed-standard", carrier: "paxi", label: "PAXI Speed Standard", sub: "PEP Counter-to-Counter · 3-5 Days · Max 5kg", price: 110, icon: Package },
+    { id: "paxi-store-home-standard", carrier: "paxi", label: "Store to Home Standard", sub: "PEP Store-to-Door · Max 5kg", price: 120, icon: Package },
+    { id: "paxi-economy-large", carrier: "paxi", label: "Economy Large", sub: "PEP Counter-to-Counter · 7-9 Days · Max 10kg", price: 120, icon: Package },
+    { id: "paxi-speed-large", carrier: "paxi", label: "Speed Large", sub: "PEP Counter-to-Counter · 3-5 Days · Max 10kg", price: 140, icon: Package },
+    { id: "paxi-store-home-large", carrier: "paxi", label: "Store to Home Large", sub: "PEP Store-to-Door · Max 10kg", price: 150, icon: Package },
     { id: "courier-standard", carrier: "courier", label: "The Courier Guy Standard", sub: "Door-to-Door · 2-3 Days", price: 120, icon: Truck },
     { id: "courier-express", carrier: "courier", label: "The Courier Guy Express", sub: "Heavy / Regional Door Delivery · Price varies with distance", price: 250, icon: Zap },
   ];
 
   const selectedShipping = shippingMethods.find((s) => s.id === shippingOption)!;
   const currentCarrier = selectedShipping.carrier;
+  const needsPaxiCode = currentCarrier === "paxi" && !selectedShipping.id.includes("store-home");
   const shippingCost = selectedShipping.price;
   const total = subtotal + shippingCost;
 
@@ -60,8 +73,8 @@ function Checkout() {
   const handleWhatsAppCheckout = () => {
     setError("");
     if (!customerName.trim()) { setError("Please enter your name."); return; }
-    if (currentCarrier === "paxi" && !paxiCode.trim()) { setError("Enter your PAXI point code."); return; }
-    if (currentCarrier === "courier" && (!shippingAddress.street || !shippingAddress.city)) {
+    if (needsPaxiCode && !paxiCode.trim()) { setError("Enter your PAXI point code."); return; }
+    if (!needsPaxiCode && (!shippingAddress.street || !shippingAddress.city)) {
       setError("Enter your shipping address."); return;
     }
 
@@ -74,7 +87,7 @@ function Checkout() {
       .join("\n");
 
     const shippingLine =
-      currentCarrier === "paxi"
+      needsPaxiCode
         ? `PAXI Point Code: ${paxiCode.trim()}`
         : `Address: ${[shippingAddress.street, shippingAddress.suburb, shippingAddress.city, shippingAddress.province, shippingAddress.postalCode].filter(Boolean).join(", ")}`;
 
@@ -127,7 +140,7 @@ function Checkout() {
                 <div className="flex items-center justify-between gap-3">
                   <div className="flex items-center gap-3">
                     <Package className="w-4 h-4 text-gold" />
-                    <span className="text-[11px] uppercase tracking-[0.28em] text-ivory font-medium">PAXI — PEP Counter-to-Counter</span>
+                    <span className="text-[11px] uppercase tracking-[0.28em] text-ivory font-medium">PAXI — Counter-to-Counter & Store-to-Home</span>
                   </div>
                   <span className="text-[10px] uppercase tracking-[0.24em] text-muted-foreground">from R60</span>
                 </div>
@@ -139,9 +152,9 @@ function Checkout() {
                     <button
                       key={opt.id}
                       onClick={() => setShippingOption(opt.id)}
-                      className={`text-left px-6 py-5 border transition-all ${
-                        isActive ? "bg-ivory/[0.08] border-l-2 border-l-gold" : "hover:bg-ivory/[0.02]"
-                      } ${isActive ? "sm:border-r border-r-border" : "sm:border-r border-r-border sm:border-l-2 sm:border-l-transparent"}`}
+                      className={`text-left px-6 py-5 border-b border-border sm:[&:nth-child(odd)]:border-r transition-all ${
+                        isActive ? "bg-ivory/[0.08] border-l-2 border-l-gold" : "hover:bg-ivory/[0.02] border-l-2 border-l-transparent"
+                      }`}
                     >
                       <div className="flex items-start justify-between gap-4">
                         <div className="flex-1 min-w-0">
@@ -195,7 +208,7 @@ function Checkout() {
           </div>
 
           <div className="mt-6 border border-border p-6 bg-surface/30">
-            {currentCarrier === "paxi" ? (
+            {needsPaxiCode ? (
               <div>
                 <label className="text-[10px] uppercase tracking-[0.28em] text-ivory">PEP Store / PAXI Point Code</label>
                 <p className="mt-1 text-xs text-muted-foreground mb-4">Enter the code of your nearest PEP Store or PAXI collection point.</p>
