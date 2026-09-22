@@ -9,6 +9,10 @@ export interface Product {
   image: string;
   gallery?: string[];
   badge?: string;
+  collection?: "main" | "select";
+  colors?: string[];
+  sizes?: string[];
+  description?: string;
 }
 
 export function ProductCard({ p }: { p: Product }) {
