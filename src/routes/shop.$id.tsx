@@ -82,6 +82,24 @@ function ProductPage() {
     handleAdd();
     navigate({ to: "/checkout" });
   };
+  const handleWhatsAppOrder = () => {
+    const options = [
+      selectedSize ? `Size: ${selectedSize}` : "",
+      selectedQty ? `Quantity option: ${selectedQty}` : "",
+      selectedColor ? `Colour: ${selectedColor}` : "",
+      selectedFinish ? `Finish: ${selectedFinish}` : "",
+    ].filter(Boolean).join("\n");
+    const message =
+      `Hi! I'd like to order from FifthPlain Select:\n` +
+      `• 1 x ${p.name} — R${unitPrice.toLocaleString()}\n` +
+      (options ? `${options}\n` : "") +
+      `\nTotal (excl. shipping): R${unitPrice.toLocaleString()}.`;
+    window.open(
+      `https://wa.me/27634595961?text=${encodeURIComponent(message)}`,
+      "_blank",
+      "noopener,noreferrer",
+    );
+  };
 
   return (
     <>
@@ -237,6 +255,9 @@ function ProductPage() {
               <div className="mt-8 flex flex-col gap-3">
                 <button onClick={handleAdd} className="bg-ivory text-background py-4 text-[11px] uppercase tracking-[0.3em] hover:bg-gold transition-colors">Add to Atelier</button>
                 <button onClick={handleBuyNow} className="border border-gold text-gold py-4 text-[11px] uppercase tracking-[0.3em] hover:bg-gold hover:text-background transition-colors">Buy Now</button>
+                {isSelect && (
+                  <button onClick={handleWhatsAppOrder} className="bg-gold text-background py-4 text-[11px] uppercase tracking-[0.3em] hover:bg-ivory transition-colors">Order via WhatsApp</button>
+                )}
                 {addedMsg && <p className="text-xs text-gold text-center">{addedMsg}</p>}
               </div>
             )}
