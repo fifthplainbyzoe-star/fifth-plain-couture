@@ -30,15 +30,6 @@ import modelSkirt3 from "@/assets/model-skirt-3.jpg";
 import modelFragrance1 from "@/assets/model-fragrance-1.jpg";
 import modelFragrance2 from "@/assets/model-fragrance-2.jpg";
 import modelFragrance3 from "@/assets/model-fragrance-3.jpg";
-import elara1Asset from "@/assets/elara-dress-1.jpg.png.asset.json";
-import elara2Asset from "@/assets/elara-dress-2.jpg.png.asset.json";
-import elara3Asset from "@/assets/elara-dress-3.jpg.png.asset.json";
-import harper1Asset from "@/assets/harper-denim-1.jpg.jpeg.asset.json";
-import harper2Asset from "@/assets/harper-denim-2.jpg.png.asset.json";
-import harper3Asset from "@/assets/harper-denim-3.jpg.png.asset.json";
-import harper4Asset from "@/assets/harper-denim-4.jpg.png.asset.json";
-import harper5Asset from "@/assets/harper-denim-5.jpg.png.asset.json";
-import solenePlaceholder from "@/assets/solene-placeholder.svg";
 import type { Product } from "@/components/site/ProductCard";
 
 export const products: Product[] = [
@@ -84,49 +75,7 @@ export const products: Product[] = [
     image: fragrance,
     gallery: [fragrance, modelFragrance1, modelFragrance2, modelFragrance3],
   },
-  {
-    id: "elara-dress",
-    name: "Elara Dress",
-    category: "FifthPlain Select",
-    collection: "select",
-    price: 1050,
-    image: elara1Asset.url,
-    gallery: [elara1Asset.url, elara2Asset.url, elara3Asset.url],
-    colors: ["Beige", "Black", "White", "Sky Blue"],
-    sizes: ["XS", "S", "M", "L", "XL", "2XL"],
-    description: "A graceful full-length wrap dress with a high neckline, softly gathered sleeves, and a flowing tiered silhouette.",
-    badge: "Select",
-  },
-  {
-    id: "harper-denim",
-    name: "Harper Denim",
-    category: "FifthPlain Select",
-    collection: "select",
-    price: 800,
-    image: harper1Asset.url,
-    gallery: [harper1Asset.url, harper2Asset.url, harper3Asset.url, harper4Asset.url, harper5Asset.url],
-    colors: ["Beige", "Black", "White", "Sky Blue"],
-    sizes: ["XS", "S", "M", "L", "XL", "2XL"],
-    description: "A full-length washed denim skirt defined by an asymmetric layered construction and softly frayed edges.",
-    badge: "Select",
-  },
-  {
-    id: "solene-skirt",
-    name: "Solene Skirt",
-    category: "FifthPlain Select",
-    collection: "select",
-    price: 750,
-    image: solenePlaceholder,
-    gallery: [solenePlaceholder],
-    colors: ["Beige", "Black", "White", "Sky Blue"],
-    sizes: ["XS", "S", "M", "L", "XL", "2XL"],
-    description: "The Solene Skirt joins the FifthPlain Select collection. Product photography will be added soon.",
-    badge: "New",
-  },
 ];
-
-export const mainProducts = products.filter((product) => product.collection !== "select");
-export const selectProducts = products.filter((product) => product.collection === "select");
 
 export function findProduct(id: string) {
   return products.find((p) => p.id === id);

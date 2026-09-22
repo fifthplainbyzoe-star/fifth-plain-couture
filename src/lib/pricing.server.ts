@@ -6,9 +6,6 @@ export const CATALOG: Record<string, { name: string; price: number }> = {
   "ivory-tracksuit": { name: "Tracksuit Centre", price: 320 },
   "aurelia-skirt": { name: "The Aurelia Skirt", price: 520 },
   "no-v-fragrance": { name: "The Fragrance Lab", price: 250 },
-  "elara-dress": { name: "Elara Dress", price: 1050 },
-  "harper-denim": { name: "Harper Denim", price: 800 },
-  "solene-skirt": { name: "Solene Skirt", price: 750 },
 };
 
 export const SHIPPING: Record<string, { carrier: "paxi" | "courier"; price: number }> = {

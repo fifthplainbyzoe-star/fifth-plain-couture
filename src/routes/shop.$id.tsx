@@ -28,24 +28,23 @@ function ProductPage() {
   const isHoodie = p.category === "Hoodies";
   const isTee = p.category === "T-Shirts";
   const isTracksuit = p.category === "Tracksuits";
-  const isSelect = p.collection === "select";
   const isAurelia = p.id === "aurelia-skirt";
   const gallery: string[] = p.gallery && p.gallery.length > 0 ? p.gallery : [p.image];
-  const sizeOptions = p.sizes ?? (isFragrance
+  const sizeOptions = isFragrance
     ? ["Velvet Fire", "Glass Wealth", "Black Authority"]
     : isTracksuit
       ? ["S", "M", "L", "XL", "2XL"]
-      : ["XS", "S", "M", "L", "XL", "2XL"]);
+      : ["XS", "S", "M", "L", "XL", "2XL"];
   const showFinish = isTee || isHoodie || isTracksuit;
   const finishOptions = ["Embroidery", "Print", "Blank Canvas"];
   const quantityOptions = isFragrance ? ["30ml", "50ml"] : [];
-  const colorOptions = p.colors ?? (isFragrance
+  const colorOptions = isFragrance
     ? []
     : isHoodie
       ? ["Black", "Dark Brown", "Beige Cream", "Lilac", "Orange"]
       : isTracksuit
         ? ["Black", "Brown", "Cream"]
-        : ["Black", "Mud Brown", "Cream", "Pink", "Silver Grey"]);
+        : ["Black", "Mud Brown", "Cream", "Pink", "Silver Grey"];
   const [selectedSize, setSelectedSize] = useState(sizeOptions[0]);
   const [selectedQty, setSelectedQty] = useState(quantityOptions[0] ?? "");
   const [selectedColor, setSelectedColor] = useState(colorOptions[0] ?? "");
@@ -54,9 +53,7 @@ function ProductPage() {
   const [addedMsg, setAddedMsg] = useState("");
   const { add } = useCart();
   const navigate = useNavigate();
-  const related = products
-    .filter((x) => x.id !== p.id && (isSelect ? x.collection === "select" : x.collection !== "select"))
-    .slice(0, 4);
+  const related = products.filter((x) => x.id !== p.id).slice(0, 4);
 
   const sizeSurcharge = !isFragrance && (selectedSize === "XL" || selectedSize === "2XL") ? 90 : 0;
   const unitPrice = p.price + sizeSurcharge;
@@ -131,13 +128,13 @@ function ProductPage() {
             </div>
 
             <p className="mt-8 text-muted-foreground leading-relaxed">
-               {p.description ?? (isFragrance
+               {isFragrance
                 ? "The Fragrance Lab fragrances are proudly offered through our official affiliate, FIFTHPLAIN, ensuring an authentic, premium shopping experience."
                 : isHoodie
                   ? "Crafted from ultra-heavyweight fabric with a flawless minimalist drape, engineered to hold its structure today and for years to come."
                   : isTee
                     ? "An armor of pure comfort, sculpted from premium heavyweight cotton to bring bold structure and timeless form to your everyday style."
-                     : "Substantial weight, uncompromised structure, and a premium finish designed for the modern uniform.")}
+                     : "Substantial weight, uncompromised structure, and a premium finish designed for the modern uniform."}
             </p>
 
             <div className="mt-10">
@@ -257,7 +254,7 @@ function ProductPage() {
             ))}
           </div>
           <div className="mt-12 text-center">
-            <Link to={isSelect ? "/select" : "/shop"} className="text-[11px] uppercase tracking-[0.28em] text-gold border-b border-gold pb-1">Back to Collection</Link>
+            <Link to="/shop" className="text-[11px] uppercase tracking-[0.28em] text-gold border-b border-gold pb-1">Back to Collection</Link>
           </div>
         </div>
       </section>
