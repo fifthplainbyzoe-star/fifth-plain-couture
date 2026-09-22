@@ -19,6 +19,8 @@ export const Route = createFileRoute("/select")({
       },
       { property: "og:type", content: "website" },
       { property: "og:image", content: selectHero },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:image", content: selectHero },
     ],
     links: [{ rel: "canonical", href: "/select" }],
   }),

@@ -128,13 +128,13 @@ function ProductPage() {
             </div>
 
             <p className="mt-8 text-muted-foreground leading-relaxed">
-              {isFragrance
+               {isFragrance
                 ? "The Fragrance Lab fragrances are proudly offered through our official affiliate, FIFTHPLAIN, ensuring an authentic, premium shopping experience."
                 : isHoodie
                   ? "Crafted from ultra-heavyweight fabric with a flawless minimalist drape, engineered to hold its structure today and for years to come."
                   : isTee
                     ? "An armor of pure comfort, sculpted from premium heavyweight cotton to bring bold structure and timeless form to your everyday style."
-                    : "Substantial weight, uncompromised structure, and a premium finish designed for the modern uniform."}
+                     : "Substantial weight, uncompromised structure, and a premium finish designed for the modern uniform."}
             </p>
 
             <div className="mt-10">
