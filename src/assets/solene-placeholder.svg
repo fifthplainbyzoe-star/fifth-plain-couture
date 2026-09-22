@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1000" role="img" aria-labelledby="title desc">
+  <title id="title">Solene Skirt image coming soon</title>
+  <desc id="desc">A neutral placeholder for the forthcoming Solene Skirt photography.</desc>
+  <rect width="800" height="1000" fill="#f0ebe3"/>
+  <path d="M400 235c-50 0-91 41-91 91v54l-126 385c-12 37 16 75 55 75h324c39 0 67-38 55-75L491 380v-54c0-50-41-91-91-91Z" fill="none" stroke="#c9b99a" stroke-width="2"/>
+  <line x1="310" y1="380" x2="490" y2="380" stroke="#8b7355" stroke-width="2"/>
+  <text x="400" y="890" fill="#8b7355" font-family="serif" font-size="25" text-anchor="middle">SOLENE SKIRT</text>
+  <text x="400" y="925" fill="#8b7355" font-family="sans-serif" font-size="13" letter-spacing="4" text-anchor="middle">IMAGES COMING SOON</text>
+</svg>

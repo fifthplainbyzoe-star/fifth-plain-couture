@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
-import { products } from "@/lib/products";
+import { mainProducts } from "@/lib/products";
 import { ProductCard } from "@/components/site/ProductCard";
 import { Reveal } from "@/components/site/Reveal";
 
@@ -31,7 +31,7 @@ function Shop() {
   const [sort, setSort] = useState("featured");
 
   const list = useMemo(() => {
-    let l = cat === "All" ? products : products.filter((p) => p.category === cat);
+    let l = cat === "All" ? mainProducts : mainProducts.filter((p) => p.category === cat);
     if (sort === "asc") l = [...l].sort((a, b) => a.price - b.price);
     if (sort === "desc") l = [...l].sort((a, b) => b.price - a.price);
     return l;

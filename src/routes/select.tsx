@@ -1,24 +1,28 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Reveal } from "@/components/site/Reveal";
+import { ProductCard } from "@/components/site/ProductCard";
+import { selectProducts } from "@/lib/products";
 import selectHero from "@/assets/select-hero.png";
 
 export const Route = createFileRoute("/select")({
   head: () => ({
     meta: [
-      { title: "FifthPlain Select — Coming Soon" },
+      { title: "FifthPlain Select — Curated Modest Fashion" },
       {
         name: "description",
         content:
-          "FifthPlain Select — a curated collection of modest summer dresses and seasonal fashion. Coming soon.",
+          "Shop FifthPlain Select, a curated collection of modest dresses and seasonal fashion pieces.",
       },
-      { property: "og:title", content: "FifthPlain Select — Coming Soon" },
+      { property: "og:title", content: "FifthPlain Select — Curated Modest Fashion" },
       {
         property: "og:description",
         content:
-          "Curated pieces for effortless, modest summer style. Coming soon to FifthPlain.",
+          "Curated pieces for effortless, modest summer style from FifthPlain.",
       },
       { property: "og:type", content: "website" },
       { property: "og:image", content: selectHero },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:image", content: selectHero },
     ],
     links: [{ rel: "canonical", href: "/select" }],
   }),
@@ -46,13 +50,27 @@ function FifthPlainSelect() {
             </h1>
             <div className="mt-6 inline-flex items-center gap-3 text-[11px] uppercase tracking-[0.3em] text-gold">
               <span className="h-px w-8 bg-gold/50" />
-              Coming Soon
+              The Collection
               <span className="h-px w-8 bg-gold/50" />
             </div>
             <p className="mt-8 font-editorial text-xl md:text-2xl text-ivory/90 leading-[1.5] max-w-xl mx-auto">
               Curated pieces for effortless, modest summer style.
             </p>
           </Reveal>
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-[1600px] px-6 lg:px-12 py-20 lg:py-28">
+        <Reveal>
+          <div className="text-[10px] uppercase tracking-[0.4em] text-gold">FifthPlain Select</div>
+          <h2 className="mt-5 font-editorial text-4xl md:text-5xl text-ivory">The first edit</h2>
+        </Reveal>
+        <div className="mt-12 grid gap-x-6 gap-y-14 sm:grid-cols-2 lg:grid-cols-3">
+          {selectProducts.map((product, index) => (
+            <Reveal key={product.id} delay={index * 80}>
+              <ProductCard p={product} />
+            </Reveal>
+          ))}
         </div>
       </section>
 
@@ -67,7 +85,7 @@ function FifthPlainSelect() {
           </h2>
           <div className="mt-10 space-y-6 text-ivory/70 leading-[1.8] max-w-2xl mx-auto">
             <p>
-              FifthPlain Select is a forthcoming edit of modest summer dresses
+              FifthPlain Select is a considered edit of modest summer dresses
               and seasonal pieces — flowing silhouettes, natural fabrics, and
               quiet details designed for warmth and movement.
             </p>
