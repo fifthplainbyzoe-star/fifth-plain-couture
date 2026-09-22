@@ -38,7 +38,9 @@ import harper2Asset from "@/assets/harper-denim-2.jpg.png.asset.json";
 import harper3Asset from "@/assets/harper-denim-3.jpg.png.asset.json";
 import harper4Asset from "@/assets/harper-denim-4.jpg.png.asset.json";
 import harper5Asset from "@/assets/harper-denim-5.jpg.png.asset.json";
-import solenePlaceholder from "@/assets/solene-placeholder.svg";
+import solene1Asset from "@/assets/solene-skirt-1.png.asset.json";
+import solene2Asset from "@/assets/solene-skirt-2.png.asset.json";
+import solene3Asset from "@/assets/solene-skirt-3.png.asset.json";
 import type { Product } from "@/components/site/ProductCard";
 
 export const products: Product[] = [
@@ -116,11 +118,11 @@ export const products: Product[] = [
     category: "FifthPlain Select",
     collection: "select",
     price: 750,
-    image: solenePlaceholder,
-    gallery: [solenePlaceholder],
+    image: solene1Asset.url,
+    gallery: [solene1Asset.url, solene2Asset.url, solene3Asset.url],
     colors: ["Black", "Beige Cream", "White", "Sky Blue"],
     sizes: ["S", "M", "L", "XL"],
-    description: "The Solene Skirt joins the FifthPlain Select collection. Product photography will be added soon.",
+    description: "A fluid satin maxi skirt with an asymmetric tiered ruffle hem — quiet movement, elevated ease.",
     badge: "New",
   },
 ];
