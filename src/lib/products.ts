@@ -30,17 +30,17 @@ import modelSkirt3 from "@/assets/model-skirt-3.jpg";
 import modelFragrance1 from "@/assets/model-fragrance-1.jpg";
 import modelFragrance2 from "@/assets/model-fragrance-2.jpg";
 import modelFragrance3 from "@/assets/model-fragrance-3.jpg";
-import elara1Asset from "@/assets/elara-dress-1.jpg.png.asset.json";
-import elara2Asset from "@/assets/elara-dress-2.jpg.png.asset.json";
-import elara3Asset from "@/assets/elara-dress-3.jpg.png.asset.json";
-import harper1Asset from "@/assets/harper-denim-1.jpg.jpeg.asset.json";
-import harper2Asset from "@/assets/harper-denim-2.jpg.png.asset.json";
-import harper3Asset from "@/assets/harper-denim-3.jpg.png.asset.json";
-import harper4Asset from "@/assets/harper-denim-4.jpg.png.asset.json";
-import harper5Asset from "@/assets/harper-denim-5.jpg.png.asset.json";
-import solene1Asset from "@/assets/solene-skirt-1.png.asset.json";
-import solene2Asset from "@/assets/solene-skirt-2.png.asset.json";
-import solene3Asset from "@/assets/solene-skirt-3.png.asset.json";
+import elara1 from "@/assets/elara-dress-1.png";
+import elara2 from "@/assets/elara-dress-2.png";
+import elara3 from "@/assets/elara-dress-3.png";
+import harper1 from "@/assets/harper-denim-1.jpg";
+import harper2 from "@/assets/harper-denim-2.png";
+import harper3 from "@/assets/harper-denim-3.webp";
+import harper4 from "@/assets/harper-denim-4.png";
+import harper5 from "@/assets/harper-denim-5.png";
+import solene1 from "@/assets/solene-skirt-1.png";
+import solene2 from "@/assets/solene-skirt-2.png";
+import solene3 from "@/assets/solene-skirt-3.png";
 import type { Product } from "@/components/site/ProductCard";
 
 export const products: Product[] = [
@@ -92,8 +92,8 @@ export const products: Product[] = [
     category: "FifthPlain Select",
     collection: "select",
     price: 1050,
-    image: elara1Asset.url,
-    gallery: [elara1Asset.url, elara2Asset.url, elara3Asset.url],
+    image: elara1,
+    gallery: [elara1, elara2, elara3],
     colors: ["Black", "Beige Cream", "White", "Sky Blue"],
     sizes: ["S", "M", "L", "XL"],
     description: "A graceful full-length wrap dress with a high neckline, softly gathered sleeves, and a flowing tiered silhouette.",
@@ -105,8 +105,8 @@ export const products: Product[] = [
     category: "FifthPlain Select",
     collection: "select",
     price: 800,
-    image: harper1Asset.url,
-    gallery: [harper1Asset.url, harper2Asset.url, harper3Asset.url, harper4Asset.url, harper5Asset.url],
+    image: harper1,
+    gallery: [harper1, harper2, harper3, harper4, harper5],
     colors: ["Black", "Beige Cream", "White", "Sky Blue"],
     sizes: ["S", "M", "L", "XL"],
     description: "A full-length washed denim skirt defined by an asymmetric layered construction and softly frayed edges.",
@@ -118,8 +118,8 @@ export const products: Product[] = [
     category: "FifthPlain Select",
     collection: "select",
     price: 750,
-    image: solene1Asset.url,
-    gallery: [solene1Asset.url, solene2Asset.url, solene3Asset.url],
+    image: solene1,
+    gallery: [solene1, solene2, solene3],
     colors: ["Black", "Beige Cream", "White", "Sky Blue"],
     sizes: ["S", "M", "L", "XL"],
     description: "A fluid satin maxi skirt with an asymmetric tiered ruffle hem — quiet movement, elevated ease.",
