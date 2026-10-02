@@ -41,6 +41,25 @@ import harper5 from "@/assets/harper-denim-5.png";
 import solene1 from "@/assets/solene-skirt-1.png";
 import solene2 from "@/assets/solene-skirt-2.png";
 import solene3 from "@/assets/solene-skirt-3.png";
+import teeMudBrown from "@/assets/tee-color-mud-brown.jpg";
+import teeCream from "@/assets/tee-color-cream.jpg";
+import teePink from "@/assets/tee-color-pink.jpg";
+import teeSilverGrey from "@/assets/tee-color-silver-grey.jpg";
+import hoodieDarkBrown from "@/assets/hoodie-color-dark-brown.jpg";
+import hoodieBeigeCream from "@/assets/hoodie-color-beige-cream.jpg";
+import hoodieLilac from "@/assets/hoodie-color-lilac.jpg";
+import hoodieOrange from "@/assets/hoodie-color-orange.jpg";
+import tracksuitBlack from "@/assets/tracksuit-color-black.jpg";
+import tracksuitBrown from "@/assets/tracksuit-color-brown.jpg";
+import elaraBlack from "@/assets/elara-color-black.png";
+import elaraWhite from "@/assets/elara-color-white.png";
+import elaraSkyBlue from "@/assets/elara-color-sky-blue.png";
+import harperBeigeCream from "@/assets/harper-color-beige-cream.jpg";
+import harperWhite from "@/assets/harper-color-white.jpg";
+import harperSkyBlue from "@/assets/harper-color-sky-blue.jpg";
+import soleneBlack from "@/assets/solene-color-black.png";
+import soleneWhite from "@/assets/solene-color-white.png";
+import soleneSkyBlue from "@/assets/solene-color-sky-blue.png";
 import type { Product } from "@/components/site/ProductCard";
 
 export const products: Product[] = [
@@ -51,6 +70,7 @@ export const products: Product[] = [
     price: 250,
     image: tee1,
     gallery: [tee1, tee2, tee3, tee4, modelTee1, modelTee2, modelTee3],
+    colorImages: { Black: tee1, "Mud Brown": teeMudBrown, Cream: teeCream, Pink: teePink, "Silver Grey": teeSilverGrey },
     badge: "New",
   },
   {
@@ -60,6 +80,7 @@ export const products: Product[] = [
     price: 320,
     image: hoodie1,
     gallery: [hoodie1, hoodie2, hoodie3, hoodie4, modelHoodie1, modelHoodie2, modelHoodie3],
+    colorImages: { Black: hoodie1, "Dark Brown": hoodieDarkBrown, "Beige Cream": hoodieBeigeCream, Lilac: hoodieLilac, Orange: hoodieOrange },
   },
   {
     id: "ivory-tracksuit",
@@ -68,6 +89,7 @@ export const products: Product[] = [
     price: 320,
     image: tracksuit1,
     gallery: [tracksuit1, tracksuit2, tracksuit3, tracksuit4, modelTracksuit1, modelTracksuit2, modelTracksuit3],
+    colorImages: { Black: tracksuitBlack, Brown: tracksuitBrown, Cream: tracksuit1 },
     badge: "Limited",
   },
   {
@@ -91,9 +113,10 @@ export const products: Product[] = [
     name: "Elara Dress",
     category: "FifthPlain Select",
     collection: "select",
-    price: 1050,
+    price: 999,
     image: elara1,
     gallery: [elara1, elara2, elara3],
+    colorImages: { Black: elaraBlack, "Beige Cream": elara1, White: elaraWhite, "Sky Blue": elaraSkyBlue },
     colors: ["Black", "Beige Cream", "White", "Sky Blue"],
     sizes: ["S", "M", "L", "XL"],
     description: "A graceful full-length wrap dress with a high neckline, softly gathered sleeves, and a flowing tiered silhouette.",
@@ -104,9 +127,10 @@ export const products: Product[] = [
     name: "Harper Denim",
     category: "FifthPlain Select",
     collection: "select",
-    price: 800,
+    price: 749,
     image: harper1,
     gallery: [harper1, harper2, harper3, harper4, harper5],
+    colorImages: { Black: harper1, "Beige Cream": harperBeigeCream, White: harperWhite, "Sky Blue": harperSkyBlue },
     colors: ["Black", "Beige Cream", "White", "Sky Blue"],
     sizes: ["S", "M", "L", "XL"],
     description: "A full-length washed denim skirt defined by an asymmetric layered construction and softly frayed edges.",
@@ -117,9 +141,10 @@ export const products: Product[] = [
     name: "Solene Skirt",
     category: "FifthPlain Select",
     collection: "select",
-    price: 750,
+    price: 699,
     image: solene1,
     gallery: [solene1, solene2, solene3],
+    colorImages: { Black: soleneBlack, "Beige Cream": solene1, White: soleneWhite, "Sky Blue": soleneSkyBlue },
     colors: ["Black", "Beige Cream", "White", "Sky Blue"],
     sizes: ["S", "M", "L", "XL"],
     description: "A fluid satin maxi skirt with an asymmetric tiered ruffle hem — quiet movement, elevated ease.",
