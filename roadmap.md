@@ -1,0 +1,4 @@
+# Roadmap
+- [ ] Wire color-specific images for all apparel color choices
+- [ ] Update FifthPlain Select prices: Elara R999, Harper R749, Solene R699
+- [ ] Verify product images, selections, cart pricing, and build
