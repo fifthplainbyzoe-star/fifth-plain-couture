@@ -8,6 +8,7 @@ export interface Product {
   price: number;
   image: string;
   gallery?: string[];
+  colorImages?: Record<string, string>;
   badge?: string;
   collection?: "main" | "select";
   colors?: string[];

@@ -52,6 +52,7 @@ function ProductPage() {
   const [selectedFinish, setSelectedFinish] = useState(showFinish ? finishOptions[0] : "");
   const [notifyMsg, setNotifyMsg] = useState("");
   const [addedMsg, setAddedMsg] = useState("");
+  const selectedImage = p.colorImages?.[selectedColor] ?? p.image;
   const { add } = useCart();
   const navigate = useNavigate();
   const related = products
@@ -67,7 +68,7 @@ function ProductPage() {
       name: p.name,
       category: p.category,
       price: unitPrice,
-      image: p.image,
+      image: selectedImage,
       size: isFragrance
         ? `${selectedSize} · ${selectedQty}`
         : showFinish && selectedFinish
@@ -129,7 +130,7 @@ function ProductPage() {
         <section className="mx-auto max-w-[1600px] px-6 lg:px-12 pt-12 pb-24 grid lg:grid-cols-[1.2fr_1fr] gap-12 lg:gap-20">
           <div className="grid grid-cols-2 gap-3">
             <div className="col-span-2 aspect-[4/5] bg-surface overflow-hidden">
-              <img src={gallery[0]} alt={p.name} className="h-full w-full object-cover slow-zoom" />
+              <img src={selectedImage} alt={`${p.name} in ${selectedColor}`} className="h-full w-full object-cover slow-zoom" />
             </div>
             {gallery.map((img, i) => (
               <div key={i} className="aspect-square bg-surface overflow-hidden">

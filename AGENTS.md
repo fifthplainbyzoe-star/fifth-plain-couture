@@ -8,3 +8,5 @@
 > Commits you push to the connected branch sync back to Lovable and show up in
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
+
+- Product color choices may map to color-specific primary images; preserve the original gallery and store the selected image in cart entries so orders remain visually accurate.
