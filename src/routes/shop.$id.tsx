@@ -161,22 +161,19 @@ function ProductPage() {
 
             <div className="mt-10">
               <div className="flex items-center justify-between text-[11px] uppercase tracking-[0.28em]">
-                <span className="text-ivory">{isFragrance ? "Scent" : "Size"}</span>
+                <label htmlFor="product-size" className="text-ivory">{isFragrance ? "Scent" : "Size"}</label>
                 {!isFragrance && <button className="text-gold">Size Guide</button>}
               </div>
-              <div className={`mt-3 grid gap-2 ${isFragrance ? "grid-cols-3" : "grid-cols-3 sm:grid-cols-6"}`}>
+              <select
+                id="product-size"
+                value={selectedSize}
+                onChange={(e) => setSelectedSize(e.target.value)}
+                className="mt-3 w-full bg-background border border-border text-ivory text-sm py-3 px-3 focus:border-gold outline-none cursor-pointer"
+              >
                 {sizeOptions.map((s) => (
-                  <button
-                    key={s}
-                    onClick={() => setSelectedSize(s)}
-                    className={`py-3 border text-sm transition-colors ${
-                      selectedSize === s ? "border-gold text-gold" : "border-border text-ivory hover:border-ivory"
-                    }`}
-                  >
-                    {s}
-                  </button>
+                  <option key={s} value={s} className="bg-background text-ivory">{s}{!isFragrance && (s === "XL" || s === "2XL") ? " (+R90)" : ""}</option>
                 ))}
-              </div>
+              </select>
               {!isFragrance && (
                 <p className="mt-3 text-[10px] uppercase tracking-[0.22em] text-muted-foreground">XL & 2XL + R90</p>
               )}
@@ -189,7 +186,7 @@ function ProductPage() {
                   id="finish"
                   value={selectedFinish}
                   onChange={(e) => setSelectedFinish(e.target.value)}
-                  className="mt-3 w-full bg-transparent border border-border text-ivory text-sm py-3 px-3 focus:border-gold outline-none"
+                  className="mt-3 w-full bg-background border border-border text-ivory text-sm py-3 px-3 focus:border-gold outline-none cursor-pointer"
                 >
                   {finishOptions.map((f) => (
                     <option key={f} value={f} className="bg-background text-ivory">{f}</option>
@@ -203,39 +200,33 @@ function ProductPage() {
 
             {!isFragrance && colorOptions.length > 0 && (
               <div className="mt-6">
-                <div className="text-[11px] uppercase tracking-[0.28em] text-ivory">Colors</div>
-                <div className="mt-3 grid grid-cols-3 gap-2">
+                <label htmlFor="product-color" className="text-[11px] uppercase tracking-[0.28em] text-ivory">Colors</label>
+                <select
+                  id="product-color"
+                  value={selectedColor}
+                  onChange={(e) => setSelectedColor(e.target.value)}
+                  className="mt-3 w-full bg-background border border-border text-ivory text-sm py-3 px-3 focus:border-gold outline-none cursor-pointer"
+                >
                   {colorOptions.map((c) => (
-                    <button
-                      key={c}
-                      onClick={() => setSelectedColor(c)}
-                      className={`py-3 border text-sm transition-colors ${
-                        selectedColor === c ? "border-gold text-gold" : "border-border text-ivory hover:border-ivory"
-                      }`}
-                    >
-                      {c}
-                    </button>
+                    <option key={c} value={c} className="bg-background text-ivory">{c}</option>
                   ))}
-                </div>
+                </select>
               </div>
             )}
 
             {isFragrance && quantityOptions.length > 0 && (
               <div className="mt-6">
-                <div className="text-[11px] uppercase tracking-[0.28em] text-ivory">Quantity</div>
-                <div className="mt-3 grid grid-cols-2 gap-2">
+                <label htmlFor="product-quantity" className="text-[11px] uppercase tracking-[0.28em] text-ivory">Quantity</label>
+                <select
+                  id="product-quantity"
+                  value={selectedQty}
+                  onChange={(e) => setSelectedQty(e.target.value)}
+                  className="mt-3 w-full bg-background border border-border text-ivory text-sm py-3 px-3 focus:border-gold outline-none cursor-pointer"
+                >
                   {quantityOptions.map((q) => (
-                    <button
-                      key={q}
-                      onClick={() => setSelectedQty(q)}
-                      className={`py-3 border text-sm transition-colors ${
-                        selectedQty === q ? "border-gold text-gold" : "border-border text-ivory hover:border-ivory"
-                      }`}
-                    >
-                      {q}
-                    </button>
+                    <option key={q} value={q} className="bg-background text-ivory">{q}</option>
                   ))}
-                </div>
+                </select>
               </div>
             )}
 

@@ -33,10 +33,12 @@ export function priceCart(items: RequestedItem[], shippingOption: string) {
   const lines = items.map((i) => {
     const product = CATALOG[i.id];
     if (!product) throw new Error("Unknown product in cart");
+    const selectedSize = i.size?.split(" · ")[0];
+    const surcharge = i.id !== "no-v-fragrance" && (selectedSize === "XL" || selectedSize === "2XL") ? 90 : 0;
     return {
       id: i.id,
       name: product.name,
-      price: product.price,
+      price: product.price + surcharge,
       qty: i.qty,
       ...(i.size ? { size: i.size } : {}),
       ...(i.color ? { color: i.color } : {}),
