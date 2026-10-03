@@ -9,54 +9,24 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as ShippingRouteImport } from './routes/shipping'
-import { Route as SelectRouteImport } from './routes/select'
-import { Route as MedallionRouteImport } from './routes/medallion'
-import { Route as FaqRouteImport } from './routes/faq'
-import { Route as ContactRouteImport } from './routes/contact'
-import { Route as CheckoutRouteImport } from './routes/checkout'
-import { Route as CartRouteImport } from './routes/cart'
-import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AboutRouteImport } from './routes/about'
+import { Route as CartRouteImport } from './routes/cart'
+import { Route as CheckoutRouteImport } from './routes/checkout'
+import { Route as ContactRouteImport } from './routes/contact'
+import { Route as FaqRouteImport } from './routes/faq'
+import { Route as MedallionRouteImport } from './routes/medallion'
+import { Route as SelectRouteImport } from './routes/select'
+import { Route as ShippingRouteImport } from './routes/shipping'
+import { Route as OrderConfirmedReferenceRouteImport } from './routes/order-confirmed.$reference'
+import { Route as PayReferenceRouteImport } from './routes/pay.$reference'
 import { Route as ShopIndexRouteImport } from './routes/shop.index'
 import { Route as ShopIdRouteImport } from './routes/shop.$id'
-import { Route as PayReferenceRouteImport } from './routes/pay.$reference'
-import { Route as OrderConfirmedReferenceRouteImport } from './routes/order-confirmed.$reference'
 import { Route as ApiPublicPayshapWebhookRouteImport } from './routes/api/public/payshap-webhook'
 
-const ShippingRoute = ShippingRouteImport.update({
-  id: '/shipping',
-  path: '/shipping',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const SelectRoute = SelectRouteImport.update({
-  id: '/select',
-  path: '/select',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const MedallionRoute = MedallionRouteImport.update({
-  id: '/medallion',
-  path: '/medallion',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const FaqRoute = FaqRouteImport.update({
-  id: '/faq',
-  path: '/faq',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ContactRoute = ContactRouteImport.update({
-  id: '/contact',
-  path: '/contact',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const CheckoutRoute = CheckoutRouteImport.update({
-  id: '/checkout',
-  path: '/checkout',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const CartRoute = CartRouteImport.update({
-  id: '/cart',
-  path: '/cart',
+const IndexRoute = IndexRouteImport.update({
+  id: '/',
+  path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AboutRoute = AboutRouteImport.update({
@@ -64,9 +34,49 @@ const AboutRoute = AboutRouteImport.update({
   path: '/about',
   getParentRoute: () => rootRouteImport,
 } as any)
-const IndexRoute = IndexRouteImport.update({
-  id: '/',
-  path: '/',
+const CartRoute = CartRouteImport.update({
+  id: '/cart',
+  path: '/cart',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CheckoutRoute = CheckoutRouteImport.update({
+  id: '/checkout',
+  path: '/checkout',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FaqRoute = FaqRouteImport.update({
+  id: '/faq',
+  path: '/faq',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MedallionRoute = MedallionRouteImport.update({
+  id: '/medallion',
+  path: '/medallion',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SelectRoute = SelectRouteImport.update({
+  id: '/select',
+  path: '/select',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ShippingRoute = ShippingRouteImport.update({
+  id: '/shipping',
+  path: '/shipping',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OrderConfirmedReferenceRoute = OrderConfirmedReferenceRouteImport.update({
+  id: '/order-confirmed/$reference',
+  path: '/order-confirmed/$reference',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PayReferenceRoute = PayReferenceRouteImport.update({
+  id: '/pay/$reference',
+  path: '/pay/$reference',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ShopIndexRoute = ShopIndexRouteImport.update({
@@ -77,16 +87,6 @@ const ShopIndexRoute = ShopIndexRouteImport.update({
 const ShopIdRoute = ShopIdRouteImport.update({
   id: '/shop/$id',
   path: '/shop/$id',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const PayReferenceRoute = PayReferenceRouteImport.update({
-  id: '/pay/$reference',
-  path: '/pay/$reference',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const OrderConfirmedReferenceRoute = OrderConfirmedReferenceRouteImport.update({
-  id: '/order-confirmed/$reference',
-  path: '/order-confirmed/$reference',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ApiPublicPayshapWebhookRoute = ApiPublicPayshapWebhookRouteImport.update({
@@ -214,53 +214,11 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/shipping': {
-      id: '/shipping'
-      path: '/shipping'
-      fullPath: '/shipping'
-      preLoaderRoute: typeof ShippingRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/select': {
-      id: '/select'
-      path: '/select'
-      fullPath: '/select'
-      preLoaderRoute: typeof SelectRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/medallion': {
-      id: '/medallion'
-      path: '/medallion'
-      fullPath: '/medallion'
-      preLoaderRoute: typeof MedallionRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/faq': {
-      id: '/faq'
-      path: '/faq'
-      fullPath: '/faq'
-      preLoaderRoute: typeof FaqRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/contact': {
-      id: '/contact'
-      path: '/contact'
-      fullPath: '/contact'
-      preLoaderRoute: typeof ContactRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/checkout': {
-      id: '/checkout'
-      path: '/checkout'
-      fullPath: '/checkout'
-      preLoaderRoute: typeof CheckoutRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/cart': {
-      id: '/cart'
-      path: '/cart'
-      fullPath: '/cart'
-      preLoaderRoute: typeof CartRouteImport
+    '/': {
+      id: '/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/about': {
@@ -270,11 +228,67 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AboutRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/': {
-      id: '/'
-      path: '/'
-      fullPath: '/'
-      preLoaderRoute: typeof IndexRouteImport
+    '/cart': {
+      id: '/cart'
+      path: '/cart'
+      fullPath: '/cart'
+      preLoaderRoute: typeof CartRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/checkout': {
+      id: '/checkout'
+      path: '/checkout'
+      fullPath: '/checkout'
+      preLoaderRoute: typeof CheckoutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/faq': {
+      id: '/faq'
+      path: '/faq'
+      fullPath: '/faq'
+      preLoaderRoute: typeof FaqRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/medallion': {
+      id: '/medallion'
+      path: '/medallion'
+      fullPath: '/medallion'
+      preLoaderRoute: typeof MedallionRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/select': {
+      id: '/select'
+      path: '/select'
+      fullPath: '/select'
+      preLoaderRoute: typeof SelectRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/shipping': {
+      id: '/shipping'
+      path: '/shipping'
+      fullPath: '/shipping'
+      preLoaderRoute: typeof ShippingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/order-confirmed/$reference': {
+      id: '/order-confirmed/$reference'
+      path: '/order-confirmed/$reference'
+      fullPath: '/order-confirmed/$reference'
+      preLoaderRoute: typeof OrderConfirmedReferenceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/pay/$reference': {
+      id: '/pay/$reference'
+      path: '/pay/$reference'
+      fullPath: '/pay/$reference'
+      preLoaderRoute: typeof PayReferenceRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/shop/': {
@@ -289,20 +303,6 @@ declare module '@tanstack/react-router' {
       path: '/shop/$id'
       fullPath: '/shop/$id'
       preLoaderRoute: typeof ShopIdRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/pay/$reference': {
-      id: '/pay/$reference'
-      path: '/pay/$reference'
-      fullPath: '/pay/$reference'
-      preLoaderRoute: typeof PayReferenceRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/order-confirmed/$reference': {
-      id: '/order-confirmed/$reference'
-      path: '/order-confirmed/$reference'
-      fullPath: '/order-confirmed/$reference'
-      preLoaderRoute: typeof OrderConfirmedReferenceRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/api/public/payshap-webhook': {
