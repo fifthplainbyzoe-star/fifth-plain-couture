@@ -3,6 +3,7 @@ import { useState } from "react";
 import { findProduct, products } from "@/lib/products";
 import { ProductCard } from "@/components/site/ProductCard";
 import { Reveal } from "@/components/site/Reveal";
+import { SelectProductDisclaimer } from "@/components/site/SelectProductDisclaimer";
 import { useCart } from "@/lib/cart";
 
 export const Route = createFileRoute("/shop/$id")({
@@ -148,6 +149,8 @@ function ProductPage() {
                 <span className="ml-3 align-middle text-[10px] uppercase tracking-[0.24em] text-gold">incl. +R90 {selectedSize}</span>
               )}
             </div>
+
+            {isSelect && <SelectProductDisclaimer />}
 
             <p className="mt-8 text-muted-foreground leading-relaxed">
                {p.description ?? (isFragrance
