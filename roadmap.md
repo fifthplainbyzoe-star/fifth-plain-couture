@@ -4,4 +4,4 @@
 - [x] Verify product images, selections, cart pricing, and build
 - [x] Make every product option a compact dropdown without changing color-image behavior
 - [x] Confirm XL/2XL adds R90 to displayed and checkout prices
-- [ ] Add the supplied disclaimer and expandable details to FifthPlain Select product pages only
+- [x] Add the supplied disclaimer and expandable details to FifthPlain Select product pages only
