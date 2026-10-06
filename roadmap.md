@@ -5,4 +5,5 @@
 - [x] Make every product option a compact dropdown without changing color-image behavior
 - [x] Confirm XL/2XL adds R90 to displayed and checkout prices
 - [x] Add the supplied disclaimer and expandable details to FifthPlain Select product pages only
-- [ ] Make every apparel gallery image follow the selected color without changing other product behavior
+- [x] Make every apparel gallery image follow the selected color without changing other product behavior
+- [x] Select pages: delivery dropdown + total, WhatsApp-only ordering
