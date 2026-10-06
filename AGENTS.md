@@ -10,3 +10,4 @@
 <!-- LOVABLE:END -->
 
 - Product color choices may map to color-specific primary images; preserve the original gallery and store the selected image in cart entries so orders remain visually accurate.
+- Color galleries live in src/assets/gallery-color/<product>-<color>-<n>.jpg, resolved by src/lib/colorGalleries.ts; Select product pages use src/lib/delivery.ts (keep prices in sync with pricing.server.ts) and order only via WhatsApp — so new Select products get it automatically.

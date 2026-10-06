@@ -5,6 +5,8 @@ import { ProductCard } from "@/components/site/ProductCard";
 import { Reveal } from "@/components/site/Reveal";
 import { SelectProductDisclaimer } from "@/components/site/SelectProductDisclaimer";
 import { useCart } from "@/lib/cart";
+import { galleryForColor } from "@/lib/colorGalleries";
+import { DELIVERY_OPTIONS, orderTotal } from "@/lib/delivery";
 
 export const Route = createFileRoute("/shop/$id")({
   loader: ({ params }) => {
@@ -54,6 +56,8 @@ function ProductPage() {
   const [notifyMsg, setNotifyMsg] = useState("");
   const [addedMsg, setAddedMsg] = useState("");
   const selectedImage = p.colorImages?.[selectedColor] ?? p.image;
+  const colorGallery = galleryForColor(p.id, selectedColor, gallery);
+  const [deliveryId, setDeliveryId] = useState<string>(DELIVERY_OPTIONS[0].id);
   const { add } = useCart();
   const navigate = useNavigate();
   const related = products
@@ -91,11 +95,13 @@ function ProductPage() {
       selectedColor ? `Colour: ${selectedColor}` : "",
       selectedFinish ? `Finish: ${selectedFinish}` : "",
     ].filter(Boolean).join("\n");
+    const { delivery, total } = orderTotal(unitPrice, deliveryId);
     const message =
       `Hi! I'd like to order from FifthPlain Select:\n` +
       `• 1 x ${p.name} — R${unitPrice.toLocaleString()}\n` +
       (options ? `${options}\n` : "") +
-      `\nTotal (excl. shipping): R${unitPrice.toLocaleString()}.`;
+      `Delivery: ${delivery.label} — R${delivery.price}\n` +
+      `\nTotal (incl. delivery): R${total.toLocaleString()}.`;
     window.open(
       `https://wa.me/27634595961?text=${encodeURIComponent(message)}`,
       "_blank",
@@ -133,7 +139,7 @@ function ProductPage() {
             <div className="col-span-2 aspect-[4/5] bg-surface overflow-hidden">
               <img src={selectedImage} alt={`${p.name} in ${selectedColor}`} className="h-full w-full object-cover slow-zoom" />
             </div>
-            {gallery.map((img, i) => (
+            {colorGallery.map((img, i) => (
               <div key={i} className="aspect-square bg-surface overflow-hidden">
                 <img src={img} alt="" loading="lazy" className="h-full w-full object-cover opacity-90 hover:opacity-100 transition" />
               </div>
@@ -248,10 +254,30 @@ function ProductPage() {
               </div>
             ) : (
               <div className="mt-8 flex flex-col gap-3">
-                <button onClick={handleAdd} className="bg-ivory text-background py-4 text-[11px] uppercase tracking-[0.3em] hover:bg-gold transition-colors">Add to Atelier</button>
-                <button onClick={handleBuyNow} className="border border-gold text-gold py-4 text-[11px] uppercase tracking-[0.3em] hover:bg-gold hover:text-background transition-colors">Buy Now</button>
-                {isSelect && (
-                  <button onClick={handleWhatsAppOrder} className="bg-gold text-background py-4 text-[11px] uppercase tracking-[0.3em] hover:bg-ivory transition-colors">Order via WhatsApp</button>
+                {isSelect ? (
+                  <>
+                    <label htmlFor="product-delivery" className="text-[11px] uppercase tracking-[0.28em] text-ivory">Delivery</label>
+                    <select
+                      id="product-delivery"
+                      value={deliveryId}
+                      onChange={(e) => setDeliveryId(e.target.value)}
+                      className="w-full bg-background border border-border text-ivory text-sm py-3 px-3 focus:border-gold outline-none cursor-pointer"
+                    >
+                      {DELIVERY_OPTIONS.map((d) => (
+                        <option key={d.id} value={d.id} className="bg-background text-ivory">{d.label} — R{d.price}</option>
+                      ))}
+                    </select>
+                    <div className="flex items-center justify-between py-2 text-[11px] uppercase tracking-[0.28em]">
+                      <span className="text-muted-foreground">Total incl. delivery</span>
+                      <span className="font-editorial text-xl normal-case tracking-normal text-ivory">R{orderTotal(unitPrice, deliveryId).total.toLocaleString()}</span>
+                    </div>
+                    <button onClick={handleWhatsAppOrder} className="bg-gold text-background py-4 text-[11px] uppercase tracking-[0.3em] hover:bg-ivory transition-colors">Order via WhatsApp</button>
+                  </>
+                ) : (
+                  <>
+                    <button onClick={handleAdd} className="bg-ivory text-background py-4 text-[11px] uppercase tracking-[0.3em] hover:bg-gold transition-colors">Add to Atelier</button>
+                    <button onClick={handleBuyNow} className="border border-gold text-gold py-4 text-[11px] uppercase tracking-[0.3em] hover:bg-gold hover:text-background transition-colors">Buy Now</button>
+                  </>
                 )}
                 {addedMsg && <p className="text-xs text-gold text-center">{addedMsg}</p>}
               </div>
