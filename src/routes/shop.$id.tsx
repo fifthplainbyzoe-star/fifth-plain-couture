@@ -60,6 +60,11 @@ function ProductPage() {
   const selectedImage = p.colorImages?.[selectedColor] ?? p.image;
   const colorGallery = galleryForColor(p.id, selectedColor, gallery);
   const [deliveryId, setDeliveryId] = useState<string>(DELIVERY_OPTIONS[0].id);
+  const [customerName, setCustomerName] = useState("");
+  const [paxiCode, setPaxiCode] = useState("");
+  const [address, setAddress] = useState("");
+  const [orderError, setOrderError] = useState("");
+  const needsAddress = deliveryId.includes("store-home") || deliveryId.startsWith("courier");
   const { add } = useCart();
   const navigate = useNavigate();
   const related = products
@@ -91,6 +96,13 @@ function ProductPage() {
     navigate({ to: "/checkout" });
   };
   const handleWhatsAppOrder = () => {
+    const name = customerName.trim().slice(0, 100);
+    const paxi = paxiCode.trim().slice(0, 50);
+    const addr = address.trim().slice(0, 300);
+    if (name.length < 2) return setOrderError("Please enter your full name.");
+    if (needsAddress ? addr.length < 5 : paxi.length < 2)
+      return setOrderError(needsAddress ? "Please enter your delivery address." : "Please enter your PAXI point code.");
+    setOrderError("");
     const options = [
       selectedSize ? `Size: ${selectedSize}` : "",
       selectedQty ? `Quantity option: ${selectedQty}` : "",
@@ -99,10 +111,12 @@ function ProductPage() {
     ].filter(Boolean).join("\n");
     const { delivery, total } = orderTotal(unitPrice, deliveryId);
     const message =
-      `Hi! I'd like to order from FifthPlain Select:\n` +
+      `Hi! I'm ${name}. I'd like to order from FifthPlain Select:\n` +
       `• 1 x ${p.name} — R${unitPrice.toLocaleString()}\n` +
       (options ? `${options}\n` : "") +
       `Delivery: ${delivery.label} — R${delivery.price}\n` +
+      `\nCustomer details:\nFull name: ${name}\n` +
+      (needsAddress ? `Delivery address: ${addr}\n` : `PAXI point code: ${paxi}\n`) +
       `\nTotal (incl. delivery): R${total.toLocaleString()}.`;
     window.open(
       `https://wa.me/27634595961?text=${encodeURIComponent(message)}`,
@@ -273,7 +287,43 @@ function ProductPage() {
                       <span className="text-muted-foreground">Total incl. delivery</span>
                       <span className="font-editorial text-xl normal-case tracking-normal text-ivory">R{orderTotal(unitPrice, deliveryId).total.toLocaleString()}</span>
                     </div>
-                    <button onClick={handleWhatsAppOrder} className="bg-gold text-background py-4 text-[11px] uppercase tracking-[0.3em] hover:bg-ivory transition-colors">Order via WhatsApp</button>
+                    <label htmlFor="customer-name" className="mt-2 text-[11px] uppercase tracking-[0.28em] text-ivory">Full Name</label>
+                    <input
+                      id="customer-name"
+                      value={customerName}
+                      maxLength={100}
+                      onChange={(e) => setCustomerName(e.target.value)}
+                      placeholder="Your full name"
+                      className="w-full bg-background border border-border text-ivory text-sm py-3 px-3 focus:border-gold outline-none"
+                    />
+                    {needsAddress ? (
+                      <>
+                        <label htmlFor="customer-address" className="text-[11px] uppercase tracking-[0.28em] text-ivory">Delivery Address</label>
+                        <textarea
+                          id="customer-address"
+                          value={address}
+                          maxLength={300}
+                          rows={3}
+                          onChange={(e) => setAddress(e.target.value)}
+                          placeholder="Street, suburb, city, postal code"
+                          className="w-full bg-background border border-border text-ivory text-sm py-3 px-3 focus:border-gold outline-none"
+                        />
+                      </>
+                    ) : (
+                      <>
+                        <label htmlFor="customer-paxi" className="text-[11px] uppercase tracking-[0.28em] text-ivory">PAXI Point Code</label>
+                        <input
+                          id="customer-paxi"
+                          value={paxiCode}
+                          maxLength={50}
+                          onChange={(e) => setPaxiCode(e.target.value)}
+                          placeholder="e.g. P1234"
+                          className="w-full bg-background border border-border text-ivory text-sm py-3 px-3 focus:border-gold outline-none"
+                        />
+                      </>
+                    )}
+                    {orderError && <p className="text-xs text-destructive">{orderError}</p>}
+                    <button onClick={handleWhatsAppOrder} className="mt-2 bg-gold text-background py-4 text-[11px] uppercase tracking-[0.3em] hover:bg-ivory transition-colors">Order via WhatsApp</button>
                   </>
                 ) : (
                   <>
