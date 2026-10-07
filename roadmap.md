@@ -7,7 +7,7 @@
 - [x] Add the supplied disclaimer and expandable details to FifthPlain Select product pages only
 - [x] Make every apparel gallery image follow the selected color without changing other product behavior
 - [x] Select pages: delivery dropdown + total, WhatsApp-only ordering
-- [ ] Rename and reposition Aurelia while keeping it locked as Coming Soon
-- [ ] Remove Tracksuit Centre throughout the storefront
-- [ ] Clarify the Fragrance Lab concept
-- [ ] Add 2XL to all apparel products with the existing R90 surcharge
+- [x] Rename and reposition Aurelia while keeping it locked as Coming Soon
+- [x] Remove Tracksuit Centre throughout the storefront
+- [x] Clarify the Fragrance Lab concept
+- [x] Add 2XL to all apparel products with the existing R90 surcharge

@@ -46,7 +46,7 @@ export function ProductCard({ p }: { p: Product }) {
               onClick={(e) => {
                 e.preventDefault();
                 e.stopPropagation();
-                setNotifyMsg("We will let you know when The Aurelia is available.");
+                setNotifyMsg("We will let you know when Aurelia is available.");
               }}
               className="mt-6 border border-gold text-gold px-6 py-2 text-[10px] uppercase tracking-[0.3em] hover:bg-gold hover:text-background transition-colors"
             >
