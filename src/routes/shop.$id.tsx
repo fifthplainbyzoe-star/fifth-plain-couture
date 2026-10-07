@@ -60,6 +60,11 @@ function ProductPage() {
   const selectedImage = p.colorImages?.[selectedColor] ?? p.image;
   const colorGallery = galleryForColor(p.id, selectedColor, gallery);
   const [deliveryId, setDeliveryId] = useState<string>(DELIVERY_OPTIONS[0].id);
+  const [customerName, setCustomerName] = useState("");
+  const [paxiCode, setPaxiCode] = useState("");
+  const [address, setAddress] = useState("");
+  const [orderError, setOrderError] = useState("");
+  const needsAddress = deliveryId.includes("store-home") || deliveryId.startsWith("courier");
   const { add } = useCart();
   const navigate = useNavigate();
   const related = products
@@ -91,6 +96,13 @@ function ProductPage() {
     navigate({ to: "/checkout" });
   };
   const handleWhatsAppOrder = () => {
+    const name = customerName.trim().slice(0, 100);
+    const paxi = paxiCode.trim().slice(0, 50);
+    const addr = address.trim().slice(0, 300);
+    if (name.length < 2) return setOrderError("Please enter your full name.");
+    if (needsAddress ? addr.length < 5 : paxi.length < 2)
+      return setOrderError(needsAddress ? "Please enter your delivery address." : "Please enter your PAXI point code.");
+    setOrderError("");
     const options = [
       selectedSize ? `Size: ${selectedSize}` : "",
       selectedQty ? `Quantity option: ${selectedQty}` : "",
@@ -99,10 +111,12 @@ function ProductPage() {
     ].filter(Boolean).join("\n");
     const { delivery, total } = orderTotal(unitPrice, deliveryId);
     const message =
-      `Hi! I'd like to order from FifthPlain Select:\n` +
+      `Hi! I'm ${name}. I'd like to order from FifthPlain Select:\n` +
       `• 1 x ${p.name} — R${unitPrice.toLocaleString()}\n` +
       (options ? `${options}\n` : "") +
       `Delivery: ${delivery.label} — R${delivery.price}\n` +
+      `\nCustomer details:\nFull name: ${name}\n` +
+      (needsAddress ? `Delivery address: ${addr}\n` : `PAXI point code: ${paxi}\n`) +
       `\nTotal (incl. delivery): R${total.toLocaleString()}.`;
     window.open(
       `https://wa.me/27634595961?text=${encodeURIComponent(message)}`,
