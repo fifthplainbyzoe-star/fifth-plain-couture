@@ -4,7 +4,6 @@ const files = import.meta.glob("/src/assets/gallery-color/*.jpg", { eager: true,
 const productKey: Record<string, string> = {
   "obsidian-tee": "tee",
   "noir-hoodie": "hoodie",
-  "ivory-tracksuit": "tracksuit",
   "elara-dress": "elara",
   "harper-denim": "harper",
   "solene-skirt": "solene",

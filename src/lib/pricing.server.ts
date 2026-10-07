@@ -3,8 +3,7 @@
 export const CATALOG: Record<string, { name: string; price: number }> = {
   "obsidian-tee": { name: "Premium Heavyweight Tee", price: 250 },
   "noir-hoodie": { name: "Heavy-Weight Premium Hoodie", price: 320 },
-  "ivory-tracksuit": { name: "Tracksuit Centre", price: 320 },
-  "aurelia-skirt": { name: "The Aurelia Skirt", price: 520 },
+  "aurelia-skirt": { name: "Aurelia", price: 520 },
   "no-v-fragrance": { name: "The Fragrance Lab", price: 250 },
   "elara-dress": { name: "Elara Dress", price: 999 },
   "harper-denim": { name: "Harper Denim", price: 749 },

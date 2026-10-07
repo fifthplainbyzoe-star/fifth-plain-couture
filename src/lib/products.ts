@@ -6,10 +6,6 @@ import hoodie1 from "@/assets/hoodie-gallery-1.jpg";
 import hoodie2 from "@/assets/hoodie-gallery-2.jpg";
 import hoodie3 from "@/assets/hoodie-gallery-3.jpg";
 import hoodie4 from "@/assets/hoodie-gallery-4.jpg";
-import tracksuit1 from "@/assets/tracksuit-gallery-1.jpg";
-import tracksuit2 from "@/assets/tracksuit-gallery-2.jpg";
-import tracksuit3 from "@/assets/tracksuit-gallery-3.jpg";
-import tracksuit4 from "@/assets/tracksuit-gallery-4.jpg";
 import skirt1 from "@/assets/skirt-gallery-1.jpg";
 import skirt2 from "@/assets/skirt-gallery-2.jpg";
 import skirt3 from "@/assets/skirt-gallery-3.jpg";
@@ -21,9 +17,6 @@ import modelTee3 from "@/assets/model-tee-3.jpg";
 import modelHoodie1 from "@/assets/model-hoodie-1.jpg";
 import modelHoodie2 from "@/assets/model-hoodie-2.jpg";
 import modelHoodie3 from "@/assets/model-hoodie-3.jpg";
-import modelTracksuit1 from "@/assets/model-tracksuit-1.jpg";
-import modelTracksuit2 from "@/assets/model-tracksuit-2.jpg";
-import modelTracksuit3 from "@/assets/model-tracksuit-3.jpg";
 import modelSkirt1 from "@/assets/model-skirt-1.jpg";
 import modelSkirt2 from "@/assets/model-skirt-2.jpg";
 import modelSkirt3 from "@/assets/model-skirt-3.jpg";
@@ -49,8 +42,6 @@ import hoodieDarkBrown from "@/assets/hoodie-color-dark-brown.jpg";
 import hoodieBeigeCream from "@/assets/hoodie-color-beige-cream.jpg";
 import hoodieLilac from "@/assets/hoodie-color-lilac.jpg";
 import hoodieOrange from "@/assets/hoodie-color-orange.jpg";
-import tracksuitBlack from "@/assets/tracksuit-color-black.jpg";
-import tracksuitBrown from "@/assets/tracksuit-color-brown.jpg";
 import elaraBlack from "@/assets/elara-color-black.png";
 import elaraWhite from "@/assets/elara-color-white.png";
 import elaraSkyBlue from "@/assets/elara-color-sky-blue.png";
@@ -83,19 +74,9 @@ export const products: Product[] = [
     colorImages: { Black: hoodie1, "Dark Brown": hoodieDarkBrown, "Beige Cream": hoodieBeigeCream, Lilac: hoodieLilac, Orange: hoodieOrange },
   },
   {
-    id: "ivory-tracksuit",
-    name: "\u00a0Tracksuit Centre",
-    category: "Tracksuits",
-    price: 320,
-    image: tracksuit1,
-    gallery: [tracksuit1, tracksuit2, tracksuit3, tracksuit4, modelTracksuit1, modelTracksuit2, modelTracksuit3],
-    colorImages: { Black: tracksuitBlack, Brown: tracksuitBrown, Cream: tracksuit1 },
-    badge: "Limited",
-  },
-  {
     id: "aurelia-skirt",
-    name: "The Aurelia Skirt",
-    category: "Skirts",
+    name: "Aurelia",
+    category: "Gala & Event Dresses",
     price: 520,
     image: skirt1,
     gallery: [skirt1, skirt2, skirt3, skirt4, modelSkirt1, modelSkirt2, modelSkirt3],
@@ -118,7 +99,7 @@ export const products: Product[] = [
     gallery: [elara1, elara2, elara3],
     colorImages: { Black: elaraBlack, "Beige Cream": elara1, White: elaraWhite, "Sky Blue": elaraSkyBlue },
     colors: ["Black", "Beige Cream", "White", "Sky Blue"],
-    sizes: ["S", "M", "L", "XL"],
+    sizes: ["S", "M", "L", "XL", "2XL"],
     description: "A graceful full-length wrap dress with a high neckline, softly gathered sleeves, and a flowing tiered silhouette.",
     badge: "Select",
   },
@@ -132,7 +113,7 @@ export const products: Product[] = [
     gallery: [harper1, harper2, harper3, harper4, harper5],
     colorImages: { Black: harper1, "Beige Cream": harperBeigeCream, White: harperWhite, "Sky Blue": harperSkyBlue },
     colors: ["Black", "Beige Cream", "White", "Sky Blue"],
-    sizes: ["S", "M", "L", "XL"],
+    sizes: ["S", "M", "L", "XL", "2XL"],
     description: "A full-length washed denim skirt defined by an asymmetric layered construction and softly frayed edges.",
     badge: "Select",
   },
@@ -146,7 +127,7 @@ export const products: Product[] = [
     gallery: [solene1, solene2, solene3],
     colorImages: { Black: soleneBlack, "Beige Cream": solene1, White: soleneWhite, "Sky Blue": soleneSkyBlue },
     colors: ["Black", "Beige Cream", "White", "Sky Blue"],
-    sizes: ["S", "M", "L", "XL"],
+    sizes: ["S", "M", "L", "XL", "2XL"],
     description: "A fluid satin maxi skirt with an asymmetric tiered ruffle hem — quiet movement, elevated ease.",
     badge: "New",
   },

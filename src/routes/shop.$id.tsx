@@ -19,7 +19,9 @@ export const Route = createFileRoute("/shop/$id")({
       { title: `${loaderData?.name ?? "Piece"} — Fifth Plain` },
       { name: "description", content: `${loaderData?.name} from Fifth Plain ${loaderData?.category}.` },
       { property: "og:title", content: `${loaderData?.name} — Fifth Plain` },
-      { property: "og:image", content: loaderData?.image },
+      { property: "og:description", content: `${loaderData?.name} from Fifth Plain ${loaderData?.category}.` },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary" },
     ],
   }),
   component: ProductPage,
@@ -123,7 +125,7 @@ function ProductPage() {
             <p className="mt-8 font-display text-3xl md:text-5xl gold-text">Coming Soon</p>
             <p className="mt-3 text-muted-foreground text-sm tracking-widest">( TBA )</p>
             <button
-              onClick={() => setNotifyMsg("We will let you know when The Aurelia is available.")}
+              onClick={() => setNotifyMsg("We will let you know when Aurelia is available.")}
               className="mt-10 bg-gold text-background px-10 py-4 text-[11px] uppercase tracking-[0.3em] hover:bg-ivory transition-colors"
             >
               Notify Me
@@ -160,7 +162,7 @@ function ProductPage() {
 
             <p className="mt-8 text-muted-foreground leading-relaxed">
                {p.description ?? (isFragrance
-                ? "The Fragrance Lab fragrances are proudly offered through our official affiliate, FIFTHPLAIN, ensuring an authentic, premium shopping experience."
+                ? "A considered selection of different perfume brands, brought together under one FifthPlain foundation."
                 : isHoodie
                   ? "Crafted from ultra-heavyweight fabric with a flawless minimalist drape, engineered to hold its structure today and for years to come."
                   : isTee

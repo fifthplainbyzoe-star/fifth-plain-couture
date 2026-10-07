@@ -25,12 +25,12 @@ function AureliaTile() {
       <div className="absolute inset-0 bg-surface opacity-40" />
       <div className="relative z-10">
         <div className="font-display text-5xl gold-text">IV</div>
-        <h3 className="mt-8 font-editorial text-2xl text-ivory">The Aurelia</h3>
-        <p className="mt-2 text-sm text-muted-foreground">Skirts</p>
+        <h3 className="mt-8 font-editorial text-2xl text-ivory">Aurelia</h3>
+        <p className="mt-2 text-sm text-muted-foreground">Gala &amp; Event Dresses</p>
         <p className="mt-6 font-display text-2xl gold-text">Coming Soon</p>
         <p className="mt-2 text-muted-foreground text-sm tracking-widest">( TBA )</p>
         <button
-          onClick={() => setMsg("We will let you know when The Aurelia is available.")}
+          onClick={() => setMsg("We will let you know when Aurelia is available.")}
           className="mt-6 border border-gold text-gold px-6 py-2 text-[10px] uppercase tracking-[0.3em] hover:bg-gold hover:text-background transition-colors"
         >
           Notify Me
@@ -79,12 +79,11 @@ function Medallion() {
 
       {/* COLLECTIONS */}
       <section className="bg-surface border-y border-border">
-        <div className="mx-auto max-w-[1600px] px-6 lg:px-12 py-28 grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="mx-auto max-w-[1200px] px-6 lg:px-12 py-28 grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {[
             { n: "I",   t: "The Sovereign", c: "T-Shirts",       to: "/shop/$id", id: "obsidian-tee" },
             { n: "II",  t: "The Prestige",  c: "Hoodies",        to: "/shop/$id", id: "noir-hoodie" },
-            { n: "III", t: "The Noble",     c: "Tracksuit Pants", to: "/shop/$id", id: "ivory-tracksuit" },
-            { n: "IV",  t: "The Aurelia",   c: "Skirts",         to: "/shop/$id", id: "aurelia-skirt" },
+            { n: "III", t: "Aurelia", c: "Gala & Event Dresses", to: "/shop/$id", id: "aurelia-skirt" },
           ].map((c, i) => (
             <Reveal key={c.t} delay={i * 120}>
               {c.id === "aurelia-skirt" ? (
